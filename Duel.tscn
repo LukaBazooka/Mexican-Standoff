@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu7y1y78b6e1o"]
+
+[ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fkpxe")
+
+[node name="Rest_Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="DuelTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Duel_Display" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Rest_Display" type="Label" parent="."]
+offset_left = 64.0
+offset_right = 104.0
+offset_bottom = 23.0
+text = "00"
+
+[connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
+[connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
