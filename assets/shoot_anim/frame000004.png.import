@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs353m1mamf2l"
-path="res://.godot/imported/revolver.jpg-49cabfca498c215cd38233ebb7e1ad39.ctex"
+uid="uid://bkol5skbyqhnm"
+path="res://.godot/imported/frame000004.png-4ee18fbaf5504dee91ff7c4ac599ad66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://revolver.jpg"
-dest_files=["res://.godot/imported/revolver.jpg-49cabfca498c215cd38233ebb7e1ad39.ctex"]
+source_file="res://assets/shoot_anim/frame000004.png"
+dest_files=["res://.godot/imported/frame000004.png-4ee18fbaf5504dee91ff7c4ac599ad66.ctex"]
 
 [params]
 
