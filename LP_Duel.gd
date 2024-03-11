@@ -1,5 +1,13 @@
 extends Node2D
 
+#Instantiated Scenes
+@onready var bullet_scene = load("res://bullet.tscn")
+@onready var healthbar = $"../GUI/HealthBar"
+
+
+#USE TO ESTABLISH HEALTH
+#healthbar.health = health
+
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
 var body_sequence = [KEY_0, KEY_2, KEY_4]
@@ -12,10 +20,16 @@ var input_buffer = []
 var lp_action_available = false
 var duel = false
 
+#Player counters
+var ammo = 0
+var health = 100
+
 var countdown_value = 3
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
+	#health = 100
+	#healthbar.init_health(health)
 
 func _rest_timeout():
 	duel = true
@@ -25,13 +39,18 @@ func _rest_timeout():
 func _duel_timeout():
 	duel = false
 	emit_signal("pass_up_l", 0)
-	
+	# idle anim
+	$charactersprite.play("idle")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if duel:
 		if Input.is_action_just_pressed("left_player_draw"):
 			handle_input(KEY_0)
+			#draw anim
+			$charactersprite.play("draw")
+			
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
 		elif Input.is_action_just_pressed("left_player_straight"):
@@ -40,9 +59,18 @@ func _process(delta):
 			handle_input(KEY_3)
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
+			$charactersprite.play("shoot")
+			spawn_bullet()
+			if ammo >= 1:
+				#spawn_bullet()
+				ammo -= 1
+				
 		elif Input.is_action_just_pressed("left_player_block"):
 			handle_input(KEY_5)
-
+		elif Input.is_action_just_pressed("left_player_reload"):
+			#handle_input(KEY_6)
+			#reload anim
+			$charactersprite.play("reload")
 
 
 func handle_input(key):
@@ -72,3 +100,7 @@ func handle_input(key):
 
 signal pass_up_l(data)
 
+func spawn_bullet():
+	var bullet_instance = bullet_scene.instantiate()
+	bullet_instance.position = $gunpoint.position
+	add_child(bullet_instance)
