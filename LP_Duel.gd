@@ -1,6 +1,12 @@
 extends Node2D
 
+#Instantiated Scenes
 @onready var bullet_scene = load("res://bullet.tscn")
+@onready var healthbar = $"../GUI/HealthBar"
+
+
+#USE TO ESTABLISH HEALTH
+#healthbar.health = health
 
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
@@ -14,12 +20,16 @@ var input_buffer = []
 var lp_action_available = false
 var duel = false
 
+#Player counters
 var ammo = 0
+var health = 100
 
 var countdown_value = 3
 
 func _ready():
 	pass
+	#health = 100
+	#healthbar.init_health(health)
 
 func _rest_timeout():
 	duel = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=53 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -48,7 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://tywb0034mepw" path="res://assets/shoot_anim/frame000008.png" id="46_djv6s"]
 [ext_resource type="Texture2D" uid="uid://x676sjh8ylye" path="res://assets/shoot_anim/frame000009.png" id="47_jtqng"]
 [ext_resource type="Texture2D" uid="uid://uapyojknxius" path="res://assets/shoot_anim/frame000010.png" id="48_h7fug"]
-[ext_resource type="PackedScene" uid="uid://c4jrujip7vi0v" path="res://bullet.tscn" id="50_jr0gc"]
+[ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
+[ext_resource type="PackedScene" uid="uid://coq1vhf88x5pd" path="res://healthbar.tscn" id="50_scuuf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -213,6 +214,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pthoo"]
+font = ExtResource("50_dq8qp")
+font_size = 30
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
@@ -253,7 +258,29 @@ autoplay = "idle"
 
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
 
-[node name="bullet" parent="." instance=ExtResource("50_jr0gc")]
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="GUI" instance=ExtResource("50_scuuf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -139.0
+offset_right = 393.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HealthBarTitle" type="Label" parent="GUI/HealthBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -43.0
+offset_right = 112.0
+offset_bottom = -5.0
+text = "PLAYER 1"
+label_settings = SubResource("LabelSettings_pthoo")
 
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
