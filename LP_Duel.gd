@@ -47,30 +47,30 @@ func handle_input(key):
 	input_buffer.append(key)
 	if duel:
 		if input_buffer == block_legs_sequence:
-			emit_signal("pass_up", 2) 
+			emit_signal("pass_up_l", 2) 
 			duel = false
 			print("block legs")
 			
 		elif input_buffer == block_sequence:
-			emit_signal("pass_up", 3)
+			emit_signal("pass_up_l", 3)
 			duel = false
 			print("Blcok")
 			
 		elif input_buffer == head_sequence:
-			emit_signal("pass_up", 4)
+			emit_signal("pass_up_l", 4)
 			duel = false
 			print("headshot")
 			
 		elif input_buffer == body_sequence:
-			emit_signal("pass_up", 5)
+			emit_signal("pass_up_l", 5)
 			duel = false
 			print("body shot")
 			
 		elif input_buffer == leg_sequence:
-			emit_signal("pass_up", 6)
+			emit_signal("pass_up_l", 6)
 			duel = false
 			print("leg shot")
 		
 
-signal pass_up(data)
+signal pass_up_l(data)
 

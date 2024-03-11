@@ -33,5 +33,5 @@ text = "00"
 
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
-[connection signal="pass_up" from="LeftPlayer" to="." method="_on_left_player_pass_up"]
-[connection signal="pass_up" from="RightPlayer" to="." method="_on_right_player_pass_up"]
+[connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
+[connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]
