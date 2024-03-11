@@ -49,9 +49,6 @@ func _process(delta):
 func new_round():
 	$Rest_Timer.start()
 
-	
-
-
 func _on_rest_timer_timeout():
 	if left_health == 0 and right_health == 0:
 		left_health = 1
@@ -72,11 +69,6 @@ func _on_duel_timer_timeout():
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
 	
-
-
-
-
-
 
 func handle_headshot():
 	if rp_state == 4 and lp_state == 4:

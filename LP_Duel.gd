@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet_scene = preload("res://bullet.tscn")
+@onready var bullet_scene = load("res://bullet.tscn")
 
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
@@ -19,7 +19,6 @@ var ammo = 0
 var countdown_value = 3
 
 func _ready():
-	#spawn_bullet()
 	pass
 
 func _rest_timeout():
@@ -49,7 +48,7 @@ func _process(delta):
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
 			$charactersprite.play("shoot")
-			#spawn_bullet()
+			spawn_bullet()
 			if ammo >= 1:
 				#spawn_bullet()
 				ammo -= 1
@@ -60,7 +59,6 @@ func _process(delta):
 			#handle_input(KEY_6)
 			#reload anim
 			$charactersprite.play("reload")
-
 
 
 func handle_input(key):
@@ -74,7 +72,7 @@ func handle_input(key):
 		elif input_buffer == block_sequence:
 			emit_signal("pass_up_l", 3)
 			duel = false
-			print("Blcok")
+			print("Block")
 			
 		elif input_buffer == head_sequence:
 			emit_signal("pass_up_l", 4)
@@ -94,8 +92,7 @@ func handle_input(key):
 
 signal pass_up_l(data)
 
-#func spawn_bullet():
-#	var bullet_instance = bullet_scene.instance()
-#	bullet_instance.position = $gunpoint.position
-#	add_child(bullet_instance)
-
+func spawn_bullet():
+	var bullet_instance = bullet_scene.instantiate()
+	bullet_instance.position = $gunpoint.position
+	add_child(bullet_instance)
