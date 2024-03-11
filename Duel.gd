@@ -52,8 +52,7 @@ func _process(delta):
 	if not $DuelTimer.is_stopped():
 		$Duel_Display.text = "%02d" % time_left_duel()
 		
-		if not $DuelTimer.is_stopped():
-			pass
+		
 			
 	
 	
@@ -93,6 +92,7 @@ func handle_state():
 
 func _on_left_player_pass_up_l(data):
 	lp_state = data
+
 	
 	if actively_handle_state:
 		handle_state()
@@ -100,7 +100,7 @@ func _on_left_player_pass_up_l(data):
 
 func _on_right_player_pass_up_r(data):
 	rp_state = data
-	
+	print(data)
 	if actively_handle_state:
 		handle_state()
 
@@ -109,4 +109,5 @@ func _on_state_timer_timeout():
 	var state_arr = state_dict.get([lp_state, rp_state], [0, 0])
 	left_health -= state_arr[0]
 	right_health -= state_arr[1]
+	
 	

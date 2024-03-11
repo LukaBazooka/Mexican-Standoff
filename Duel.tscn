@@ -49,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://x676sjh8ylye" path="res://assets/shoot_anim/frame000009.png" id="47_jtqng"]
 [ext_resource type="Texture2D" uid="uid://uapyojknxius" path="res://assets/shoot_anim/frame000010.png" id="48_h7fug"]
 [ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
-[ext_resource type="PackedScene" uid="uid://coq1vhf88x5pd" path="res://healthbar.tscn" id="50_scuuf"]
+[ext_resource type="PackedScene" path="res://healthbar.tscn" id="50_scuuf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -289,3 +289,4 @@ label_settings = SubResource("LabelSettings_pthoo")
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
 [connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
+[connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]
