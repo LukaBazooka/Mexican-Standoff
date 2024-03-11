@@ -1,27 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=4 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
+[ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
+[ext_resource type="PackedScene" uid="uid://l57e687gwuyg" path="res://right_player.tscn" id="2_ow1s3"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fkpxe")
 
 [node name="Rest_Timer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="DuelTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Duel_Display" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 64.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 50
+text = "00"
 
 [node name="Rest_Display" type="Label" parent="."]
-offset_left = 64.0
-offset_right = 104.0
-offset_bottom = 23.0
+offset_left = 104.0
+offset_right = 144.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 50
 text = "00"
+
+[node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
+
+[node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
 
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
+[connection signal="pass_up" from="LeftPlayer" to="." method="_on_left_player_pass_up"]
+[connection signal="pass_up" from="RightPlayer" to="." method="_on_right_player_pass_up"]

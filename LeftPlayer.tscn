@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq7ijqwtmu4xm"]
+
+[ext_resource type="Script" path="res://LP_Duel.gd" id="1_q02c1"]
+
+[node name="LeftPlayer" type="Node2D"]
+script = ExtResource("1_q02c1")

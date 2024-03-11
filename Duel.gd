@@ -12,6 +12,13 @@ var rp_upper_block = false
 var lp_lower_block = false
 var rp_lower_block = false
 
+
+var lp_action_available = false
+var rp_action_availble = false
+
+var lp_state 
+var rp_state
+
 var countdown_value = 3
 @onready var rest_label = $Rest_Display
 @onready var rest_timer = $Rest_Timer
@@ -19,6 +26,8 @@ var countdown_value = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rest_timer.start()
+	left_health = HEALTH
+	right_health = HEALTH
 
 func time_left_rest():
 	var second = int(rest_timer.time_left) % 60
@@ -36,15 +45,13 @@ func _process(delta):
 	
 	if not $DuelTimer.is_stopped():
 		$Duel_Display.text = "%02d" % time_left_duel()
-		handle_collision()
-		handle_lp_input()
-		handle_rp_input()
-			
+		
+		
+	
+	
 
-func reset():
+func new_round():
 	$Rest_Timer.start()
-	left_health = HEALTH
-	right_health = HEALTH
 	lp_upper_block = false
 	rp_upper_block = false
 	lp_lower_block = false
@@ -52,8 +59,9 @@ func reset():
 	
 
 
+
+
 func _on_rest_timer_timeout():
-	
 	if left_health == 0 and right_health == 0:
 		left_health = 1
 		right_health = 1
@@ -62,90 +70,45 @@ func _on_rest_timer_timeout():
 	if right_health == 0:
 		print("Right player dead")
 	$DuelTimer.start()
+	lp_action_available = true
+	rp_action_availble = true
+	
+	$LeftPlayer._rest_timeout()
+	$RightPlayer._rest_timeout()
 	
 
 
 func _on_duel_timer_timeout():
-	reset()
-
-func handle_lp_input():
-	if Input.is_action_pressed("left_player_draw"):
-		check_rp_block()
-		if Input.is_action_pressed("left_player_up") and Input.is_action_just_pressed("left_player_shoot"):
-			#upper
-			if rp_upper_block:
-				print("Right Player Blocks Head")
-				
-			else:
-				print("Right player gets headshot")
-				right_health -= HEAD_SHOT
-				
-		if Input.is_action_pressed("left_player_straight") and Input.is_action_just_pressed("left_player_shoot"):
-			#left player shoots straight
-			
-			if rp_upper_block:
-				print("Right Player Blocks Torso")
-				
-			else:
-				print("Right player gets shot in the torso")
-				right_health -= BODY_SHOT
-		
-		if Input.is_action_pressed("left_player_down") and Input.is_action_just_pressed("left_player_shoot"):
-			#left player shoots Down
-			
-			if rp_lower_block:
-				print("Right Player Blocks Legs")
-				
-			else:
-				print("Right player gets shot in the legs")
-				right_health -= LEG_SHOT
-			
-	if Input.is_action_pressed("left_player_block"):
-		if Input.is_action_pressed("left_player_down"):
-			lp_lower_block = true
-			
-		else:
-			lp_upper_block = true
-
-func handle_rp_input():
-	if Input.is_action_pressed("right_player_draw"):
-		if Input.is_action_pressed("right_player_up") and Input.is_action_just_pressed("right_player_shoot"):
-		# right player shoots up
-			if lp_upper_block:
-				print("Left Player Blocks Head")
-				
-			else:
-				print("Left player gets headshot")
-				left_health -= HEAD_SHOT
-		if Input.is_action_pressed("right_player_straight") and Input.is_action_just_pressed("right_player_shoot"):
-			#right player shoots straihgt
-			if lp_upper_block:
-				print("Left Player Blocks Torso")
-				
-			else:
-				print("Left player gets shot in the torso")
-				left_health -= BODY_SHOT
-		
-		if Input.is_action_pressed("right_player_down") and Input.is_action_just_pressed("right_player_shoot"):
-			if lp_lower_block:
-				print("Left Player Blocks Legs")
-				
-			else:
-				print("Left player gets shot in the legs")
-				left_health -= LEG_SHOT
-			
-		
-func check_rp_block():
-	if Input.is_action_pressed("right_player_block"):
-		if Input.is_action_pressed("right_player_down"):
-			rp_lower_block = true
-			
-		else:
-			rp_upper_block = true
+	new_round()
+	$LeftPlayer._duel_timeout()
+	$RightPlayer._duel_timeout()
 	
 
-func handle_collision():
-	if Input.is_action_pressed("left_player_draw") and  Input.is_action_pressed("right_player_draw"):
-		if Input.is_action_pressed("left_player_up") and Input.is_action_pressed("right_player_up"):
-			if Input.is_action_pressed("left_player_shoot") and Input.is_action_pressed("right_player_shoot"):
-				print("Bullets collid mid-air")
+func _on_left_player_pass_up(data):
+	lp_state = data
+
+
+func _on_right_player_pass_up(data):
+	rp_state = data
+
+func handle_headshot():
+	if rp_state == 4 and lp_state == 4:
+		print("collide")
+	
+	if rp_state == 4:
+		if lp_state == 2 or lp_state == 3:
+			print("rp misses lp")
+		else:
+			print("lp gets headshot")
+	if lp_state == 4:
+		if rp_state == 2 or rp_state == 3:
+			print("lp misses rp")
+		else:
+			print("rp gets headshot") 
+
+func handle_bodyshot():
+	if lp_state == 5 and rp_state == 5:
+		print("both players get body shot")
+		
+	elif lp_state == 5:
+		pass
