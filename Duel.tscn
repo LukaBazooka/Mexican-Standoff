@@ -14,6 +14,10 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="StateTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="Duel_Display" type="Label" parent="."]
 offset_right = 64.0
 offset_bottom = 32.0
@@ -33,5 +37,6 @@ text = "00"
 
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
 [connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
 [connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]

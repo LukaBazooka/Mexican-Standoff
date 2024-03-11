@@ -24,6 +24,8 @@ func _rest_timeout():
 
 func _duel_timeout():
 	duel = false
+	emit_signal("pass_up_l", 0)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,27 +51,23 @@ func handle_input(key):
 		if input_buffer == block_legs_sequence:
 			emit_signal("pass_up_l", 2) 
 			duel = false
-			print("block legs")
 			
 		elif input_buffer == block_sequence:
 			emit_signal("pass_up_l", 3)
 			duel = false
-			print("Blcok")
 			
 		elif input_buffer == head_sequence:
 			emit_signal("pass_up_l", 4)
 			duel = false
-			print("headshot")
 			
 		elif input_buffer == body_sequence:
 			emit_signal("pass_up_l", 5)
 			duel = false
-			print("body shot")
 			
 		elif input_buffer == leg_sequence:
 			emit_signal("pass_up_l", 6)
 			duel = false
-			print("leg shot")
+
 		
 
 signal pass_up_l(data)

@@ -4,9 +4,22 @@ const HEALTH = 100
 const HEAD_SHOT = 100
 const BODY_SHOT = 50
 const LEG_SHOT = 34
+const NO_DMG = 0
+
 
 var left_health = HEALTH
 var right_health = HEALTH
+var actively_handle_state = false
+
+var state_dict = {
+[0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
+[0, 1]: [NO_DMG, NO_DMG], [1, 1]: [NO_DMG, NO_DMG], [2, 1]: [NO_DMG, NO_DMG], [3, 1]: [NO_DMG, NO_DMG], [4, 1]: [NO_DMG, HEAD_SHOT], [5, 1]: [NO_DMG, BODY_SHOT], [6, 1]: [NO_DMG, LEG_SHOT], #Reload
+[0, 2]: [NO_DMG, NO_DMG],[1, 2]: [NO_DMG, NO_DMG], [2, 2]: [NO_DMG, NO_DMG], [3, 2]: [NO_DMG, NO_DMG], [4, 2]: [NO_DMG, NO_DMG], [5, 2]: [NO_DMG, BODY_SHOT], [6, 2]: [NO_DMG, NO_DMG], #legs bloc
+[0, 3]: [NO_DMG, NO_DMG], [1, 3]: [NO_DMG, NO_DMG], [2, 3]: [NO_DMG, NO_DMG], [3, 3]: [NO_DMG, NO_DMG], [4, 3]: [NO_DMG, NO_DMG], [5, 3]: [NO_DMG, NO_DMG], [6, 2]: [NO_DMG, LEG_SHOT], #Block upper
+[0, 4]: [HEAD_SHOT, NO_DMG],[1, 4]: [HEAD_SHOT, NO_DMG], [2, 4]: [NO_DMG, NO_DMG], [3, 4]: [NO_DMG, NO_DMG], [4, 4]: [NO_DMG, NO_DMG], [5, 4]: [HEAD_SHOT, BODY_SHOT], [6, 4]: [HEAD_SHOT, LEG_SHOT], #headshot
+[0, 5]: [BODY_SHOT, NO_DMG], [1, 5]: [BODY_SHOT, NO_DMG], [2, 5]: [BODY_SHOT, NO_DMG], [3, 5]: [NO_DMG, NO_DMG], [4, 5]: [BODY_SHOT, HEAD_SHOT], [5, 5]: [BODY_SHOT, BODY_SHOT], [6, 5]: [BODY_SHOT, LEG_SHOT], #Bodyshot
+[0, 6]: [LEG_SHOT, NO_DMG], [1, 6]: [LEG_SHOT, NO_DMG], [2, 6]: [NO_DMG, NO_DMG], [3, 6]: [LEG_SHOT, NO_DMG], [4, 6]: [LEG_SHOT, HEAD_SHOT], [5, 6]: [LEG_SHOT, BODY_SHOT], [6, 6]: [LEG_SHOT, LEG_SHOT] #leg shot
+}
 
 
 var lp_state = 0
@@ -40,9 +53,8 @@ func _process(delta):
 		$Duel_Display.text = "%02d" % time_left_duel()
 		
 		if not $DuelTimer.is_stopped():
-			handle_headshot()
-			handle_bodyshot()
-			handle_legshot()
+			pass
+			
 	
 	
 
@@ -71,65 +83,31 @@ func _on_duel_timer_timeout():
 	new_round()
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
+	actively_handle_state = true
 	
 
-
-
-
-
-
-func handle_headshot():
-	if rp_state == 4 and lp_state == 4:
-		print("collide")
+func handle_state():
+	actively_handle_state = false
+	$StateTimer.start()
 	
-	if rp_state == 4:
-		if lp_state == 2 or lp_state == 3:
-			print("rp misses lp")
-		else:
-			print("lp gets headshot")
-	if lp_state == 4:
-		if rp_state == 2 or rp_state == 3:
-			print("lp misses rp")
-		else:
-			print("rp gets headshot") 
-
-func handle_bodyshot():
-	if lp_state == 5 and rp_state == 5:
-		print("both players get body shot")
-		
-	elif lp_state == 5:
-		if rp_state == 3:
-			print("rp blocks")
-		else:
-			print("rp gets body shot")
-			
-	elif rp_state == 5:
-		if lp_state == 3:
-			print("lp blocks")
-		else:
-			print("lp gets body shot")
-
-func handle_legshot():
-	if lp_state == 6 and rp_state == 6:
-		print("both players get shot in the leg")
-	elif lp_state == 6:
-		if rp_state == 2:
-			print("rp blocked legs")
-		else:
-			print("rp gets shot in legs")
-			
-	elif rp_state == 6:
-		if lp_state == 2:
-			print("lp blocked legs")
-			
-		else:
-			print("lp gets shot in legs")
 
 
 func _on_left_player_pass_up_l(data):
-	print("baba")
 	lp_state = data
+	
+	if actively_handle_state:
+		handle_state()
 
 
 func _on_right_player_pass_up_r(data):
 	rp_state = data
+	
+	if actively_handle_state:
+		handle_state()
+
+
+func _on_state_timer_timeout():
+	var state_arr = state_dict.get([lp_state, rp_state], [0, 0])
+	left_health -= state_arr[0]
+	right_health -= state_arr[1]
+	
