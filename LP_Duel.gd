@@ -7,7 +7,9 @@ extends Node2D
 
 #USE TO ESTABLISH HEALTH
 #healthbar.health = health
-
+const BULLET_UP = -1
+const BULLET_STRAIGHT = 0
+const BULLET_DOWN = 1
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
 var body_sequence = [KEY_0, KEY_2, KEY_4]
@@ -17,7 +19,6 @@ var leg_sequence = [KEY_0, KEY_3, KEY_4]
 var block_sequence = [KEY_5, KEY_1]
 var block_legs_sequence = [KEY_5, KEY_3]
 var input_buffer = []
-var lp_action_available = false
 var duel = false
 
 #Player counters
@@ -59,18 +60,18 @@ func _process(delta):
 			handle_input(KEY_3)
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
-			$charactersprite.play("shoot")
-			spawn_bullet()
-			if ammo >= 1:
-				#spawn_bullet()
-				ammo -= 1
+			#$charactersprite.play("shoot")
+			#spawn_bullet()
+			
 				
 		elif Input.is_action_just_pressed("left_player_block"):
 			handle_input(KEY_5)
 		elif Input.is_action_just_pressed("left_player_reload"):
-			#handle_input(KEY_6)
-			#reload anim
+			emit_signal("pass_up_l", 0) #no damage done
+			duel = false # stop from executing different states
+			ammo += 1
 			$charactersprite.play("reload")
+			#$charactersprite.
 
 
 func handle_input(key):
@@ -87,20 +88,36 @@ func handle_input(key):
 		elif input_buffer == head_sequence:
 			emit_signal("pass_up_l", 4)
 			duel = false
+			$charactersprite.play("shoot")
+			spawn_bullet(BULLET_UP)
 			
 		elif input_buffer == body_sequence:
 			emit_signal("pass_up_l", 5)
 			duel = false
+			$charactersprite.play("shoot")
+			spawn_bullet(BULLET_STRAIGHT)
+		
 			
 		elif input_buffer == leg_sequence:
 			emit_signal("pass_up_l", 6)
 			duel = false
+			$charactersprite.play("shoot")
+			spawn_bullet(BULLET_DOWN)
+			
 
 		
 
 signal pass_up_l(data)
 
-func spawn_bullet():
-	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.position = $gunpoint.position
-	add_child(bullet_instance)
+
+
+func spawn_bullet(direction):
+	if ammo >= 1:
+		var bullet_instance = bullet_scene.instantiate()
+		bullet_instance.position = $gunpoint.position
+		add_child(bullet_instance)
+		bullet_instance.linear_velocity.y = 200 * direction
+		ammo -= 1
+		print(bullet_instance.linear_velocity.y)
+
+

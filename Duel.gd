@@ -59,27 +59,28 @@ func _process(delta):
 
 func new_round():
 	$Rest_Timer.start()
-
-func _on_rest_timer_timeout():
 	if left_health == 0 and right_health == 0:
 		left_health = 1
 		right_health = 1
 	if left_health == 0:
 		print("Left player dead")
 	if right_health == 0:
-		print("Right player dead")
+		#print("Right player dead")
+		pass
+
+func _on_rest_timer_timeout():
 	$DuelTimer.start()
 	
 	$LeftPlayer._rest_timeout()
 	$RightPlayer._rest_timeout()
-	
+	actively_handle_state = true
 
 
 func _on_duel_timer_timeout():
 	new_round()
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
-	actively_handle_state = true
+	
 	
 
 
@@ -92,15 +93,12 @@ func handle_state():
 
 func _on_left_player_pass_up_l(data):
 	lp_state = data
-
-	
 	if actively_handle_state:
 		handle_state()
 
 
 func _on_right_player_pass_up_r(data):
 	rp_state = data
-	print(data)
 	if actively_handle_state:
 		handle_state()
 

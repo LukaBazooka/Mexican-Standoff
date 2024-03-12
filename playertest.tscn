@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://kf1fuxb2voh3"]
+[gd_scene load_steps=31 format=3 uid="uid://b1o7ownfniyuf"]
 
 [ext_resource type="Texture2D" uid="uid://1mcih7hab6bq" path="res://assets/idle_anim/frame000001.png" id="1_xh31v"]
 [ext_resource type="Texture2D" uid="uid://rvxvbb6mq7hc" path="res://assets/idle_anim/frame000002.png" id="2_h0g6x"]
@@ -138,5 +138,5 @@ animations = [{
 [node name="playertest" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_je127")
 animation = &"reload_anim"
-frame = 5
-frame_progress = 0.438697
+frame = 8
+frame_progress = 1.0
