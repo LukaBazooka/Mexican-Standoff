@@ -22,7 +22,7 @@ var input_buffer = []
 var duel = false
 
 #Player counters
-var ammo = 0
+var ammo = 5
 var health = 100
 
 var countdown_value = 3
@@ -62,7 +62,6 @@ func _process(delta):
 			handle_input(KEY_4)
 			#$charactersprite.play("shoot")
 			#spawn_bullet()
-			
 				
 		elif Input.is_action_just_pressed("left_player_block"):
 			handle_input(KEY_5)
@@ -117,7 +116,7 @@ func spawn_bullet(direction):
 		bullet_instance.position = $gunpoint.position
 		add_child(bullet_instance)
 		bullet_instance.linear_velocity.y = 200 * direction
-		ammo -= 1
 		print(bullet_instance.linear_velocity.y)
+		ammo -= 1
 
 
