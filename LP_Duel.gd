@@ -70,7 +70,6 @@ func _process(delta):
 			duel = false # stop from executing different states
 			ammo += 1
 			$charactersprite.play("reload")
-			#$charactersprite.
 
 
 func handle_input(key):
@@ -115,8 +114,8 @@ func spawn_bullet(direction):
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $gunpoint.position
 		add_child(bullet_instance)
+		get_child(2).get_child(1).set_disabled(false)
 		bullet_instance.linear_velocity.y = 200 * direction
-		print(bullet_instance.linear_velocity.y)
 		ammo -= 1
 
 

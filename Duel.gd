@@ -63,7 +63,8 @@ func new_round():
 		left_health = 1
 		right_health = 1
 	if left_health == 0:
-		print("Left player dead")
+		#print("Left player dead")
+		pass
 	if right_health == 0:
 		#print("Right player dead")
 		pass
@@ -108,4 +109,8 @@ func _on_state_timer_timeout():
 	left_health -= state_arr[0]
 	right_health -= state_arr[1]
 	
+	if lp_state == 4 and rp_state == 4:
+		emit_signal("collision")
 	
+	
+signal collision

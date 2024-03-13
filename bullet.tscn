@@ -7,6 +7,8 @@
 size = Vector2(50, 50)
 
 [node name="bullet" type="RigidBody2D"]
+mass = 100.0
+inertia = 20.0
 script = ExtResource("1_umyy5")
 
 [node name="bulletSprite" type="Sprite2D" parent="."]
@@ -15,3 +17,10 @@ texture = ExtResource("2_xwfrh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y12ho")
+disabled = true
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

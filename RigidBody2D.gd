@@ -12,3 +12,7 @@ func _ready():
 	
 
 
+
+
+func _on_bullet_timer_timeout():
+	queue_free()
