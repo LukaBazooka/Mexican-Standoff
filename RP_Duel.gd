@@ -40,6 +40,7 @@ func _duel_timeout():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$"../PlayerGUI/RightPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
 	if duel:
 		if Input.is_action_just_pressed("right_player_draw"):
 			handle_input(KEY_0)

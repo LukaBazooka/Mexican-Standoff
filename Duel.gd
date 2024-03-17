@@ -29,6 +29,7 @@ var countdown_value = 3
 @onready var rest_label = $Rest_Display
 @onready var rest_timer = $Rest_Timer
 @onready var duel_label = $Duel_Display
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rest_timer.start()
@@ -46,15 +47,15 @@ func time_left_duel():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(left_health)
+	$PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(right_health)
 	if not $Rest_Timer.is_stopped():
 		rest_label.text = "%02d" % time_left_rest()
 	
 	if not $DuelTimer.is_stopped():
 		$Duel_Display.text = "%02d" % time_left_duel()
 		
-		
 			
-	
 	
 
 func new_round():

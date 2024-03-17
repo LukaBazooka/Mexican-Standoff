@@ -2,8 +2,6 @@ extends Node2D
 
 #Instantiated Scenes
 @onready var bullet_scene = load("res://bullet.tscn")
-@onready var healthbar = $"../GUI/HealthBar"
-
 
 #USE TO ESTABLISH HEALTH
 #healthbar.health = health
@@ -46,6 +44,7 @@ func _duel_timeout():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$"../PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
 	if duel:
 		if Input.is_action_just_pressed("left_player_draw"):
 			handle_input(KEY_0)
@@ -70,6 +69,7 @@ func _process(delta):
 			duel = false # stop from executing different states
 			ammo += 1
 			$charactersprite.play("reload")
+			
 
 
 func handle_input(key):

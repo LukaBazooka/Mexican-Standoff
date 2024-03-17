@@ -49,7 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://x676sjh8ylye" path="res://assets/shoot_anim/frame000009.png" id="47_jtqng"]
 [ext_resource type="Texture2D" uid="uid://uapyojknxius" path="res://assets/shoot_anim/frame000010.png" id="48_h7fug"]
 [ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
-[ext_resource type="PackedScene" path="res://healthbar.tscn" id="50_scuuf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -235,9 +234,13 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_pthoo"]
+[sub_resource type="LabelSettings" id="LabelSettings_skm0t"]
 font = ExtResource("50_dq8qp")
-font_size = 30
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hu5n"]
+font = ExtResource("50_dq8qp")
+font_size = 50
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(85, 47)
@@ -255,67 +258,146 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Duel_Display" type="Label" parent="."]
-offset_right = 64.0
-offset_bottom = 32.0
+offset_left = 704.0
+offset_top = 4.0
+offset_right = 768.0
+offset_bottom = 73.0
 theme_override_font_sizes/font_size = 50
 text = "00"
 
 [node name="Rest_Display" type="Label" parent="."]
-offset_left = 104.0
-offset_right = 144.0
-offset_bottom = 24.0
+offset_left = 808.0
+offset_top = 4.0
+offset_right = 866.0
+offset_bottom = 73.0
 theme_override_font_sizes/font_size = 50
 text = "00"
 
 [node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
+position = Vector2(2, 402)
 
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
-position = Vector2(180, 475)
+position = Vector2(391, 298)
 
 [node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
-position = Vector2(131, 450)
-scale = Vector2(0.3, 0.3)
+position = Vector2(248, 297)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"draw"
 autoplay = "idle"
 
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
+position = Vector2(746, 417)
 
 [node name="charactersprite" type="AnimatedSprite2D" parent="RightPlayer"]
 modulate = Color(81.47, 1, 1, 1)
-position = Vector2(923, 450)
-scale = Vector2(0.3, 0.3)
+position = Vector2(757, 282)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
-position = Vector2(870, 475)
+position = Vector2(634, 301)
 
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" parent="GUI" instance=ExtResource("50_scuuf")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="PlayerGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -536.0
-offset_top = -408.0
-offset_right = -106.0
-offset_bottom = -368.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="HealthBarTitle" type="Label" parent="GUI/HealthBar"]
+[node name="LeftPlayerGUI" type="Control" parent="PlayerGUI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -71.0
+offset_top = -34.0
+offset_right = -71.0
+offset_bottom = -34.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -43.0
-offset_right = 112.0
-offset_bottom = -5.0
-text = "PLAYER 1"
-label_settings = SubResource("LabelSettings_pthoo")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+layout_mode = 2
+text = "Health:"
+label_settings = SubResource("LabelSettings_skm0t")
+
+[node name="HealthValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_skm0t")
+
+[node name="AmmoLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+layout_mode = 2
+text = "Ammo:"
+label_settings = SubResource("LabelSettings_8hu5n")
+
+[node name="AmmoValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_right = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_8hu5n")
+
+[node name="RightPlayerGUI" type="Control" parent="PlayerGUI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1598.0
+offset_top = -34.0
+offset_right = 1598.0
+offset_bottom = -34.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/RightPlayerGUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer"]
+layout_mode = 2
+text = "Health:"
+label_settings = SubResource("LabelSettings_skm0t")
+
+[node name="HealthValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 184.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_skm0t")
+
+[node name="AmmoLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer"]
+layout_mode = 2
+text = "Ammo:"
+label_settings = SubResource("LabelSettings_8hu5n")
+
+[node name="AmmoValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/AmmoLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_right = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_8hu5n")
 
 [connection signal="collision" from="." to="RightPlayer" method="_on_node_2d_collision"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
