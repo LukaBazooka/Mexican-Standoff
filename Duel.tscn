@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=56 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -49,6 +49,8 @@
 [ext_resource type="Texture2D" uid="uid://x676sjh8ylye" path="res://assets/shoot_anim/frame000009.png" id="47_jtqng"]
 [ext_resource type="Texture2D" uid="uid://uapyojknxius" path="res://assets/shoot_anim/frame000010.png" id="48_h7fug"]
 [ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
+[ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="50_t6sov"]
+[ext_resource type="Texture2D" uid="uid://bjifpenje4uuq" path="res://assets/bulletGUI_anim/bullet_gui02.png" id="51_28dk6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -242,6 +244,20 @@ font_size = 50
 font = ExtResource("50_dq8qp")
 font_size = 50
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lb7l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_t6sov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_28dk6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
@@ -398,6 +414,45 @@ offset_right = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
+
+[node name="Bullet" type="Control" parent="PlayerGUI"]
+anchors_preset = 0
+offset_left = -39.0
+offset_top = 155.0
+offset_right = 1.0
+offset_bottom = 195.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerGUI/Bullet"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3lb7l")
+autoplay = "default"
+frame_progress = 0.927757
+
+[node name="Bullet2" type="Control" parent="PlayerGUI"]
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 155.0
+offset_right = 61.0
+offset_bottom = 195.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerGUI/Bullet2"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3lb7l")
+autoplay = "default"
+frame_progress = 0.072796
+
+[node name="Bullet3" type="Control" parent="PlayerGUI"]
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 155.0
+offset_right = 122.0
+offset_bottom = 195.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerGUI/Bullet3"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3lb7l")
+autoplay = "default"
+frame_progress = 0.603793
 
 [connection signal="collision" from="." to="RightPlayer" method="_on_node_2d_collision"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
