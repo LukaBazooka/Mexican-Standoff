@@ -7,7 +7,7 @@ extends Node2D
 #healthbar.health = health
 const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
-const BULLET_DOWN = 1
+const BULLET_DOWN = 2
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
 var body_sequence = [KEY_0, KEY_4]
@@ -19,6 +19,7 @@ var block_legs_sequence = [KEY_3, KEY_5]
 var input_buffer = []
 var duel = false
 var body_blocked = false
+var leg_blocked = false
 
 #Player counters
 var ammo = 5
@@ -42,6 +43,7 @@ func _duel_timeout():
 	emit_signal("pass_up_l", 0)
 	# idle anim
 	$charactersprite.play("idle")
+	get_child(2).get_child(2).set_monitoring(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,6 +82,7 @@ func handle_input(key):
 		if input_buffer == block_legs_sequence:
 			emit_signal("pass_up_l", 3) 
 			duel = false
+			print("block legs")
 			
 		elif input_buffer == block_sequence:
 			emit_signal("pass_up_l", 2)
@@ -135,14 +138,34 @@ func body_blocking():
 
 
 func _on_body_collisoion_bullet_entered(area):
+	print("Body")
 	if body_blocked:
 		rebound(area.get_parent())
+		body_blocked = false
 	else:
 		area.get_parent().queue_free()
-		body_blocked = false
 
 
 
 func _on_node_2d_lp_block_state(data):
 	if data == 2:
 		body_blocked = true
+	elif data == 3:
+		leg_blocked = true
+	get_child(2).get_child(2).set_monitoring(false)
+
+
+func _on_leg_collision_area_entered(area):
+	if leg_blocked:
+		rebound(area.get_parent())
+		leg_blocked = false
+	else:
+		area.get_parent().queue_free()
+		
+
+
+# simulate impact for head
+func _on_head_collison_bullet_entered(area):
+	print("head")
+	area.get_parent().queue_free()
+

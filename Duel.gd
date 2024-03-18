@@ -22,7 +22,7 @@ var state_dict = {
 }
 """
 action states	
-0 = nothing		
+0 = nothing		[lp_state, rp_state] = [lp_dmg_taken, rp_dmg_taken]
 1 = reload 
 2 = upper block	
 3 = lower block

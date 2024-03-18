@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=59 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -237,7 +237,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11blt"]
-size = Vector2(201.5, 128.5)
+size = Vector2(156.75, 112.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy2ei"]
+size = Vector2(189.5, 152.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnm46"]
+size = Vector2(165.5, 136.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_skm0t"]
 font = ExtResource("50_dq8qp")
@@ -305,13 +311,25 @@ sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"draw"
 autoplay = "idle"
 
-[node name="Node2D" type="Node2D" parent="LeftPlayer"]
+[node name="collisions" type="Node2D" parent="LeftPlayer"]
 
-[node name="body_collisoion" type="Area2D" parent="LeftPlayer/Node2D"]
+[node name="body_collisoion" type="Area2D" parent="LeftPlayer/collisions"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/Node2D/body_collisoion"]
-position = Vector2(177, 311)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/body_collisoion"]
+position = Vector2(169, 319)
 shape = SubResource("RectangleShape2D_11blt")
+
+[node name="leg_collision" type="Area2D" parent="LeftPlayer/collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/leg_collision"]
+position = Vector2(290.25, 499.25)
+shape = SubResource("RectangleShape2D_yy2ei")
+
+[node name="head_collison" type="Area2D" parent="LeftPlayer/collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/head_collison"]
+position = Vector2(198.25, 147.25)
+shape = SubResource("RectangleShape2D_fnm46")
 
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
 position = Vector2(746, 417)
@@ -321,8 +339,10 @@ modulate = Color(81.47, 1, 1, 1)
 position = Vector2(757, 282)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"idle"
+animation = &"draw"
 autoplay = "idle"
+frame = 6
+frame_progress = 1.0
 flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
@@ -472,6 +492,9 @@ frame_progress = 0.603793
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
 [connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
 [connection signal="animation_finished" from="LeftPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]
-[connection signal="area_entered" from="LeftPlayer/Node2D/body_collisoion" to="LeftPlayer" method="_on_body_collisoion_bullet_entered"]
+[connection signal="area_entered" from="LeftPlayer/collisions/body_collisoion" to="LeftPlayer" method="_on_body_collisoion_bullet_entered"]
+[connection signal="area_entered" from="LeftPlayer/collisions/leg_collision" to="LeftPlayer" method="_on_leg_collision_area_entered"]
+[connection signal="area_entered" from="LeftPlayer/collisions/head_collison" to="LeftPlayer" method="_on_head_collison_bullet_entered"]
+[connection signal="area_exited" from="LeftPlayer/collisions/head_collison" to="LeftPlayer" method="_on_head_bullet_exited"]
 [connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]
 [connection signal="animation_finished" from="RightPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]

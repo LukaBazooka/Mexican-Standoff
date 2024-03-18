@@ -9,7 +9,7 @@ extends Node2D
 #healthbar.health = health
 const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
-const BULLET_DOWN = 1
+const BULLET_DOWN = 2
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
 var body_sequence = [KEY_0, KEY_4]
