@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 
-var speed = 1000
+var speed = 2000
 
 
 

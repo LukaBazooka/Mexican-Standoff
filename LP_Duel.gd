@@ -10,25 +10,27 @@ const BULLET_STRAIGHT = 0
 const BULLET_DOWN = 1
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
-var body_sequence = [KEY_0, KEY_2, KEY_4]
+var body_sequence = [KEY_0, KEY_4]
 var leg_sequence = [KEY_0, KEY_3, KEY_4]
 
 #key5 == block
-var block_sequence = [KEY_5, KEY_1]
-var block_legs_sequence = [KEY_5, KEY_3]
+var block_sequence = [KEY_5]
+var block_legs_sequence = [KEY_3, KEY_5]
 var input_buffer = []
 var duel = false
+var body_blocked = false
 
 #Player counters
 var ammo = 5
 var health = 100
+var random_y
+var random_spin
 
 var countdown_value = 3
 
 func _ready():
 	pass
-	#health = 100
-	#healthbar.init_health(health)
+	
 
 func _rest_timeout():
 	duel = true
@@ -76,11 +78,11 @@ func handle_input(key):
 	input_buffer.append(key)
 	if duel:
 		if input_buffer == block_legs_sequence:
-			emit_signal("pass_up_l", 2) 
+			emit_signal("pass_up_l", 3) 
 			duel = false
 			
 		elif input_buffer == block_sequence:
-			emit_signal("pass_up_l", 3)
+			emit_signal("pass_up_l", 2)
 			duel = false
 			
 		elif input_buffer == head_sequence:
@@ -114,8 +116,33 @@ func spawn_bullet(direction):
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $gunpoint.position
 		add_child(bullet_instance)
-		get_child(2).get_child(1).set_disabled(false)
+		get_child(3).get_child(1).set_disabled(false)
 		bullet_instance.linear_velocity.y = 200 * direction
 		ammo -= 1
 
 
+func rebound(obj):
+	randomize()
+	random_y = randi_range(-700, 700)
+	random_spin = randi_range(-100, 100)
+	obj.linear_velocity.x *= -1
+	obj.linear_velocity.y += random_y
+	obj.angular_velocity = random_spin
+
+
+func body_blocking():
+	body_blocked = true
+
+
+func _on_body_collisoion_bullet_entered(area):
+	if body_blocked:
+		rebound(area.get_parent())
+	else:
+		area.get_parent().queue_free()
+		body_blocked = false
+
+
+
+func _on_node_2d_lp_block_state(data):
+	if data == 2:
+		body_blocked = true

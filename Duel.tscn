@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=57 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -236,6 +236,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11blt"]
+size = Vector2(201.5, 128.5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_skm0t"]
 font = ExtResource("50_dq8qp")
 font_size = 50
@@ -293,7 +296,7 @@ text = "00"
 position = Vector2(2, 402)
 
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
-position = Vector2(391, 298)
+position = Vector2(391, 300)
 
 [node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
 position = Vector2(248, 297)
@@ -301,6 +304,14 @@ scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"draw"
 autoplay = "idle"
+
+[node name="Node2D" type="Node2D" parent="LeftPlayer"]
+
+[node name="body_collisoion" type="Area2D" parent="LeftPlayer/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/Node2D/body_collisoion"]
+position = Vector2(177, 311)
+shape = SubResource("RectangleShape2D_11blt")
 
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
 position = Vector2(746, 417)
@@ -455,10 +466,12 @@ autoplay = "default"
 frame_progress = 0.603793
 
 [connection signal="collision" from="." to="RightPlayer" method="_on_node_2d_collision"]
+[connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
 [connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
 [connection signal="animation_finished" from="LeftPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]
+[connection signal="area_entered" from="LeftPlayer/Node2D/body_collisoion" to="LeftPlayer" method="_on_body_collisoion_bullet_entered"]
 [connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]
 [connection signal="animation_finished" from="RightPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]
