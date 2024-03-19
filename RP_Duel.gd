@@ -22,6 +22,10 @@ var input_buffer = []
 var ammo = 5
 var duel = false
 var random_y
+var random_spin
+var body_blocked = false
+var leg_blocked = false
+
 
 var countdown_value = 3
 # Called when the node enters the scene tree for the first time.
@@ -75,6 +79,7 @@ func handle_input(key):
 		elif input_buffer == block_sequence:
 			emit_signal("pass_up_r", 2)
 			duel = false
+			print("blocking")
 
 			
 		elif input_buffer == head_sequence:
@@ -115,9 +120,43 @@ func _on_node_2d_collision():
 	get_child(3).get_child(1).set_disabled(false)
 	
 
+func rebound(obj):
+	randomize()
+	random_y = randi_range(-700, 700)
+	random_spin = randi_range(-100, 100)
+	obj.linear_velocity.x *= -1
+	obj.linear_velocity.y += random_y
+	obj.angular_velocity = random_spin
+
+
+func _on_node_2d_rp_block_state(data):
+	print("gooey")
+	if data == 2:
+		body_blocked = true
+	elif data == 3:
+		leg_blocked = true
+	get_child(2).get_child(2).set_monitoring(false)
+	
 
 
 
 
+func _on_body_collisoion_area_entered(area):
+	if body_blocked:
+		rebound(area.get_parent())
+		body_blocked = false
+	else:
+		area.get_parent().queue_free()
 
 
+func _on_leg_collision_bullet_entered(area):
+	if leg_blocked:
+		rebound(area.get_parent())
+		leg_blocked = false
+	else:
+		area.get_parent().queue_free()
+
+
+func _on_head_collison_bullet_entered(area):
+	print("head")
+	area.get_parent().queue_free()

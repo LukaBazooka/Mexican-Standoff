@@ -118,6 +118,7 @@ func _on_right_player_pass_up_r(data):
 	if actively_handle_state:
 		handle_state()
 		if data == 2 or data == 3:
+			print("In time")
 			emit_signal("rp_block_state", data)
 
 
@@ -128,18 +129,14 @@ func _on_state_timer_timeout():
 	
 	if lp_state == 4 and rp_state == 4:
 		emit_signal("collision")
-	if state_arr[0] == HEAD_SHOT:
-		emit_signal("lp_headshot")
-		
-	if state_arr[1] == HEAD_SHOT:
-		emit_signal("rp_headshot")
+
 		
 	
 	
 signal collision
 signal lp_block_state
-signal lp_headshot
 signal rp_block_state
-signal rp_headshot
+
+
 
 

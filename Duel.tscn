@@ -279,7 +279,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StateTimer" type="Timer" parent="."]
-wait_time = 0.1
 one_shot = true
 
 [node name="Duel_Display" type="Label" parent="."]
@@ -347,6 +346,27 @@ flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
 position = Vector2(634, 301)
+
+[node name="collisions" type="Node2D" parent="RightPlayer"]
+position = Vector2(600, 2.08165e-12)
+
+[node name="body_collisoion" type="Area2D" parent="RightPlayer/collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/body_collisoion"]
+position = Vector2(233, 304)
+shape = SubResource("RectangleShape2D_11blt")
+
+[node name="leg_collision" type="Area2D" parent="RightPlayer/collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/leg_collision"]
+position = Vector2(113, 488)
+shape = SubResource("RectangleShape2D_yy2ei")
+
+[node name="head_collison" type="Area2D" parent="RightPlayer/collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/head_collison"]
+position = Vector2(201, 144)
+shape = SubResource("RectangleShape2D_fnm46")
 
 [node name="PlayerGUI" type="Control" parent="."]
 layout_mode = 3
@@ -487,6 +507,7 @@ frame_progress = 0.603793
 
 [connection signal="collision" from="." to="RightPlayer" method="_on_node_2d_collision"]
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
+[connection signal="rp_block_state" from="." to="RightPlayer" method="_on_node_2d_rp_block_state"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
@@ -495,6 +516,8 @@ frame_progress = 0.603793
 [connection signal="area_entered" from="LeftPlayer/collisions/body_collisoion" to="LeftPlayer" method="_on_body_collisoion_bullet_entered"]
 [connection signal="area_entered" from="LeftPlayer/collisions/leg_collision" to="LeftPlayer" method="_on_leg_collision_area_entered"]
 [connection signal="area_entered" from="LeftPlayer/collisions/head_collison" to="LeftPlayer" method="_on_head_collison_bullet_entered"]
-[connection signal="area_exited" from="LeftPlayer/collisions/head_collison" to="LeftPlayer" method="_on_head_bullet_exited"]
 [connection signal="pass_up_r" from="RightPlayer" to="." method="_on_right_player_pass_up_r"]
 [connection signal="animation_finished" from="RightPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]
+[connection signal="area_entered" from="RightPlayer/collisions/body_collisoion" to="RightPlayer" method="_on_body_collisoion_area_entered"]
+[connection signal="area_entered" from="RightPlayer/collisions/leg_collision" to="RightPlayer" method="_on_leg_collision_bullet_entered"]
+[connection signal="area_entered" from="RightPlayer/collisions/head_collison" to="RightPlayer" method="_on_head_collison_bullet_entered"]

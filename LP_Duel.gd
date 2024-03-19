@@ -166,6 +166,6 @@ func _on_leg_collision_area_entered(area):
 
 # simulate impact for head
 func _on_head_collison_bullet_entered(area):
-	print("head")
+
 	area.get_parent().queue_free()
 
