@@ -10,6 +10,7 @@ const NO_DMG = 0
 var left_health = HEALTH
 var right_health = HEALTH
 var actively_handle_state = false
+var state_arr 
 
 var state_dict = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
@@ -128,24 +129,29 @@ func _on_right_player_pass_up_r(data):
 
 
 func _on_state_timer_timeout():
-	var state_arr = state_dict.get([lp_state, rp_state], [0, 0])
-	left_health -= state_arr[0]
-	right_health -= state_arr[1]
+	state_arr = state_dict.get([lp_state, rp_state], [0, 0])
 	actively_handle_state = false
-	
 	if lp_state == 4 and rp_state == 4:
 		emit_signal("collision")
 		
 	print([lp_state, rp_state])
 
-	
-	
+
+
+func _on_left_player_lp_bullet_collided():
+	left_health -= state_arr[0]
+
+
+func _on_right_player_rp_bullet_collided():
+	right_health -= state_arr[1]
+
+
+
+
+
+
 signal collision
 signal lp_block_state
 signal lp_shoot
 signal rp_block_state
 signal rp_shoot
-
-
-
-

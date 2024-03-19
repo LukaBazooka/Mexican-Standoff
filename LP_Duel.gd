@@ -108,6 +108,7 @@ func handle_input(key):
 
 
 signal pass_up_l(data)
+signal lp_bullet_collided()
 
 func shoot(state):
 	$charactersprite.play("shoot")
@@ -140,6 +141,7 @@ func rebound(obj):
 
 
 func _on_body_collisoion_bullet_entered(area):
+	emit_signal("lp_bullet_collided")
 	if body_blocked:
 		rebound(area.get_parent())
 	else:
@@ -156,6 +158,7 @@ func _on_node_2d_lp_block_state(data):
 
 
 func _on_leg_collision_area_entered(area):
+	emit_signal("lp_bullet_collided")
 	if leg_blocked:
 		rebound(area.get_parent())
 	else:
@@ -165,6 +168,7 @@ func _on_leg_collision_area_entered(area):
 
 # simulate impact for head
 func _on_head_collison_bullet_entered(area):
-
+	emit_signal("lp_bullet_collided")
 	area.get_parent().queue_free()
+
 

@@ -105,6 +105,7 @@ func handle_input(key):
 		
 
 signal pass_up_r(data)
+signal rp_bullet_collided()
 
 func spawn_bullet(direction):
 	if ammo >= 1:
@@ -150,6 +151,7 @@ func shoot(state):
 
 
 func _on_body_collisoion_area_entered(area):
+	emit_signal("rp_bullet_collided")
 	if body_blocked:
 		rebound(area.get_parent())
 	else:
@@ -157,6 +159,7 @@ func _on_body_collisoion_area_entered(area):
 
 
 func _on_leg_collision_bullet_entered(area):
+	emit_signal("rp_bullet_collided")
 	if leg_blocked:
 		rebound(area.get_parent())
 	else:
@@ -164,4 +167,5 @@ func _on_leg_collision_bullet_entered(area):
 
 
 func _on_head_collison_bullet_entered(area):
+	emit_signal("rp_bullet_collided")
 	area.get_parent().queue_free()
