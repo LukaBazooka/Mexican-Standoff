@@ -85,24 +85,23 @@ func handle_input(key):
 
 			
 		elif input_buffer == head_sequence:
-			emit_signal("pass_up_r", 4)
+			if ammo > 0:
+				emit_signal("pass_up_r", 4)
 			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_UP)
+
 
 			
 		elif input_buffer == body_sequence:
-			emit_signal("pass_up_r", 5)
+			if ammo > 0:
+				emit_signal("pass_up_r", 5)
 			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_STRAIGHT)
+
 
 			
 		elif input_buffer == leg_sequence:
-			emit_signal("pass_up_r", 6)
+			if ammo > 0:
+				emit_signal("pass_up_r", 6)
 			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_DOWN)
 		
 
 signal pass_up_r(data)
@@ -119,7 +118,8 @@ func spawn_bullet(direction):
 
 #in double headshot scenario
 func _on_node_2d_collision():
-	get_child(3).get_child(1).set_disabled(false)
+	if get_child_count() == 4:
+		get_child(3).get_child(1).set_disabled(false)
 	
 
 func rebound(obj):
@@ -139,7 +139,14 @@ func _on_node_2d_rp_block_state(data):
 	get_child(2).get_child(2).set_monitoring(false)
 	
 
-
+func shoot(state):
+	$charactersprite.play("shoot")
+	if state == 4:
+		spawn_bullet(BULLET_UP)
+	elif state == 5:
+		spawn_bullet(BULLET_STRAIGHT)
+	elif state == 6:
+		spawn_bullet(BULLET_DOWN)
 
 
 func _on_body_collisoion_area_entered(area):

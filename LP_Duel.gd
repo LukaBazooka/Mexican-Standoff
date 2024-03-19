@@ -91,29 +91,32 @@ func handle_input(key):
 			duel = false
 			
 		elif input_buffer == head_sequence:
-			emit_signal("pass_up_l", 4)
+			if ammo > 0:
+				emit_signal("pass_up_l", 4)
 			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_UP)
 			
 		elif input_buffer == body_sequence:
-			emit_signal("pass_up_l", 5)
+			if ammo > 0:
+				emit_signal("pass_up_l", 5)
 			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_STRAIGHT)
-		
-			
-		elif input_buffer == leg_sequence:
-			emit_signal("pass_up_l", 6)
-			duel = false
-			$charactersprite.play("shoot")
-			spawn_bullet(BULLET_DOWN)
-			
 
-		
+		elif input_buffer == leg_sequence:
+			if ammo > 0:
+				emit_signal("pass_up_l", 6)
+			duel = false
+
+
 
 signal pass_up_l(data)
 
+func shoot(state):
+	$charactersprite.play("shoot")
+	if state == 4:
+		spawn_bullet(BULLET_UP)
+	elif state == 5:
+		spawn_bullet(BULLET_STRAIGHT)
+	else:
+		spawn_bullet(BULLET_DOWN)
 
 
 func spawn_bullet(direction):
