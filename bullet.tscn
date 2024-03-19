@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_y12ho")
 disabled = true
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 1.4
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]

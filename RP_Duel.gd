@@ -42,6 +42,9 @@ func _duel_timeout():
 	duel = false
 	emit_signal("pass_up_r", 0)
 	$charactersprite.play("idle")
+	get_child(2).get_child(2).set_monitoring(true)
+	leg_blocked = false
+	body_blocked = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,7 +82,6 @@ func handle_input(key):
 		elif input_buffer == block_sequence:
 			emit_signal("pass_up_r", 2)
 			duel = false
-			print("blocking")
 
 			
 		elif input_buffer == head_sequence:
@@ -130,7 +132,6 @@ func rebound(obj):
 
 
 func _on_node_2d_rp_block_state(data):
-	print("gooey")
 	if data == 2:
 		body_blocked = true
 	elif data == 3:
@@ -144,7 +145,6 @@ func _on_node_2d_rp_block_state(data):
 func _on_body_collisoion_area_entered(area):
 	if body_blocked:
 		rebound(area.get_parent())
-		body_blocked = false
 	else:
 		area.get_parent().queue_free()
 
@@ -152,11 +152,9 @@ func _on_body_collisoion_area_entered(area):
 func _on_leg_collision_bullet_entered(area):
 	if leg_blocked:
 		rebound(area.get_parent())
-		leg_blocked = false
 	else:
 		area.get_parent().queue_free()
 
 
 func _on_head_collison_bullet_entered(area):
-	print("head")
 	area.get_parent().queue_free()

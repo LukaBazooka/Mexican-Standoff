@@ -97,9 +97,8 @@ func _on_duel_timer_timeout():
 	
 	
 
-
 func handle_state():
-	actively_handle_state = false
+	print("passed")
 	$StateTimer.start()
 
 	
@@ -118,7 +117,6 @@ func _on_right_player_pass_up_r(data):
 	if actively_handle_state:
 		handle_state()
 		if data == 2 or data == 3:
-			print("In time")
 			emit_signal("rp_block_state", data)
 
 
@@ -126,11 +124,13 @@ func _on_state_timer_timeout():
 	var state_arr = state_dict.get([lp_state, rp_state], [0, 0])
 	left_health -= state_arr[0]
 	right_health -= state_arr[1]
+	actively_handle_state = true
 	
 	if lp_state == 4 and rp_state == 4:
 		emit_signal("collision")
-
 		
+	print([lp_state, rp_state])
+
 	
 	
 signal collision

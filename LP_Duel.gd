@@ -44,6 +44,8 @@ func _duel_timeout():
 	# idle anim
 	$charactersprite.play("idle")
 	get_child(2).get_child(2).set_monitoring(true)
+	leg_blocked = false
+	body_blocked = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -133,15 +135,10 @@ func rebound(obj):
 	obj.angular_velocity = random_spin
 
 
-func body_blocking():
-	body_blocked = true
-
 
 func _on_body_collisoion_bullet_entered(area):
-	print("Body")
 	if body_blocked:
 		rebound(area.get_parent())
-		body_blocked = false
 	else:
 		area.get_parent().queue_free()
 
@@ -158,7 +155,6 @@ func _on_node_2d_lp_block_state(data):
 func _on_leg_collision_area_entered(area):
 	if leg_blocked:
 		rebound(area.get_parent())
-		leg_blocked = false
 	else:
 		area.get_parent().queue_free()
 		
