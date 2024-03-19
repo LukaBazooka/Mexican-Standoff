@@ -10,7 +10,7 @@ const NO_DMG = 0
 var left_health = HEALTH
 var right_health = HEALTH
 var actively_handle_state = false
-var state_arr 
+var state_arr = [0, 0]
 
 var state_dict = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
@@ -33,12 +33,9 @@ action states
 
 """
 
-
-
 var lp_state = 0
 var rp_state = 0
 
-var countdown_value = 3
 @onready var rest_label = $Rest_Display
 @onready var rest_timer = $Rest_Timer
 @onready var duel_label = $Duel_Display
@@ -63,10 +60,10 @@ func _process(delta):
 	$PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(left_health)
 	$PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(right_health)
 	if not $Rest_Timer.is_stopped():
-		rest_label.text = "%02d" % time_left_rest()
+		rest_label.text = "Rest: %01d" % time_left_rest()
 	
 	if not $DuelTimer.is_stopped():
-		$Duel_Display.text = "%02d" % time_left_duel()
+		$Duel_Display.text = "Duel: %01d" % time_left_duel()
 		
 			
 	
@@ -89,6 +86,8 @@ func _on_rest_timer_timeout():
 	$LeftPlayer._rest_timeout()
 	$RightPlayer._rest_timeout()
 	actively_handle_state = true
+	emit_signal("lp_shoot", 5) #test
+	handle_state() #test
 
 
 func _on_duel_timer_timeout():
@@ -111,9 +110,13 @@ func _on_left_player_pass_up_l(data):
 	if actively_handle_state:
 		handle_state()
 		if not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
-			if data == 2 or data == 3:
+			if data == 4 and not actively_handle_state:
+				#used to calcualte trajectory for headshot state
+				emit_signal("time_displacement")
+				emit_signal("lp_shoot", data)
+			elif data == 2 or data == 3:
 				emit_signal("lp_block_state", data)
-			elif data > 3:
+			elif data > 4:
 				emit_signal("lp_shoot", data)
 
 
@@ -129,6 +132,7 @@ func _on_right_player_pass_up_r(data):
 
 
 func _on_state_timer_timeout():
+	emit_signal("rp_shoot", 5) #test
 	state_arr = state_dict.get([lp_state, rp_state], [0, 0])
 	actively_handle_state = false
 	if lp_state == 4 and rp_state == 4:
@@ -155,3 +159,4 @@ signal lp_block_state
 signal lp_shoot
 signal rp_block_state
 signal rp_shoot
+signal time_displacement

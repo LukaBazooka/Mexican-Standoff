@@ -279,24 +279,25 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StateTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="Duel_Display" type="Label" parent="."]
-offset_left = 704.0
-offset_top = 4.0
-offset_right = 768.0
-offset_bottom = 73.0
+offset_left = 635.0
+offset_top = 1.0
+offset_right = 803.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 50
-text = "00"
+text = "Duel: 0"
 
 [node name="Rest_Display" type="Label" parent="."]
-offset_left = 808.0
-offset_top = 4.0
-offset_right = 866.0
-offset_bottom = 73.0
+offset_left = 875.0
+offset_top = 1.0
+offset_right = 1036.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 50
-text = "00"
+text = "Rest: 0
+"
 
 [node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
 position = Vector2(2, 402)
@@ -511,6 +512,7 @@ frame_progress = 0.603793
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]
 [connection signal="rp_block_state" from="." to="RightPlayer" method="_on_node_2d_rp_block_state"]
 [connection signal="rp_shoot" from="." to="RightPlayer" method="shoot"]
+[connection signal="time_displacement" from="." to="LeftPlayer" method="_opp_bullet_time_displacement"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

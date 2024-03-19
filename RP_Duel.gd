@@ -27,7 +27,6 @@ var body_blocked = false
 var leg_blocked = false
 
 
-var countdown_value = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

@@ -27,7 +27,6 @@ var health = 100
 var random_y
 var random_spin
 
-var countdown_value = 3
 
 func _ready():
 	pass
@@ -172,3 +171,7 @@ func _on_head_collison_bullet_entered(area):
 	area.get_parent().queue_free()
 
 
+
+
+func _opp_bullet_time_displacement():
+	pass # Replace with function body.
