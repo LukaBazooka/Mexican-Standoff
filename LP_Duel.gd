@@ -8,6 +8,8 @@ extends Node2D
 const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
 const BULLET_DOWN = 2
+const SPEED_CONST = 100
+const SPEED_Y = 150
 #Key0 == draw, key4 == shoot
 var head_sequence = [KEY_0, KEY_1, KEY_4]
 var body_sequence = [KEY_0, KEY_4]
@@ -120,12 +122,14 @@ func shoot(state):
 
 
 func spawn_bullet(direction):
+
 	if ammo >= 1:
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $gunpoint.position
 		add_child(bullet_instance)
 		get_child(3).get_child(1).set_disabled(false)
-		bullet_instance.linear_velocity.y = 200 * direction
+		
+		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
 
 
@@ -173,5 +177,4 @@ func _on_head_collison_bullet_entered(area):
 
 
 
-func _opp_bullet_time_displacement():
-	pass # Replace with function body.
+

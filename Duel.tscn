@@ -303,13 +303,13 @@ text = "Rest: 0
 position = Vector2(2, 402)
 
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
-position = Vector2(391, 300)
+position = Vector2(440, 256)
 
 [node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
-position = Vector2(248, 297)
+position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"draw"
+animation = &"idle_drawn"
 autoplay = "idle"
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
@@ -337,17 +337,15 @@ position = Vector2(746, 417)
 
 [node name="charactersprite" type="AnimatedSprite2D" parent="RightPlayer"]
 modulate = Color(81.47, 1, 1, 1)
-position = Vector2(757, 282)
+position = Vector2(757, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"draw"
+animation = &"reload"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
-position = Vector2(634, 301)
+position = Vector2(568, 254)
 
 [node name="collisions" type="Node2D" parent="RightPlayer"]
 position = Vector2(600, 2.08165e-12)
@@ -507,18 +505,15 @@ sprite_frames = SubResource("SpriteFrames_3lb7l")
 autoplay = "default"
 frame_progress = 0.603793
 
-[connection signal="collision" from="." to="RightPlayer" method="_on_node_2d_collision"]
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]
 [connection signal="rp_block_state" from="." to="RightPlayer" method="_on_node_2d_rp_block_state"]
 [connection signal="rp_shoot" from="." to="RightPlayer" method="shoot"]
-[connection signal="time_displacement" from="." to="LeftPlayer" method="_opp_bullet_time_displacement"]
 [connection signal="timeout" from="Rest_Timer" to="." method="_on_rest_timer_timeout"]
 [connection signal="timeout" from="DuelTimer" to="." method="_on_duel_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
 [connection signal="lp_bullet_collided" from="LeftPlayer" to="." method="_on_left_player_lp_bullet_collided"]
 [connection signal="pass_up_l" from="LeftPlayer" to="." method="_on_left_player_pass_up_l"]
-[connection signal="animation_finished" from="LeftPlayer/charactersprite" to="LeftPlayer" method="_on_charactersprite_animation_finished"]
 [connection signal="area_entered" from="LeftPlayer/collisions/body_collisoion" to="LeftPlayer" method="_on_body_collisoion_bullet_entered"]
 [connection signal="area_entered" from="LeftPlayer/collisions/leg_collision" to="LeftPlayer" method="_on_leg_collision_area_entered"]
 [connection signal="area_entered" from="LeftPlayer/collisions/head_collison" to="LeftPlayer" method="_on_head_collison_bullet_entered"]

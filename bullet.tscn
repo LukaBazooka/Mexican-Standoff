@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://desiqwp4kisau" path="res://assets/images/tayzonday.jpg" id="2_xwfrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y12ho"]
-size = Vector2(50, 50)
+size = Vector2(57, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5mb5"]
-size = Vector2(56, 56)
+size = Vector2(68, 60)
 
 [node name="bullet" type="RigidBody2D"]
 mass = 100.0

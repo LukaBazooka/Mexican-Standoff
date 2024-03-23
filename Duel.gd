@@ -82,12 +82,10 @@ func new_round():
 
 func _on_rest_timer_timeout():
 	$DuelTimer.start()
-	
 	$LeftPlayer._rest_timeout()
 	$RightPlayer._rest_timeout()
 	actively_handle_state = true
-	emit_signal("lp_shoot", 5) #test
-	handle_state() #test
+	
 
 
 func _on_duel_timer_timeout():
@@ -95,68 +93,56 @@ func _on_duel_timer_timeout():
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
 	
-	
 
 func handle_state():
-	print("passed")
 	$StateTimer.start()
 	actively_handle_state = true
-
-	
 
 
 func _on_left_player_pass_up_l(data):
 	lp_state = data
 	if actively_handle_state:
 		handle_state()
-		if not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
-			if data == 4 and not actively_handle_state:
-				#used to calcualte trajectory for headshot state
-				emit_signal("time_displacement")
-				emit_signal("lp_shoot", data)
-			elif data == 2 or data == 3:
-				emit_signal("lp_block_state", data)
-			elif data > 4:
-				emit_signal("lp_shoot", data)
-
+		pass_down_state("lp", data)
+	elif not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
+		pass_down_state("lp", data)
+		handle_second_state()
 
 func _on_right_player_pass_up_r(data):
 	rp_state = data
 	if actively_handle_state:
 		handle_state() #begin input timer
-	if not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
-		if data == 2 or data == 3:
-			emit_signal("rp_block_state", data)
-		elif data > 3:
-			emit_signal("rp_shoot", data)
-
+		pass_down_state("rp", data)
+	elif not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
+		pass_down_state("rp", data)
+		handle_second_state()
 
 func _on_state_timer_timeout():
-	emit_signal("rp_shoot", 5) #test
 	state_arr = state_dict.get([lp_state, rp_state], [0, 0])
 	actively_handle_state = false
-	if lp_state == 4 and rp_state == 4:
-		emit_signal("collision")
-		
-	print([lp_state, rp_state])
-
-
 
 func _on_left_player_lp_bullet_collided():
 	left_health -= state_arr[0]
-
+	if lp_state == 4: #possiblity that bullet collides if too opp too slow
+		left_health -= 100
 
 func _on_right_player_rp_bullet_collided():
 	right_health -= state_arr[1]
+	if rp_state == 4: #possiblity that bullet collides if too opp too slow
+		right_health -= 100
+
+func handle_second_state():
+	$StateTimer.set_wait_time(0.0001)
+
+func pass_down_state(user, data):
+	if data == 2 or data == 3:
+		emit_signal(user + "_block_state", data)
+	elif data > 3:
+		emit_signal(user + "_shoot", data)
 
 
 
-
-
-
-signal collision
 signal lp_block_state
 signal lp_shoot
 signal rp_block_state
 signal rp_shoot
-signal time_displacement

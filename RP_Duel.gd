@@ -116,10 +116,6 @@ func spawn_bullet(direction):
 		ammo -= 1
 		
 
-#in double headshot scenario
-func _on_node_2d_collision():
-	if get_child_count() == 4:
-		get_child(3).get_child(1).set_disabled(false)
 	
 
 func rebound(obj):
@@ -143,6 +139,8 @@ func shoot(state):
 	$charactersprite.play("shoot")
 	if state == 4:
 		spawn_bullet(BULLET_UP)
+		#allows  bullets to collide if both players go for headshots
+		get_child(3).get_child(1).set_disabled(false) 
 	elif state == 5:
 		spawn_bullet(BULLET_STRAIGHT)
 	elif state == 6:
