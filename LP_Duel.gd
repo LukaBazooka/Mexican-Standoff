@@ -1,50 +1,55 @@
 extends Node2D
 
-#Instantiated Scenes
+#Instantiate bullet scene
 @onready var bullet_scene = load("res://bullet.tscn")
 
-#USE TO ESTABLISH HEALTH
-#healthbar.health = health
+#bullet constants
 const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
 const BULLET_DOWN = 2
-const SPEED_CONST = 100
 const SPEED_Y = 150
-#Key0 == draw, key4 == shoot
-var head_sequence = [KEY_0, KEY_1, KEY_4]
-var body_sequence = [KEY_0, KEY_4]
-var leg_sequence = [KEY_0, KEY_3, KEY_4]
 
-#key5 == block
-var block_sequence = [KEY_5]
-var block_legs_sequence = [KEY_3, KEY_5]
-var input_buffer = []
-var duel = false
+#action sequences
+#Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
+const HEAD_SEQUENCE = [KEY_0, KEY_1, KEY_4]
+const BODY_SEQUENCE = [KEY_0, KEY_4]
+const LEG_SEQUENCE = [KEY_0, KEY_3, KEY_4]
+const BLOCK_SEQUENCE = [KEY_5]
+const BLOCK_LEGS_SEQUENCE = [KEY_3, KEY_5]
+
+var input_buffer = [] #handles user input
+var duel = false #if true player inputs can be registered
+
+#determines if block is successful
 var body_blocked = false
 var leg_blocked = false
 
 #Player counters
 var ammo = 5
-var health = 100
+
+#bullet physics
 var random_y
 var random_spin
 
-
-func _ready():
+#executes when scene is loaded
+func _ready(): #not used however may be of use later
 	pass
-	
 
+#when the time for rest is over and the duel begins
 func _rest_timeout():
-	duel = true
-	input_buffer.clear()
-	
+	duel = true #player can register inputs
+	input_buffer.clear() #remove and previous inputs loaded into buffer
 
+#when duel timer ends
 func _duel_timeout():
-	duel = false
-	emit_signal("pass_up_l", 0)
-	# idle anim
+	duel = false #player can no longer register inputs
+	emit_signal("pass_up_l", 0) #clear player state in duel scene
 	$charactersprite.play("idle")
-	get_child(2).get_child(2).set_monitoring(true)
+	
+	#resets head area2D so that bullets can be detected
+	get_child(2).get_child(2).set_monitoring(true) 
+	
+	#rests block possibilties
 	leg_blocked = false
 	body_blocked = false
 
@@ -52,23 +57,18 @@ func _duel_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$"../PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
-	if duel:
+	
+	#handle player input
+	if duel: #if we are taking player input
 		if Input.is_action_just_pressed("left_player_draw"):
 			handle_input(KEY_0)
-			#draw anim
 			$charactersprite.play("draw")
-			
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
-		elif Input.is_action_just_pressed("left_player_straight"):
-			handle_input(KEY_2)
 		elif Input.is_action_just_pressed("left_player_down"):
 			handle_input(KEY_3)
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
-			#$charactersprite.play("shoot")
-			#spawn_bullet()
-				
 		elif Input.is_action_just_pressed("left_player_block"):
 			handle_input(KEY_5)
 		elif Input.is_action_just_pressed("left_player_reload"):
@@ -81,58 +81,57 @@ func _process(delta):
 
 func handle_input(key):
 	input_buffer.append(key)
-	if duel:
-		if input_buffer == block_legs_sequence:
+	#matches input sequence to any action sequences
+	#if there is a match pass it to the duel scene, and stop taking player input
+	if duel: #if we are taking player input
+		if input_buffer == BLOCK_LEGS_SEQUENCE:
 			emit_signal("pass_up_l", 3) 
 			duel = false
-			print("block legs")
 			
-		elif input_buffer == block_sequence:
+		elif input_buffer == BLOCK_SEQUENCE:
 			emit_signal("pass_up_l", 2)
 			duel = false
 			
-		elif input_buffer == head_sequence:
+		elif input_buffer == HEAD_SEQUENCE:
 			if ammo > 0:
 				emit_signal("pass_up_l", 4)
 			duel = false
 			
-		elif input_buffer == body_sequence:
+		elif input_buffer == BODY_SEQUENCE:
 			if ammo > 0:
 				emit_signal("pass_up_l", 5)
 			duel = false
 
-		elif input_buffer == leg_sequence:
+		elif input_buffer == LEG_SEQUENCE:
 			if ammo > 0:
 				emit_signal("pass_up_l", 6)
 			duel = false
 
 
-
-signal pass_up_l(data)
-signal lp_bullet_collided()
-
+#excuted on pass down from duel scene
 func shoot(state):
 	$charactersprite.play("shoot")
-	if state == 4:
+	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
-	elif state == 5:
+		get_child(3).get_child(1).set_disabled(false)
+	elif state == 5: #body shot
 		spawn_bullet(BULLET_STRAIGHT)
-	else:
+	else: #legshot
 		spawn_bullet(BULLET_DOWN)
 
 
 func spawn_bullet(direction):
-
 	if ammo >= 1:
-		var bullet_instance = bullet_scene.instantiate()
+		#create bullet instance
+		var bullet_instance = bullet_scene.instantiate() 
 		bullet_instance.position = $gunpoint.position
-		add_child(bullet_instance)
-		get_child(3).get_child(1).set_disabled(false)
+		add_child(bullet_instance) #add to player scene
 		
+		#set so that bullet can collide with other bullets
 		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
 
-
+#upon blocked collison
 func rebound(obj):
 	randomize()
 	random_y = randi_range(-700, 700)
@@ -142,39 +141,47 @@ func rebound(obj):
 	obj.angular_velocity = random_spin
 
 
-
+#executed once bullet enters body area2d 
 func _on_body_collisoion_bullet_entered(area):
-	emit_signal("lp_bullet_collided")
 	if body_blocked:
 		rebound(area.get_parent())
 	else:
-		area.get_parent().queue_free()
+		#bullet landed on current player
+		area.get_parent().queue_free() #delete bullet instance
+		#notify duel scnee that body has collided so health can be handled
+		emit_signal("lp_bullet_collided")
 
-
-
+#executed once passed down from duel scene
+#determines which block state and removes possiblity of headshot
 func _on_node_2d_lp_block_state(data):
 	if data == 2:
 		body_blocked = true
 	elif data == 3:
 		leg_blocked = true
+	#regardless of block state headshot cannot occur
+	#set head area2d so bullets cannot be detected
 	get_child(2).get_child(2).set_monitoring(false)
 
-
+#executed once bullet enters leg area2d 
 func _on_leg_collision_area_entered(area):
-	emit_signal("lp_bullet_collided")
 	if leg_blocked:
 		rebound(area.get_parent())
 	else:
-		area.get_parent().queue_free()
+		#bullet landed on current player
+		area.get_parent().queue_free() #delete bullet instance
+		#notify duel scnee that body has collided so health can be handled
+		emit_signal("lp_bullet_collided")
 		
 
 
-# simulate impact for head
+#executed once bullet entered head area2d
 func _on_head_collison_bullet_entered(area):
+	#notify duel scnee that body has collided so health can be handled
 	emit_signal("lp_bullet_collided")
-	area.get_parent().queue_free()
+	area.get_parent().queue_free() #delete bullet instance
 
 
 
-
+signal pass_up_l(data)
+signal lp_bullet_collided()
 

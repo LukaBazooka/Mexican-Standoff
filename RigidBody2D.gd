@@ -13,11 +13,10 @@ func _ready():
 func _on_bullet_timer_timeout():
 	queue_free()
 
-
+# when two bullets slide into eachother
 func after_collision_other_bullet(area):
-	#make sure area is bullet and we are going for a headshot
-	if linear_velocity.y < 0 and area.get_parent() is RigidBody2D: 
-		print("booey")
+	#if collided with another bullet and both bullets going for headshot
+	if linear_velocity.y < 0 and area.get_parent() is RigidBody2D and area.get_parent().linear_velocity.y < 0 : 
 		area.set_collision_layer(0)
 		$Area2D.set_collision_layer(0)
 		

@@ -10,9 +10,10 @@ const NO_DMG = 0
 var left_health = HEALTH
 var right_health = HEALTH
 var actively_handle_state = false
-var state_arr = [0, 0]
+var handle_first = false
+var current_state_arr = [0, 0]
 
-var state_dict = {
+const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
 [0, 1]: [NO_DMG, NO_DMG], [1, 1]: [NO_DMG, NO_DMG], [2, 1]: [NO_DMG, NO_DMG], [3, 1]: [NO_DMG, NO_DMG], [4, 1]: [NO_DMG, HEAD_SHOT], [5, 1]: [NO_DMG, BODY_SHOT], [6, 1]: [NO_DMG, LEG_SHOT], #Reload
 [0, 2]: [NO_DMG, NO_DMG],[1, 2]: [NO_DMG, NO_DMG], [2, 2]: [NO_DMG, NO_DMG], [3, 2]: [NO_DMG, NO_DMG], [4, 2]: [NO_DMG, NO_DMG], [5, 2]: [NO_DMG, BODY_SHOT], [6, 2]: [NO_DMG, NO_DMG], #legs bloc
@@ -64,9 +65,7 @@ func _process(delta):
 	
 	if not $DuelTimer.is_stopped():
 		$Duel_Display.text = "Duel: %01d" % time_left_duel()
-		
-			
-	
+
 
 func new_round():
 	$Rest_Timer.start()
@@ -85,62 +84,70 @@ func _on_rest_timer_timeout():
 	$LeftPlayer._rest_timeout()
 	$RightPlayer._rest_timeout()
 	actively_handle_state = true
-	
+	handle_first = true
 
 
 func _on_duel_timer_timeout():
 	new_round()
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
+	actively_handle_state = false
 	
 
-func handle_state():
+#staers timer for time alowed between user inputs
+func handle_first_state():
 	$StateTimer.start()
-	actively_handle_state = true
+	handle_first = false #ensures can't be called twice in the same round
 
+func handle_second_state(): 
+	#effectively sets wait time to 0 so _on_state_timer_timeout() can be executed
+	$StateTimer.set_wait_time(0.0001)
+	actively_handle_state = false #no longer registeirng inputs
+	if lp_state == 0 and rp_state == 0:
+		pass
 
+#handles lp state once they have been passed up
 func _on_left_player_pass_up_l(data):
 	lp_state = data
-	if actively_handle_state:
-		handle_state()
-		pass_down_state("lp", data)
-	elif not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
-		pass_down_state("lp", data)
-		handle_second_state()
+	state_transfer("lp", data)
 
+#handles rp state once they have been passed up
 func _on_right_player_pass_up_r(data):
 	rp_state = data
-	if actively_handle_state:
-		handle_state() #begin input timer
-		pass_down_state("rp", data)
-	elif not $DuelTimer.is_stopped() and not $StateTimer.is_stopped(): #data passed in time pass down to player
-		pass_down_state("rp", data)
-		handle_second_state()
+	state_transfer("rp", data)
 
+#loads damage to be donoe for each player from state dict to current_state_arr
 func _on_state_timer_timeout():
-	state_arr = state_dict.get([lp_state, rp_state], [0, 0])
-	actively_handle_state = false
+	current_state_arr = STATE_DICT.get([lp_state, rp_state], [0, 0])
 
+#only executes once a bullet has entered area2d in left player
 func _on_left_player_lp_bullet_collided():
-	left_health -= state_arr[0]
+	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
 		left_health -= 100
 
+#only executes once a bullet has entered area2d in right player
 func _on_right_player_rp_bullet_collided():
-	right_health -= state_arr[1]
+	right_health -= current_state_arr[1]
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow
 		right_health -= 100
 
-func handle_second_state():
-	$StateTimer.set_wait_time(0.0001)
-
+#passes to player their state for execution 
 func pass_down_state(user, data):
 	if data == 2 or data == 3:
 		emit_signal(user + "_block_state", data)
 	elif data > 3:
 		emit_signal(user + "_shoot", data)
 
-
+#determines if first or second player to submit input
+func state_transfer(user, data):
+	if actively_handle_state: #while we can register inputs
+		if handle_first: #handle first player input
+			handle_first_state()
+			pass_down_state(user, data)
+		else: #handle second player input
+			pass_down_state(user, data)
+			handle_second_state()
 
 signal lp_block_state
 signal lp_shoot
