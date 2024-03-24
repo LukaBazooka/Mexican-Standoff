@@ -60,6 +60,8 @@ func time_left_duel():
 func _process(delta):
 	$PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(left_health)
 	$PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(right_health)
+	_update_health_gui()
+	
 	if not $Rest_Timer.is_stopped():
 		rest_label.text = "Rest: %01d" % time_left_rest()
 	
@@ -72,11 +74,11 @@ func new_round():
 	if left_health == 0 and right_health == 0:
 		left_health = 1
 		right_health = 1
-	if left_health == 0:
+	if left_health <= 0:
 		#print("Left player dead")
 		$DeathScreen.visible = true
 		pass
-	if right_health == 0:
+	if right_health <= 0:
 		#print("Right player dead")
 		$DeathScreen.visible = true
 		pass
@@ -150,6 +152,37 @@ func state_transfer(user, data):
 		else: #handle second player input
 			pass_down_state(user, data)
 			handle_second_state()
+			
+
+func _update_health_gui():
+	if left_health <= 0:
+		$left_heart1/HeartSprite.animation = "heartempty"
+		$left_heart2/HeartSprite.animation = "heartempty"
+		$left_heart3/HeartSprite.animation = "heartempty"
+	if left_health <= 17 and left_health > 0:
+		$left_heart1/HeartSprite.animation = "halfheart"
+		$left_heart2/HeartSprite.animation = "heartempty"
+		$left_heart3/HeartSprite.animation = "heartempty"
+	if left_health <= 34 and left_health >= 17:
+		$left_heart1/HeartSprite.animation = "heartfull"
+		$left_heart2/HeartSprite.animation = "heartempty"
+		$left_heart3/HeartSprite.animation = "heartempty"
+	if left_health <= 49 and left_health >= 34:
+		$left_heart1/HeartSprite.animation = "heartfull"
+		$left_heart2/HeartSprite.animation = "halfheart"
+		$left_heart3/HeartSprite.animation = "heartempty"
+	if left_health <= 67 and left_health >= 49:
+		$left_heart1/HeartSprite.animation = "heartfull"
+		$left_heart2/HeartSprite.animation = "heartfull"
+		$left_heart3/HeartSprite.animation = "heartempty"
+	if left_health <= 83 and left_health >= 67:
+		$left_heart1/HeartSprite.animation = "heartfull"
+		$left_heart2/HeartSprite.animation = "heartfull"
+		$left_heart3/HeartSprite.animation = "halfheart"
+	if left_health <= 100 and left_health >= 83:
+		$left_heart1/HeartSprite.animation = "heartfull"
+		$left_heart2/HeartSprite.animation = "heartfull"
+		$left_heart3/HeartSprite.animation = "heartfull"
 
 signal lp_block_state
 signal lp_shoot

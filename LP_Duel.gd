@@ -57,6 +57,7 @@ func _duel_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$"../PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
+	_update_ammo_gui()
 	
 	#handle player input
 	if duel: #if we are taking player input
@@ -180,6 +181,56 @@ func _on_head_collison_bullet_entered(area):
 	emit_signal("lp_bullet_collided")
 	area.get_parent().queue_free() #delete bullet instance
 
+func _update_ammo_gui():
+	if ammo == 0:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 1:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 2:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 3:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 4:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 5:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 6:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "bullet"
 
 
 signal pass_up_l(data)
