@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=60 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -267,6 +267,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_lcawl"]
+font = ExtResource("50_dq8qp")
+font_size = 50
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
@@ -505,6 +509,51 @@ sprite_frames = SubResource("SpriteFrames_3lb7l")
 autoplay = "default"
 frame_progress = 0.603793
 
+[node name="DeathScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -87.0
+offset_top = -49.0
+offset_right = 1839.0
+offset_bottom = 1037.0
+
+[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435294, 0.435294, 0.435294, 0.65098)
+
+[node name="MarginContainer" type="MarginContainer" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="Gameoverlabel" type="Label" parent="DeathScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over!
+Player x won!"
+label_settings = SubResource("LabelSettings_lcawl")
+
+[node name="Retry" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play Again?"
+
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]
 [connection signal="rp_block_state" from="." to="RightPlayer" method="_on_node_2d_rp_block_state"]
@@ -523,3 +572,4 @@ frame_progress = 0.603793
 [connection signal="area_entered" from="RightPlayer/collisions/body_collisoion" to="RightPlayer" method="_on_body_collisoion_area_entered"]
 [connection signal="area_entered" from="RightPlayer/collisions/leg_collision" to="RightPlayer" method="_on_leg_collision_bullet_entered"]
 [connection signal="area_entered" from="RightPlayer/collisions/head_collison" to="RightPlayer" method="_on_head_collison_bullet_entered"]
+[connection signal="pressed" from="DeathScreen/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]

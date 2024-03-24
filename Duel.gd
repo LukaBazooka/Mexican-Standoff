@@ -74,9 +74,11 @@ func new_round():
 		right_health = 1
 	if left_health == 0:
 		#print("Left player dead")
+		$DeathScreen.visible = true
 		pass
 	if right_health == 0:
 		#print("Right player dead")
+		$DeathScreen.visible = true
 		pass
 
 func _on_rest_timer_timeout():
@@ -153,3 +155,7 @@ signal lp_block_state
 signal lp_shoot
 signal rp_block_state
 signal rp_shoot
+
+
+func _on_retry_pressed():
+	get_tree().reload_current_scene()
