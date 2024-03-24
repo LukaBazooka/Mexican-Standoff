@@ -78,6 +78,7 @@ func _process(delta):
 			ammo += 1
 			$charactersprite.play("reload")
 			
+	_update_selection_gui()
 
 
 func handle_input(key):
@@ -232,6 +233,20 @@ func _update_ammo_gui():
 		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
 		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "bullet"
 
+#Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
+func _update_selection_gui():
+	if len(input_buffer) > 0:
+		if input_buffer[0] == KEY_0:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
+		if input_buffer[0] == KEY_1:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W".visible = true
+		if input_buffer[0] == KEY_3:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/S".visible = true
+		if input_buffer[0] == KEY_4:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/E".visible = true
+		if input_buffer[0] == KEY_5:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/D".visible = true
+	
 
 signal pass_up_l(data)
 signal lp_bullet_collided()

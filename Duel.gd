@@ -12,6 +12,8 @@ var right_health = HEALTH
 var actively_handle_state = false
 var handle_first = false
 var current_state_arr = [0, 0]
+var duel_time
+var rest_time
 
 const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
@@ -62,6 +64,9 @@ func _process(delta):
 	$PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(right_health)
 	_update_health_gui()
 	
+	duel_time = $DuelTimer.time_left
+	rest_time = $Rest_Timer.time_left
+	
 	if not $Rest_Timer.is_stopped():
 		rest_label.text = "Rest: %01d" % time_left_rest()
 	
@@ -96,7 +101,8 @@ func _on_duel_timer_timeout():
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
 	actively_handle_state = false
-	
+	$PlayerGUI/DrawPopup.visible = true
+	$PlayerGUI/DrawPopup/Timer.start()
 
 #staers timer for time alowed between user inputs
 func handle_first_state():
@@ -189,6 +195,10 @@ signal lp_shoot
 signal rp_block_state
 signal rp_shoot
 
-
+#Retry button clicked on duel end/deathscreen
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
+
+#When "DUEL" Goes away
+func _on_timer_timeout():
+	$PlayerGUI/DrawPopup.visible = false
