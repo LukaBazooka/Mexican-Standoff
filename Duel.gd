@@ -94,6 +94,8 @@ func _on_rest_timer_timeout():
 	$RightPlayer._rest_timeout()
 	actively_handle_state = true
 	handle_first = true
+	$PlayerGUI/DrawPopup.visible = true
+	$PlayerGUI/DrawPopup/Timer.start()
 
 
 func _on_duel_timer_timeout():
@@ -101,8 +103,7 @@ func _on_duel_timer_timeout():
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
 	actively_handle_state = false
-	$PlayerGUI/DrawPopup.visible = true
-	$PlayerGUI/DrawPopup/Timer.start()
+	
 
 #staers timer for time alowed between user inputs
 func handle_first_state():

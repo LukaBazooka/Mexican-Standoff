@@ -65,7 +65,7 @@
 [ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="57_cxrpk"]
 [ext_resource type="Texture2D" uid="uid://cytujr1pfbu7d" path="res://assets/heartGUI_anim/heartfull1.png" id="57_kbk6b"]
 [ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="58_uqpb2"]
-[ext_resource type="PackedScene" uid="uid://dyugx31b2j42h" path="res://dueltimer.tscn" id="59_xn7il"]
+[ext_resource type="PackedScene" path="res://dueltimer.tscn" id="59_xn7il"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -341,6 +341,7 @@ position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
 
 [node name="Rest_Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="DuelTimer" type="Timer" parent="."]
@@ -515,32 +516,26 @@ texture = ExtResource("52_6b7hx")
 
 [node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("53_bc3ql")
 
 [node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("54_1gxty")
 
 [node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("55_mbgwu")
 
 [node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("56_bvta1")
 
 [node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("57_cxrpk")
 
 [node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("51_fldnp")
 
 [node name="emptybox2" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
@@ -550,32 +545,26 @@ texture = ExtResource("52_6b7hx")
 
 [node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("53_bc3ql")
 
 [node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("54_1gxty")
 
 [node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("55_mbgwu")
 
 [node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("56_bvta1")
 
 [node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("57_cxrpk")
 
 [node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("51_fldnp")
 
 [node name="emptybox3" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
@@ -585,32 +574,26 @@ texture = ExtResource("52_6b7hx")
 
 [node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("53_bc3ql")
 
 [node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("54_1gxty")
 
 [node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("55_mbgwu")
 
 [node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("56_bvta1")
 
 [node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("57_cxrpk")
 
 [node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("51_fldnp")
 
 [node name="RightPlayerGUI" type="Control" parent="PlayerGUI"]
