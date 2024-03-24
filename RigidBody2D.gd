@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 
-const SPEED = 2000
+const SPEED = 1500
 
 
 func _ready():

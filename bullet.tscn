@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3oyayjcuetox"]
 
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="1_umyy5"]
-[ext_resource type="Texture2D" uid="uid://desiqwp4kisau" path="res://assets/images/tayzonday.jpg" id="2_xwfrh"]
+[ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="2_kapym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y12ho"]
 size = Vector2(57, 57)
@@ -15,8 +15,9 @@ inertia = 70.0
 script = ExtResource("1_umyy5")
 
 [node name="bulletSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.807529, 0.3192)
-texture = ExtResource("2_xwfrh")
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_kapym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y12ho")
