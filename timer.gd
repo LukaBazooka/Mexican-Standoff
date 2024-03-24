@@ -1,0 +1,12 @@
+extends ProgressBar
+
+@onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
+
+func _ready():
+	pass
+	
+func _process(delta):
+	value = duel_scene.duel_time
+	
+
+

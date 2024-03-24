@@ -57,6 +57,7 @@ func _duel_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$"../PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
+	_update_ammo_gui()
 	
 	#handle player input
 	if duel: #if we are taking player input
@@ -77,6 +78,7 @@ func _process(delta):
 			ammo += 1
 			$charactersprite.play("reload")
 			
+	_update_selection_gui()
 
 
 func handle_input(key):
@@ -180,7 +182,71 @@ func _on_head_collison_bullet_entered(area):
 	emit_signal("lp_bullet_collided")
 	area.get_parent().queue_free() #delete bullet instance
 
+func _update_ammo_gui():
+	if ammo == 0:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 1:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 2:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 3:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 4:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 5:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+	if ammo == 6:
+		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "bullet"
 
+#Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
+func _update_selection_gui():
+	if len(input_buffer) > 0:
+		if input_buffer[0] == KEY_0:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
+		if input_buffer[0] == KEY_1:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W".visible = true
+		if input_buffer[0] == KEY_3:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/S".visible = true
+		if input_buffer[0] == KEY_4:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/E".visible = true
+		if input_buffer[0] == KEY_5:
+			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/D".visible = true
+	
 
 signal pass_up_l(data)
 signal lp_bullet_collided()
