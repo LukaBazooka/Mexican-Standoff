@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyugx31b2j42h"]
+[gd_scene load_steps=4 format=3 uid="uid://tffowvpt0fii"]
 
-[ext_resource type="Script" path="res://dueltimer.gd" id="1_wipif"]
+[ext_resource type="Script" path="res://resttimer.gd" id="1_0magx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwa1k"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.639216)
@@ -10,13 +10,13 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo61r"]
-bg_color = Color(0.792157, 0, 0, 1)
+bg_color = Color(0.792157, 1, 0, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="dueltimer" type="ProgressBar"]
+[node name="resttimer" type="ProgressBar"]
 offset_right = 300.0
 offset_bottom = 20.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bwa1k")
@@ -24,4 +24,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mo61r")
 max_value = 2.0
 value = 1.24
 show_percentage = false
-script = ExtResource("1_wipif")
+script = ExtResource("1_0magx")
