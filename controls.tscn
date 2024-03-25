@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd3hhgykf7tbn"]
+
+[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_p7yrk"]
+[ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="2_brsrn"]
+[ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_l5o5t"]
+[ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_n4jn5"]
+[ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="5_s7ap7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_js0h1"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 84.0
+offset_right = 1724.0
+offset_bottom = 1004.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 20.0
+offset_right = 878.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 70
+text = "Move List
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shoot" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 76.0
+offset_right = 1566.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 45
+text = "Shoot
+"
+
+[node name="Panel" type="Panel" parent="Panel/Shoot"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 56.0
+offset_right = 1478.0
+offset_bottom = 408.0
+
+[node name="Headshot" type="Label" parent="Panel/Shoot/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 150.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Headshot"
+vertical_alignment = 1
+
+[node name="Buttons" type="Label" parent="Panel/Shoot/Panel/Headshot"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = -8.0
+offset_right = 1472.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 50
+text = "        ,        ,"
+vertical_alignment = 2
+
+[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
+position = Vector2(296, 46)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_l5o5t")
+
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
+position = Vector2(176, 46)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_n4jn5")
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
+position = Vector2(54, 46)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_brsrn")
+
+[node name="Control" type="Control" parent="Panel/Shoot/Panel/Headshot"]
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 8.0
+offset_right = 448.0
+offset_bottom = 64.0
+
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+position = Vector2(24, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_s7ap7")
+
+[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+position = Vector2(70, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_s7ap7")
+
+[node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+position = Vector2(116, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_s7ap7")
+
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 107.0
+offset_right = 1464.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
