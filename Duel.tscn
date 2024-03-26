@@ -65,10 +65,8 @@
 [ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="57_cxrpk"]
 [ext_resource type="Texture2D" uid="uid://cytujr1pfbu7d" path="res://assets/heartGUI_anim/heartfull1.png" id="57_kbk6b"]
 [ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="58_uqpb2"]
-
-[ext_resource type="PackedScene" uid="uid://dyugx31b2j42h" path="res://dueltimer.tscn" id="59_xn7il"]
+[ext_resource type="PackedScene" uid="uid://dcmogs7pddbbf" path="res://dueltimer.tscn" id="59_xn7il"]
 [ext_resource type="PackedScene" uid="uid://tffowvpt0fii" path="res://resttimer.tscn" id="62_c2yrs"]
-
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{

@@ -1,13 +1,70 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd3hhgykf7tbn"]
+[gd_scene load_steps=19 format=3 uid="uid://dd3hhgykf7tbn"]
 
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_p7yrk"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="2_brsrn"]
 [ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_l5o5t"]
 [ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_n4jn5"]
 [ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="5_s7ap7"]
+[ext_resource type="Texture2D" uid="uid://s3v74u3e4h5c" path="res://assets/heartGUI_anim/hearthalf2.png" id="6_15meb"]
+[ext_resource type="Texture2D" uid="uid://cqku8ruvc3wfn" path="res://assets/temp_icons/SIcon.png" id="7_qocmj"]
+[ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="8_f3iga"]
+[ext_resource type="Texture2D" uid="uid://b323ehmlinbf1" path="res://assets/temp_icons/Ricon.png" id="9_dff82"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ollqj"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_ss38t"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ollqj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7otgg"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syv8f"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.968627)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_rehcc"]
+/styles/shoot = SubResource("StyleBoxFlat_7otgg")
+Panel/styles/panel = SubResource("StyleBoxFlat_syv8f")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_js0h1"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lht3u"]
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.698039, 0.698039, 0.698039, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehofq"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t11pp"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -19,17 +76,19 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 84.0
-offset_right = 1724.0
-offset_bottom = 1004.0
+offset_left = 400.0
+offset_top = 74.0
+offset_right = 1521.0
+offset_bottom = 1006.0
+theme = SubResource("Theme_ss38t")
 
 [node name="Title" type="Label" parent="Panel"]
+visible = false
 layout_mode = 0
-offset_left = 660.0
-offset_top = 20.0
-offset_right = 878.0
-offset_bottom = 95.0
+offset_left = 451.0
+offset_top = 16.0
+offset_right = 669.0
+offset_bottom = 91.0
 theme_override_fonts/font = ExtResource("1_p7yrk")
 theme_override_font_sizes/font_size = 70
 text = "Move List
@@ -37,86 +96,383 @@ text = "Move List
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shoot" type="Label" parent="Panel"]
-layout_mode = 2
-offset_left = 30.0
-offset_top = 76.0
-offset_right = 1566.0
-offset_bottom = 130.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
-theme_override_font_sizes/font_size = 45
-text = "Shoot
-"
-
-[node name="Panel" type="Panel" parent="Panel/Shoot"]
+[node name="Shoot" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_left = -10.0
-offset_top = 56.0
-offset_right = 1478.0
-offset_bottom = 408.0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 1100.0
+offset_bottom = 322.0
+theme = SubResource("Theme_rehcc")
 
-[node name="Headshot" type="Label" parent="Panel/Shoot/Panel"]
+[node name="Headshot" type="Label" parent="Panel/Shoot"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 150.0
-offset_bottom = 83.0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 190.0
+offset_bottom = 75.0
 theme_override_fonts/font = ExtResource("1_p7yrk")
 theme_override_font_sizes/font_size = 50
 text = "Headshot"
-vertical_alignment = 1
-
-[node name="Buttons" type="Label" parent="Panel/Shoot/Panel/Headshot"]
-layout_mode = 0
-offset_left = 1120.0
-offset_top = -8.0
-offset_right = 1472.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 50
-text = "        ,        ,"
 vertical_alignment = 2
 
-[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
-position = Vector2(296, 46)
+[node name="Buttons" type="Label" parent="Panel/Shoot/Headshot"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -18.0
+offset_right = 1052.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 50
+text = "       ,       ,"
+vertical_alignment = 2
+
+[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+position = Vector2(256, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_l5o5t")
 
-[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
-position = Vector2(176, 46)
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("3_n4jn5")
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Buttons"]
-position = Vector2(54, 46)
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_brsrn")
 
-[node name="Control" type="Control" parent="Panel/Shoot/Panel/Headshot"]
+[node name="Control" type="Control" parent="Panel/Shoot/Headshot"]
 anchors_preset = 0
 offset_left = 208.0
-offset_top = 8.0
-offset_right = 448.0
-offset_bottom = 64.0
+offset_top = 16.0
+offset_right = 352.0
+offset_bottom = 72.0
 
-[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_s7ap7")
 
-[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(70, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_s7ap7")
 
-[node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Panel/Headshot/Control"]
+[node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(116, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_s7ap7")
 
-[node name="Seperator" type="Panel" parent="Panel/Shoot/Panel"]
+[node name="Label" type="Label" parent="Panel/Shoot/Headshot/Control"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 107.0
-offset_right = 1464.0
-offset_bottom = 109.0
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 36.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 50
+text = "-"
+vertical_alignment = 1
+
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Headshot"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="Bodyshot" type="Label" parent="Panel/Shoot"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 98.0
+offset_right = 190.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Bodyshot"
+vertical_alignment = 2
+
+[node name="Buttons" type="Label" parent="Panel/Shoot/Bodyshot"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -20.0
+offset_right = 1052.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 50
+text = "       ,    "
+vertical_alignment = 2
+
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
+position = Vector2(152, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_l5o5t")
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
+position = Vector2(56, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_brsrn")
+
+[node name="Control" type="Control" parent="Panel/Shoot/Bodyshot"]
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 16.0
+offset_right = 352.0
+offset_bottom = 72.0
+
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
+position = Vector2(24, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_s7ap7")
+
+[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
+position = Vector2(70, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_15meb")
+
+[node name="Label" type="Label" parent="Panel/Shoot/Bodyshot/Control"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 36.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 50
+text = "-"
+vertical_alignment = 1
+
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Bodyshot"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="Legshot" type="Label" parent="Panel/Shoot"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 188.0
+offset_right = 190.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Legshot"
+vertical_alignment = 2
+
+[node name="Buttons" type="Label" parent="Panel/Shoot/Legshot"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -22.0
+offset_right = 1052.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 50
+text = "       ,       ,"
+vertical_alignment = 2
+
+[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+position = Vector2(256, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_l5o5t")
+
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+position = Vector2(152, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("7_qocmj")
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+position = Vector2(56, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_brsrn")
+
+[node name="Control" type="Control" parent="Panel/Shoot/Legshot"]
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 16.0
+offset_right = 352.0
+offset_bottom = 72.0
+
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Legshot/Control"]
+position = Vector2(24, 24)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_s7ap7")
+
+[node name="Label" type="Label" parent="Panel/Shoot/Legshot/Control"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 36.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 50
+text = "-"
+vertical_alignment = 1
+
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Legshot"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="Block" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 360.0
+offset_right = 1100.0
+offset_bottom = 556.0
+theme = SubResource("Theme_rehcc")
+
+[node name="Bodyblock" type="Label" parent="Panel/Block"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 190.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Bodyblock"
+vertical_alignment = 2
+
+[node name="Buttons" type="Label" parent="Panel/Block/Bodyblock"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -16.0
+offset_right = 1052.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "       "
+vertical_alignment = 2
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/Bodyblock/Buttons"]
+position = Vector2(56, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("8_f3iga")
+
+[node name="Seperator" type="Panel" parent="Panel/Block/Bodyblock"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="LegBlock" type="Label" parent="Panel/Block"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 98.0
+offset_right = 190.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Bodyshot"
+vertical_alignment = 2
+
+[node name="Buttons" type="Label" parent="Panel/Block/LegBlock"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -18.0
+offset_right = 1052.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 50
+text = "       ,       "
+vertical_alignment = 2
+
+[node name="Wicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
+position = Vector2(152, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("8_f3iga")
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
+position = Vector2(56, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("7_qocmj")
+
+[node name="Seperator" type="Panel" parent="Panel/Block/LegBlock"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="Reload" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 594.0
+offset_right = 1100.0
+offset_bottom = 699.0
+theme = SubResource("Theme_rehcc")
+
+[node name="Bodyblock" type="Label" parent="Panel/Reload"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 190.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 50
+text = "Reload
+"
+vertical_alignment = 2
+
+[node name="Buttons" type="Label" parent="Panel/Reload/Bodyblock"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = -16.0
+offset_right = 1052.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "       "
+vertical_alignment = 2
+
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Reload/Bodyblock/Buttons"]
+position = Vector2(56, 56)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("9_dff82")
+
+[node name="Seperator" type="Panel" parent="Panel/Reload/Bodyblock"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 76.0
+offset_right = 1012.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
+
+[node name="Game Rules" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 798.0
+offset_right = 651.0
+offset_bottom = 861.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
+text = "Game Rules"
+
+[node name="Controls" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 728.0
+offset_right = 651.0
+offset_bottom = 791.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
+text = "Controls
+"
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 869.0
+offset_right = 610.0
+offset_bottom = 918.0
+theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
+text = "Close
+"
