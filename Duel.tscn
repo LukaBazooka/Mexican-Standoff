@@ -1,7 +1,8 @@
-[gd_scene load_steps=162 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=163 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
+[ext_resource type="Texture2D" uid="uid://b2lwkmhjnwsr0" path="res://background.jpg" id="2_ap2wk"]
 [ext_resource type="PackedScene" uid="uid://l57e687gwuyg" path="res://right_player.tscn" id="2_ow1s3"]
 [ext_resource type="Texture2D" uid="uid://bxtcabi2cc32u" path="res://assets/aim_down_anim/frame000001.png" id="3_cjkfw"]
 [ext_resource type="Texture2D" uid="uid://h6gut3mcb1tv" path="res://assets/aim_down_anim/frame000002.png" id="4_3bx07"]
@@ -722,6 +723,11 @@ animations = [{
 [node name="Node2D" type="Node2D" groups=["duel"]]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(-85, -47)
+texture = ExtResource("2_ap2wk")
+centered = false
 
 [node name="Rest_Timer" type="Timer" parent="."]
 wait_time = 3.0
