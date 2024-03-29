@@ -2,6 +2,7 @@ extends Node2D
 
 #Instantiate bullet scene
 @onready var bullet_scene = load("res://bullet.tscn")
+@onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 
 #bullet constants
 const BULLET_UP = -1
@@ -48,7 +49,11 @@ func _rest_timeout():
 func _duel_timeout():
 	duel = false #player can no longer register inputs
 	emit_signal("pass_up_l", 0) #clear player state in duel scene
+	
 	$charactersprite.play("idle")
+	
+	if(duel_scene.left_health == 0):
+		$charactersprite.play("death")
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true) 
@@ -71,8 +76,10 @@ func _process(delta):
 			$charactersprite.play("draw")
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
+			$charactersprite.play("aim_up")
 		elif Input.is_action_just_pressed("left_player_down"):
 			handle_input(KEY_3)
+			$charactersprite.play("aim_down")
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
 		elif Input.is_action_just_pressed("left_player_block"):
@@ -117,14 +124,17 @@ func handle_input(key):
 
 #excuted on pass down from duel scene
 func shoot(state):
-	$charactersprite.play("shoot")
+	
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		get_child(3).get_child(1).set_disabled(false)
+		$charactersprite.play("shoot_up")
 	elif state == 5: #body shot
 		spawn_bullet(BULLET_STRAIGHT)
+		$charactersprite.play("shoot")
 	else: #legshot
 		spawn_bullet(BULLET_DOWN)
+		$charactersprite.play("shoot_down")
 
 
 func spawn_bullet(direction):
@@ -300,4 +310,6 @@ func clear_selection_UI():
 
 signal pass_up_l(data)
 signal lp_bullet_collided()
+
+
 

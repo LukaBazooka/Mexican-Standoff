@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var bullet_scene = load("res://bullet.tscn")
+@onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 
 
 
@@ -52,6 +53,9 @@ func _duel_timeout():
 	duel = false #player can no longer register inputs
 	emit_signal("pass_up_r", 0) #clear player state in duel scene
 	$charactersprite.play("idle")
+	
+	if(duel_scene.right_health == 0):
+		$charactersprite.play("death")
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true)
