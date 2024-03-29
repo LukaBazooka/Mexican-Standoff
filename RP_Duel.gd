@@ -46,13 +46,15 @@ func _ready(): #not used however may be of use later
 func _rest_timeout():
 	duel = true #player can register inputs
 	input_buffer.clear() #remove and previous inputs loaded into buffer
+	$charactersprite.play("idle")
 	
 	
 #when duel timer ends
 func _duel_timeout():
 	duel = false #player can no longer register inputs
 	emit_signal("pass_up_r", 0) #clear player state in duel scene
-	$charactersprite.play("idle")
+	
+	$charactersprite.play("rest_anim")
 	
 	if(duel_scene.right_health == 0):
 		$charactersprite.play("death")

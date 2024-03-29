@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=162 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -128,6 +128,8 @@
 [ext_resource type="Texture2D" uid="uid://6lfaqg4j4um2" path="res://assets/duck_up_anim/frame000017.png" id="68_0sjcg"]
 [ext_resource type="Texture2D" uid="uid://d3ukxylk3y6sq" path="res://assets/duck_up_anim/frame000018.png" id="69_28hmo"]
 [ext_resource type="Texture2D" uid="uid://b4pyulhytokqf" path="res://assets/duck_up_anim/frame000019.png" id="70_hdk56"]
+[ext_resource type="Texture2D" uid="uid://da4jmcsvu04nh" path="res://assets/rest_anim/frame000001.png" id="99_f38cv"]
+[ext_resource type="Texture2D" uid="uid://dwhuok8cuampw" path="res://assets/rest_anim/frame000002.png" id="100_a4nue"]
 [ext_resource type="Texture2D" uid="uid://cvqufb7pbas7e" path="res://assets/shoot_down_anim/frame000001.png" id="109_g13wf"]
 [ext_resource type="Texture2D" uid="uid://bcbahnbhg36i8" path="res://assets/shoot_down_anim/frame000002.png" id="110_l81t5"]
 [ext_resource type="Texture2D" uid="uid://4f1nhkh6grc0" path="res://assets/shoot_down_anim/frame000003.png" id="111_w3wph"]
@@ -146,6 +148,8 @@
 [ext_resource type="Texture2D" uid="uid://c5iv06jrncwaf" path="res://assets/shoot_up_anim/frame000007.png" id="124_6pexn"]
 [ext_resource type="Texture2D" uid="uid://l4iysa8fkyp0" path="res://assets/shoot_up_anim/frame000008.png" id="125_270qe"]
 [ext_resource type="Texture2D" uid="uid://x6r88j3ewjbm" path="res://assets/shoot_up_anim/frame000009.png" id="126_btxcy"]
+[ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
+[ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -510,6 +514,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("99_f38cv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_a4nue")
+}],
+"loop": true,
+"name": &"rest_anim",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("39_5jfq6")
 }, {
 "duration": 1.0,
@@ -605,6 +620,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot_up",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("129_8n3dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_vxhmi")
+}],
+"loop": false,
+"name": &"win_anim",
 "speed": 12.0
 }]
 
@@ -736,8 +762,10 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"death"
+animation = &"rest_anim"
 autoplay = "idle"
+frame = 1
+frame_progress = 1.0
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
 
