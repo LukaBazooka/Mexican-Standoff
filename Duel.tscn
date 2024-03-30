@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=174 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -91,15 +91,11 @@
 [ext_resource type="Texture2D" uid="uid://bchk1v8s5i4j2" path="res://assets/duck_down_anim/frame000017.png" id="49_ft5g4"]
 [ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
 [ext_resource type="Texture2D" uid="uid://b6k42v8o7lll0" path="res://assets/duck_down_anim/frame000018.png" id="50_pqnbq"]
-[ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="50_t6sov"]
-[ext_resource type="Texture2D" uid="uid://bjifpenje4uuq" path="res://assets/bulletGUI_anim/bullet_gui02.png" id="51_28dk6"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="51_fldnp"]
 [ext_resource type="Texture2D" uid="uid://diuynv0hnueqv" path="res://assets/duck_down_anim/frame000019.png" id="51_nda8d"]
 [ext_resource type="Texture2D" uid="uid://bgm8y5asuf6on" path="res://assets/temp_icons/emptyicon.png" id="52_6b7hx"]
-[ext_resource type="Texture2D" uid="uid://cjm01rqaeg01u" path="res://assets/bulletGUI_anim/emptybullet2.png" id="52_sf3vd"]
 [ext_resource type="Texture2D" uid="uid://ccb5rpwp5qo8t" path="res://assets/duck_up_anim/frame000001.png" id="52_yt5yq"]
 [ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="53_bc3ql"]
-[ext_resource type="Texture2D" uid="uid://ckla1to8u2l6f" path="res://assets/bulletGUI_anim/emptybullet.png" id="53_m3jii"]
 [ext_resource type="Texture2D" uid="uid://mqn0lyrx8gbp" path="res://assets/duck_up_anim/frame000002.png" id="53_v10q8"]
 [ext_resource type="Texture2D" uid="uid://cqku8ruvc3wfn" path="res://assets/temp_icons/SIcon.png" id="54_1gxty"]
 [ext_resource type="Texture2D" uid="uid://dmea7oftvkody" path="res://assets/duck_up_anim/frame000003.png" id="54_jsjeb"]
@@ -146,7 +142,13 @@
 [ext_resource type="Texture2D" uid="uid://x6r88j3ewjbm" path="res://assets/shoot_up_anim/frame000009.png" id="126_btxcy"]
 [ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
 [ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
+[ext_resource type="Texture2D" uid="uid://d0wxsseas27dx" path="res://assets/newbullet_anims/fullbullet01.png" id="142_7oo75"]
+[ext_resource type="Texture2D" uid="uid://bgmiiwkhq0hu3" path="res://assets/newbullet_anims/fullbullet02.png" id="143_qbt64"]
+[ext_resource type="Texture2D" uid="uid://cy14aiyrndlg4" path="res://assets/newbullet_anims/fullbullet03.png" id="144_5abdj"]
+[ext_resource type="Texture2D" uid="uid://ckdyl2d2etsf0" path="res://assets/newbullet_anims/emptybullet01.png" id="145_y7fqi"]
+[ext_resource type="Texture2D" uid="uid://dbq0htn1kaqm7" path="res://assets/newbullet_anims/emptybullet02.png" id="146_j5v8m"]
 [ext_resource type="Texture2D" uid="uid://ccpt82iy21kci" path="res://assets/testheartanim/heart_anim1test.png" id="147_kp55s"]
+[ext_resource type="Texture2D" uid="uid://bqh4qb5o0ue1r" path="res://assets/newbullet_anims/emptybullet03.png" id="147_lhrta"]
 [ext_resource type="Texture2D" uid="uid://b5uvick8f3fno" path="res://assets/testheartanim/heart_anim2test.png" id="148_ftkuo"]
 [ext_resource type="Texture2D" uid="uid://dqkjjl2w2m5rh" path="res://assets/testheartanim/heart_anim3test.png" id="149_mtne8"]
 [ext_resource type="Texture2D" uid="uid://c2f5kjw5t26pk" path="res://assets/testheartanim/hearthalf_anim1.png" id="150_1gsyp"]
@@ -690,29 +692,53 @@ font_size = 50
 font = ExtResource("50_dq8qp")
 font_size = 50
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3lb7l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jjxg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("50_t6sov")
+"texture": ExtResource("142_7oo75")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_28dk6")
+"texture": ExtResource("142_7oo75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
 }],
 "loop": true,
 "name": &"bullet",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_sf3vd")
+"texture": ExtResource("145_y7fqi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("53_m3jii")
+"texture": ExtResource("145_y7fqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
 }],
 "loop": true,
 "name": &"emptybullet",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="Theme" id="Theme_64bs3"]
@@ -964,10 +990,10 @@ grow_horizontal = 2
 [node name="LeftPlayerGUI" type="Control" parent="PlayerGUI"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 251.0
-offset_top = 20.0
-offset_right = 251.0
-offset_bottom = 20.0
+offset_left = 245.0
+offset_top = 38.0
+offset_right = 245.0
+offset_bottom = 38.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
 visible = false
@@ -1156,81 +1182,86 @@ offset_right = 1.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet1"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
-animation = &"bullet"
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.651888
 
 [node name="left_Bullet2" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 10.0
+offset_left = 24.0
 offset_top = 155.0
-offset_right = 50.0
+offset_right = 64.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet2"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet3" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 58.0
+offset_left = 89.0
 offset_top = 155.0
-offset_right = 98.0
+offset_right = 129.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet3"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet4" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 107.0
+offset_left = 151.0
 offset_top = 155.0
-offset_right = 147.0
+offset_right = 191.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet4"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet5" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 159.0
+offset_left = 213.0
 offset_top = 155.0
-offset_right = 199.0
+offset_right = 253.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet5"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet6" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 207.0
+offset_left = 281.0
 offset_top = 155.0
-offset_right = 247.0
+offset_right = 321.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet6"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="DrawPopup" type="Control" parent="PlayerGUI"]
 visible = false
