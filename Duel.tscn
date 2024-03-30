@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=174 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -91,30 +91,21 @@
 [ext_resource type="Texture2D" uid="uid://bchk1v8s5i4j2" path="res://assets/duck_down_anim/frame000017.png" id="49_ft5g4"]
 [ext_resource type="FontFile" uid="uid://g8q20pimr4lq" path="res://assets/fonts/akaPosse.ttf" id="50_dq8qp"]
 [ext_resource type="Texture2D" uid="uid://b6k42v8o7lll0" path="res://assets/duck_down_anim/frame000018.png" id="50_pqnbq"]
-[ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="50_t6sov"]
-[ext_resource type="Texture2D" uid="uid://bjifpenje4uuq" path="res://assets/bulletGUI_anim/bullet_gui02.png" id="51_28dk6"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="51_fldnp"]
 [ext_resource type="Texture2D" uid="uid://diuynv0hnueqv" path="res://assets/duck_down_anim/frame000019.png" id="51_nda8d"]
 [ext_resource type="Texture2D" uid="uid://bgm8y5asuf6on" path="res://assets/temp_icons/emptyicon.png" id="52_6b7hx"]
-[ext_resource type="Texture2D" uid="uid://cjm01rqaeg01u" path="res://assets/bulletGUI_anim/emptybullet2.png" id="52_sf3vd"]
 [ext_resource type="Texture2D" uid="uid://ccb5rpwp5qo8t" path="res://assets/duck_up_anim/frame000001.png" id="52_yt5yq"]
 [ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="53_bc3ql"]
-[ext_resource type="Texture2D" uid="uid://ckla1to8u2l6f" path="res://assets/bulletGUI_anim/emptybullet.png" id="53_m3jii"]
 [ext_resource type="Texture2D" uid="uid://mqn0lyrx8gbp" path="res://assets/duck_up_anim/frame000002.png" id="53_v10q8"]
 [ext_resource type="Texture2D" uid="uid://cqku8ruvc3wfn" path="res://assets/temp_icons/SIcon.png" id="54_1gxty"]
-[ext_resource type="Texture2D" uid="uid://bq01dmg4pvtbr" path="res://assets/heartGUI_anim/hearthalf1.png" id="54_ee5kv"]
 [ext_resource type="Texture2D" uid="uid://dmea7oftvkody" path="res://assets/duck_up_anim/frame000003.png" id="54_jsjeb"]
-[ext_resource type="Texture2D" uid="uid://s3v74u3e4h5c" path="res://assets/heartGUI_anim/hearthalf2.png" id="55_b3xwb"]
 [ext_resource type="Texture2D" uid="uid://b323ehmlinbf1" path="res://assets/temp_icons/Ricon.png" id="55_mbgwu"]
 [ext_resource type="Texture2D" uid="uid://5y7p47l63u4l" path="res://assets/duck_up_anim/frame000004.png" id="55_pksxj"]
-[ext_resource type="Texture2D" uid="uid://xd0qub54gbc3" path="res://assets/heartGUI_anim/heartempty.png" id="56_b2x44"]
 [ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="56_bvta1"]
 [ext_resource type="Texture2D" uid="uid://dvlko4agvadyf" path="res://assets/duck_up_anim/frame000005.png" id="56_kxy02"]
 [ext_resource type="Texture2D" uid="uid://cqyk4wfu4baar" path="res://assets/duck_up_anim/frame000006.png" id="57_0nfsg"]
 [ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="57_cxrpk"]
-[ext_resource type="Texture2D" uid="uid://cytujr1pfbu7d" path="res://assets/heartGUI_anim/heartfull1.png" id="57_kbk6b"]
 [ext_resource type="Texture2D" uid="uid://drskmkqah2pcl" path="res://assets/duck_up_anim/frame000007.png" id="58_gcutp"]
-[ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="58_uqpb2"]
 [ext_resource type="Texture2D" uid="uid://sqgg3fj3e38l" path="res://assets/duck_up_anim/frame000008.png" id="59_hr5hg"]
 [ext_resource type="PackedScene" uid="uid://dcmogs7pddbbf" path="res://dueltimer.tscn" id="59_xn7il"]
 [ext_resource type="Texture2D" uid="uid://ogpihc50hlec" path="res://assets/duck_up_anim/frame000009.png" id="60_07tv7"]
@@ -151,6 +142,26 @@
 [ext_resource type="Texture2D" uid="uid://x6r88j3ewjbm" path="res://assets/shoot_up_anim/frame000009.png" id="126_btxcy"]
 [ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
 [ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
+[ext_resource type="Texture2D" uid="uid://d0wxsseas27dx" path="res://assets/newbullet_anims/fullbullet01.png" id="142_7oo75"]
+[ext_resource type="Texture2D" uid="uid://bgmiiwkhq0hu3" path="res://assets/newbullet_anims/fullbullet02.png" id="143_qbt64"]
+[ext_resource type="Texture2D" uid="uid://cy14aiyrndlg4" path="res://assets/newbullet_anims/fullbullet03.png" id="144_5abdj"]
+[ext_resource type="Texture2D" uid="uid://ckdyl2d2etsf0" path="res://assets/newbullet_anims/emptybullet01.png" id="145_y7fqi"]
+[ext_resource type="Texture2D" uid="uid://dbq0htn1kaqm7" path="res://assets/newbullet_anims/emptybullet02.png" id="146_j5v8m"]
+[ext_resource type="Texture2D" uid="uid://ccpt82iy21kci" path="res://assets/testheartanim/heart_anim1test.png" id="147_kp55s"]
+[ext_resource type="Texture2D" uid="uid://bqh4qb5o0ue1r" path="res://assets/newbullet_anims/emptybullet03.png" id="147_lhrta"]
+[ext_resource type="Texture2D" uid="uid://b5uvick8f3fno" path="res://assets/testheartanim/heart_anim2test.png" id="148_ftkuo"]
+[ext_resource type="Texture2D" uid="uid://dqkjjl2w2m5rh" path="res://assets/testheartanim/heart_anim3test.png" id="149_mtne8"]
+[ext_resource type="Texture2D" uid="uid://c2f5kjw5t26pk" path="res://assets/testheartanim/hearthalf_anim1.png" id="150_1gsyp"]
+[ext_resource type="Texture2D" uid="uid://y1iquktohyth" path="res://assets/testheartanim/hearthalf_anim2.png" id="151_e83ou"]
+[ext_resource type="Texture2D" uid="uid://d3syu77su0pa0" path="res://assets/testheartanim/hearthalf_anim3.png" id="152_3klls"]
+[ext_resource type="Texture2D" uid="uid://cyuiirnpmqoyf" path="res://assets/testheartanim/hear_anim1test.png" id="153_vvpte"]
+[ext_resource type="Texture2D" uid="uid://vwlr2djsdjjs" path="res://assets/testheartanim/hear_anim2test.png" id="154_muerj"]
+[ext_resource type="Texture2D" uid="uid://e642mcf1pe1k" path="res://assets/testheartanim/hear_anim3test.png" id="155_1843l"]
+[ext_resource type="Texture2D" uid="uid://b1to2bpnf4jgg" path="res://assets/testheartanim/hearfullanim1.png" id="156_rysb1"]
+[ext_resource type="Texture2D" uid="uid://dywgc3t5e1emo" path="res://assets/testheartanim/hearfullanim2.png" id="157_qga8a"]
+[ext_resource type="Texture2D" uid="uid://cbgfpxngltf2i" path="res://assets/testheartanim/hearfullanim3.png" id="158_yein8"]
+[ext_resource type="Texture2D" uid="uid://cx81nmdcejo8k" path="res://assets/testheartanim/heart_anim4.png" id="159_2nsvq"]
+[ext_resource type="Texture2D" uid="uid://c7a8g58jopyso" path="res://assets/testheartanim/hearfullanim5.png" id="160_r354w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -686,29 +697,53 @@ font_size = 50
 font = ExtResource("50_dq8qp")
 font_size = 50
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3lb7l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jjxg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("50_t6sov")
+"texture": ExtResource("142_7oo75")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_28dk6")
+"texture": ExtResource("142_7oo75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
 }],
 "loop": true,
 "name": &"bullet",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_sf3vd")
+"texture": ExtResource("145_y7fqi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("53_m3jii")
+"texture": ExtResource("145_y7fqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
 }],
 "loop": true,
 "name": &"emptybullet",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="Theme" id="Theme_64bs3"]
@@ -721,37 +756,111 @@ font_size = 180
 font = ExtResource("50_dq8qp")
 font_size = 50
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_i7rk3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctphf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("54_ee5kv")
+"texture": ExtResource("147_kp55s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("55_b3xwb")
+"texture": ExtResource("147_kp55s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_ftkuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_ftkuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_mtne8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_mtne8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("150_1gsyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_1gsyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_e83ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_e83ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_3klls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_3klls")
 }],
 "loop": true,
 "name": &"halfheart",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("56_b2x44")
+"texture": ExtResource("153_vvpte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_vvpte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_muerj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_muerj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_1843l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_1843l")
 }],
 "loop": true,
 "name": &"heartempty",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("57_kbk6b")
+"texture": ExtResource("156_rysb1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("58_uqpb2")
+"texture": ExtResource("156_rysb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_qga8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_qga8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_yein8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_yein8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_2nsvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_2nsvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_r354w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_r354w")
 }],
 "loop": true,
 "name": &"heartfull",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Node2D" type="Node2D" groups=["duel"]]
@@ -886,17 +995,19 @@ grow_horizontal = 2
 [node name="LeftPlayerGUI" type="Control" parent="PlayerGUI"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 251.0
-offset_top = 20.0
-offset_right = 251.0
-offset_bottom = 20.0
+offset_left = 245.0
+offset_top = 38.0
+offset_right = 245.0
+offset_bottom = 38.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Health:"
 label_settings = SubResource("LabelSettings_skm0t")
@@ -913,6 +1024,7 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_skm0t")
 
 [node name="AmmoLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Ammo:"
 label_settings = SubResource("LabelSettings_8hu5n")
@@ -1075,81 +1187,86 @@ offset_right = 1.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet1"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
-animation = &"bullet"
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.651888
 
 [node name="left_Bullet2" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 10.0
+offset_left = 24.0
 offset_top = 155.0
-offset_right = 50.0
+offset_right = 64.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet2"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet3" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 58.0
+offset_left = 89.0
 offset_top = 155.0
-offset_right = 98.0
+offset_right = 129.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet3"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet4" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 107.0
+offset_left = 151.0
 offset_top = 155.0
-offset_right = 147.0
+offset_right = 191.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet4"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet5" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 159.0
+offset_left = 213.0
 offset_top = 155.0
-offset_right = 199.0
+offset_right = 253.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet5"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="left_Bullet6" type="Control" parent="PlayerGUI"]
 anchors_preset = 0
-offset_left = 207.0
+offset_left = 281.0
 offset_top = 155.0
-offset_right = 247.0
+offset_right = 321.0
 offset_bottom = 195.0
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet6"]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_3lb7l")
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
-frame_progress = 0.323653
+frame_progress = 0.999232
 
 [node name="DrawPopup" type="Control" parent="PlayerGUI"]
 visible = false
@@ -1243,48 +1360,45 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = -33.0
 offset_top = 35.0
-offset_right = 7.0
-offset_bottom = 75.0
+offset_right = -5.0
+offset_bottom = 61.0
 
 [node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart1"]
-position = Vector2(-2, 1)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_i7rk3")
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
-frame_progress = 0.450946
 
 [node name="left_heart2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 74.0
+offset_left = 112.0
 offset_top = 35.0
-offset_right = 114.0
-offset_bottom = 75.0
+offset_right = 140.0
+offset_bottom = 61.0
 
 [node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart2"]
-position = Vector2(-2, 1)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_i7rk3")
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
-frame_progress = 0.198738
 
 [node name="left_heart3" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 179.0
+offset_left = 259.0
 offset_top = 35.0
-offset_right = 219.0
-offset_bottom = 75.0
+offset_right = 287.0
+offset_bottom = 61.0
 
 [node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart3"]
-position = Vector2(-2, 1)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_i7rk3")
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
-frame_progress = 0.198738
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]
