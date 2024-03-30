@@ -149,6 +149,7 @@ func spawn_bullet(direction):
 		#create bullet instance
 		var bullet_instance = bullet_scene.instantiate() 
 		bullet_instance.position = $gunpoint.position
+		bullet_instance.z_index += 5
 		add_child(bullet_instance) #add to player scene
 		
 		#set so that bullet can collide with other bullets

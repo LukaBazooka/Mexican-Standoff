@@ -171,7 +171,8 @@ func handle_death():
 		$RightPlayer/charactersprite.play("idle")
 	else: 
 		#only one player died
-		#create tear_down
+		#tear_down makes sure no collisions can happen
+		tear_down()
 		await get_tree().create_timer(0.6).timeout
 	handled_death = false
 
@@ -244,3 +245,14 @@ func _on_action_finish_timeout():
 	$LeftPlayer._action_timeout()
 	$RightPlayer._action_timeout()
 
+
+func tear_down():
+	#called when game over
+	# clears all bullets and collison shapes
+	if $LeftPlayer.get_child_count() == 4:
+		$LeftPlayer.get_child(3).queue_free()
+	$LeftPlayer.get_child(2).queue_free()
+	
+	if $RightPlayer.get_child_count() == 4:
+		$RightPlayer.get_child(3).queue_free()
+	$LeftPlayer.get_child(2).queue_free()
