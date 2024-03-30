@@ -353,7 +353,7 @@ offset_left = 1152.0
 offset_top = 536.0
 offset_right = 1643.0
 offset_bottom = 608.0
-text = "Tutroial for Right Player 
+text = "Right Player Practice
 "
 label_settings = SubResource("LabelSettings_eoh28")
 horizontal_alignment = 1
@@ -390,7 +390,7 @@ offset_left = 16.0
 offset_top = 424.0
 offset_right = 507.0
 offset_bottom = 496.0
-text = "Tutorial for Left Player"
+text = "Left Player Practice "
 label_settings = SubResource("LabelSettings_eoh28")
 horizontal_alignment = 1
 vertical_alignment = 1

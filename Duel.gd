@@ -173,6 +173,10 @@ func handle_death():
 		#only one player died
 		#tear_down makes sure no collisions can happen
 		tear_down()
+		if left_health > 0:
+			$LeftPlayer/charactersprite.play("win_anim")
+		elif right_health > 0:
+			$RightPlayer/charactersprite.play("win_anim")
 		await get_tree().create_timer(0.6).timeout
 	handled_death = false
 

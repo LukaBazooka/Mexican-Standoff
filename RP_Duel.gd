@@ -145,6 +145,7 @@ func spawn_bullet(direction):
 		#by default bullet instance will not be able to detect other bullets
 		var bullet_instance = bullet_scene.instantiate()
 		bullet_instance.position = $gunpoint.position
+		bullet_instance.z_index += 5
 		add_child(bullet_instance) #add to player scene
 		#opposite direction of default velocity
 		bullet_instance.linear_velocity.x *= -1

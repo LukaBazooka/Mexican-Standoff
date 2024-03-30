@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpr3noro27bu1"]
+
+[ext_resource type="Texture2D" uid="uid://bcgcx2holfmbf" path="res://assets/images/boxing_ring.jpeg" id="1_fb0xk"]
+[ext_resource type="Texture2D" uid="uid://bq0sip1ps0ht0" path="res://assets/images/Mike_Tyson.png" id="2_s1tr2"]
+[ext_resource type="Script" path="res://MikeTyson.gd" id="3_qxbbc"]
+[ext_resource type="AudioStream" uid="uid://dqffwotfhcyeg" path="res://assets/sfx/La Raspa.mp3" id="4_r5iuj"]
+
+[node name="right_practice" type="Node2D"]
+
+[node name="BoxingRing" type="Sprite2D" parent="."]
+position = Vector2(954, 459)
+texture = ExtResource("1_fb0xk")
+
+[node name="MikeTyson" type="Sprite2D" parent="."]
+position = Vector2(386, 649)
+texture = ExtResource("2_s1tr2")
+script = ExtResource("3_qxbbc")
+
+[node name="Timer" type="Timer" parent="MikeTyson"]
+wait_time = 2.0
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MikeTyson"]
+position = Vector2(-386, -649)
+stream = ExtResource("4_r5iuj")
+volume_db = 10.0
+autoplay = true
+
+[connection signal="timeout" from="MikeTyson/Timer" to="MikeTyson" method="_on_timer_timeout"]
