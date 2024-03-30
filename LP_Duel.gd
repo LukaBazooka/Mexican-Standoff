@@ -15,6 +15,8 @@ const SPEED_Y = 150
 const HEAD_SEQUENCE = [KEY_0, KEY_1, KEY_4]
 const BODY_SEQUENCE = [KEY_0, KEY_4]
 const LEG_SEQUENCE = [KEY_0, KEY_3, KEY_4]
+const AIM_UP = [KEY_0, KEY_1]
+const AIM_DOWN = [KEY_0, KEY_3]
 const BLOCK_SEQUENCE = [KEY_5]
 const BLOCK_LEGS_SEQUENCE = [KEY_3, KEY_5]
 
@@ -52,7 +54,7 @@ func _duel_timeout():
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true) 
-	
+	$gunpoint.position.y = 256
 	#rests block possibilties
 	leg_blocked = false
 	body_blocked = false
@@ -75,10 +77,8 @@ func _process(delta):
 			$charactersprite.play("draw")
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
-			$charactersprite.play("aim_up")
 		elif Input.is_action_just_pressed("left_player_down"):
 			handle_input(KEY_3)
-			$charactersprite.play("aim_down")
 		elif Input.is_action_just_pressed("left_player_shoot"):
 			handle_input(KEY_4)
 		elif Input.is_action_just_pressed("left_player_block"):
@@ -101,7 +101,6 @@ func handle_input(key):
 			emit_signal("pass_up_l", 3) 
 			duel = false
 
-			
 		elif input_buffer == BLOCK_SEQUENCE:
 			emit_signal("pass_up_l", 2)
 			duel = false
@@ -116,13 +115,18 @@ func handle_input(key):
 				emit_signal("pass_up_l", 5)
 			duel = false
 			
-			
-
 		elif input_buffer == LEG_SEQUENCE:
 			if ammo > 0:
 				emit_signal("pass_up_l", 6)
 			duel = false
 			
+		elif input_buffer == AIM_UP:
+			$charactersprite.play("aim_up")
+			$gunpoint.position.y -= 60
+			
+		elif input_buffer == AIM_DOWN:
+			$charactersprite.play("aim_down")
+			$gunpoint.position.y += 60
 
 
 #excuted on pass down from duel scene
@@ -150,6 +154,14 @@ func spawn_bullet(direction):
 		#set so that bullet can collide with other bullets
 		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
+		
+		if direction ==  BULLET_UP:
+			get_child(3).get_child(0).set_rotation_degrees(80)
+			
+		elif direction == BULLET_DOWN:
+			get_child(3).get_child(0).set_rotation_degrees(100)
+		
+
 
 #upon blocked collison
 func rebound(obj):

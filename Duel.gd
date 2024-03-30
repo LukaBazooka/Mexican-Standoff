@@ -155,8 +155,9 @@ func handle_death():
 	$Action_finish.stop()
 	$DuelTimer.stop()
 	
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.05).timeout
 	if left_health <= 0 and right_health <= 0:
+		await get_tree().create_timer(0.6).timeout
 		$DeathScreen.visible = false
 		$LeftPlayer/charactersprite.play("reverse_death")
 		$RightPlayer/charactersprite.play("reverse_death")
@@ -168,7 +169,10 @@ func handle_death():
 		await get_tree().create_timer(0.6).timeout
 		$LeftPlayer/charactersprite.play("idle")
 		$RightPlayer/charactersprite.play("idle")
-		
+	else: 
+		#only one player died
+		#create tear_down
+		await get_tree().create_timer(0.6).timeout
 	handled_death = false
 
 

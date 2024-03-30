@@ -20,6 +20,8 @@ const SPEED_Y = 150
 const HEAD_SEQUENCE = [KEY_0, KEY_1, KEY_4]
 const BODY_SEQUENCE = [KEY_0, KEY_4]
 const LEG_SEQUENCE = [KEY_0, KEY_3, KEY_4]
+const AIM_UP = [KEY_0, KEY_1]
+const AIM_DOWN = [KEY_0, KEY_3]
 const BLOCK_SEQUENCE = [KEY_5]
 const BLOCK_LEGS_SEQUENCE = [KEY_3, KEY_5]
 
@@ -55,6 +57,7 @@ func _duel_timeout():
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true)
+	$gunpoint.position.y = 256
 	
 	#rests block possibilties
 	leg_blocked = false
@@ -118,6 +121,14 @@ func handle_input(key):
 			if ammo > 0:
 				emit_signal("pass_up_r", 6)
 			duel = false
+			
+		elif input_buffer == AIM_UP:
+			$charactersprite.play("aim_up")
+			$gunpoint.position.y -= 60
+			
+		elif input_buffer == AIM_DOWN:
+			$charactersprite.play("aim_down")
+			$gunpoint.position.y += 60
 
 
 
@@ -132,6 +143,11 @@ func spawn_bullet(direction):
 		bullet_instance.linear_velocity.x *= -1
 		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
+		if direction ==  BULLET_UP:
+			get_child(3).get_child(0).set_rotation_degrees(280)
+			
+		elif direction == BULLET_DOWN:
+			get_child(3).get_child(0).set_rotation_degrees(260)
 		
 
 #upon blocked collison
