@@ -49,11 +49,6 @@ func _rest_timeout():
 #when duel timer ends
 func _duel_timeout():
 	duel = false #player can no longer register inputs
-	emit_signal("pass_up_l", 0) #clear player state in duel scene
-	
-	$charactersprite.play("rest_anim")
-	
-
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true) 
@@ -62,6 +57,10 @@ func _duel_timeout():
 	leg_blocked = false
 	body_blocked = false
 	
+#players animations and actions finsihed
+func _action_timeout():
+	emit_signal("pass_up_l", 0) #clear player state in duel scene
+	$charactersprite.play("rest_anim")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,7 +84,7 @@ func _process(delta):
 		elif Input.is_action_just_pressed("left_player_block"):
 			handle_input(KEY_5)
 		elif Input.is_action_just_pressed("left_player_reload"):
-			emit_signal("pass_up_l", 0) #no damage done
+			emit_signal("pass_up_l", 1) #no damage done
 			duel = false # stop from executing different states
 			ammo += 1
 			$charactersprite.play("reload")
@@ -101,6 +100,7 @@ func handle_input(key):
 		if input_buffer == BLOCK_LEGS_SEQUENCE:
 			emit_signal("pass_up_l", 3) 
 			duel = false
+
 			
 		elif input_buffer == BLOCK_SEQUENCE:
 			emit_signal("pass_up_l", 2)
@@ -115,11 +115,14 @@ func handle_input(key):
 			if ammo > 0:
 				emit_signal("pass_up_l", 5)
 			duel = false
+			
+			
 
 		elif input_buffer == LEG_SEQUENCE:
 			if ammo > 0:
 				emit_signal("pass_up_l", 6)
 			duel = false
+			
 
 
 #excuted on pass down from duel scene
@@ -173,8 +176,11 @@ func _on_body_collisoion_bullet_entered(area):
 func _on_node_2d_lp_block_state(data):
 	if data == 2:
 		body_blocked = true
+		$charactersprite.play("duck_up")
+		
 	elif data == 3:
 		leg_blocked = true
+		$charactersprite.play("duck_down")
 	#regardless of block state headshot cannot occur
 	#set head area2d so bullets cannot be detected
 	get_child(2).get_child(2).set_monitoring(false)

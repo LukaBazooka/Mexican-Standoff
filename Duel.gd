@@ -18,10 +18,10 @@ var rest_time
 const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
 [0, 1]: [NO_DMG, NO_DMG], [1, 1]: [NO_DMG, NO_DMG], [2, 1]: [NO_DMG, NO_DMG], [3, 1]: [NO_DMG, NO_DMG], [4, 1]: [NO_DMG, HEAD_SHOT], [5, 1]: [NO_DMG, BODY_SHOT], [6, 1]: [NO_DMG, LEG_SHOT], #Reload
-[0, 2]: [NO_DMG, NO_DMG],[1, 2]: [NO_DMG, NO_DMG], [2, 2]: [NO_DMG, NO_DMG], [3, 2]: [NO_DMG, NO_DMG], [4, 2]: [NO_DMG, NO_DMG], [5, 2]: [NO_DMG, BODY_SHOT], [6, 2]: [NO_DMG, NO_DMG], #legs bloc
-[0, 3]: [NO_DMG, NO_DMG], [1, 3]: [NO_DMG, NO_DMG], [2, 3]: [NO_DMG, NO_DMG], [3, 3]: [NO_DMG, NO_DMG], [4, 3]: [NO_DMG, NO_DMG], [5, 3]: [NO_DMG, NO_DMG], [6, 3]: [NO_DMG, LEG_SHOT], #Block upper
+[0, 2]: [NO_DMG, NO_DMG],[1, 2]: [NO_DMG, NO_DMG], [2, 2]: [NO_DMG, NO_DMG], [3, 2]: [NO_DMG, NO_DMG], [4, 2]: [NO_DMG, NO_DMG], [5, 2]: [NO_DMG, NO_DMG], [6, 2]: [NO_DMG, LEG_SHOT], #block uppper
+[0, 3]: [NO_DMG, NO_DMG], [1, 3]: [NO_DMG, NO_DMG], [2, 3]: [NO_DMG, NO_DMG], [3, 3]: [NO_DMG, NO_DMG], [4, 3]: [NO_DMG, NO_DMG], [5, 3]: [NO_DMG, BODY_SHOT], [6, 3]: [NO_DMG, NO_DMG], #leg block
 [0, 4]: [HEAD_SHOT, NO_DMG],[1, 4]: [HEAD_SHOT, NO_DMG], [2, 4]: [NO_DMG, NO_DMG], [3, 4]: [NO_DMG, NO_DMG], [4, 4]: [NO_DMG, NO_DMG], [5, 4]: [HEAD_SHOT, BODY_SHOT], [6, 4]: [HEAD_SHOT, LEG_SHOT], #headshot
-[0, 5]: [BODY_SHOT, NO_DMG], [1, 5]: [BODY_SHOT, NO_DMG], [2, 5]: [BODY_SHOT, NO_DMG], [3, 5]: [NO_DMG, NO_DMG], [4, 5]: [BODY_SHOT, HEAD_SHOT], [5, 5]: [BODY_SHOT, BODY_SHOT], [6, 5]: [BODY_SHOT, LEG_SHOT], #Bodyshot
+[0, 5]: [BODY_SHOT, NO_DMG], [1, 5]: [BODY_SHOT, NO_DMG], [2, 5]: [NO_DMG, NO_DMG], [3, 5]: [BODY_SHOT, NO_DMG], [4, 5]: [BODY_SHOT, HEAD_SHOT], [5, 5]: [BODY_SHOT, BODY_SHOT], [6, 5]: [BODY_SHOT, LEG_SHOT], #Bodyshot
 [0, 6]: [LEG_SHOT, NO_DMG], [1, 6]: [LEG_SHOT, NO_DMG], [2, 6]: [LEG_SHOT, NO_DMG], [3, 6]: [NO_DMG, NO_DMG], [4, 6]: [LEG_SHOT, HEAD_SHOT], [5, 6]: [LEG_SHOT, BODY_SHOT], [6, 6]: [LEG_SHOT, LEG_SHOT] #leg shot
 }
 """
@@ -76,11 +76,6 @@ func _process(delta):
 
 func new_round():
 	$Rest_Timer.start()
-	if left_health == 0 and right_health == 0:
-		left_health = 1
-		right_health = 1
-		
-
 
 
 func _on_rest_timer_timeout():
@@ -94,7 +89,7 @@ func _on_rest_timer_timeout():
 
 
 func _on_duel_timer_timeout():
-	new_round()
+	$Action_finish.start()
 	$LeftPlayer._duel_timeout()
 	$RightPlayer._duel_timeout()
 	actively_handle_state = false
@@ -105,12 +100,10 @@ func handle_first_state():
 	$StateTimer.start()
 	handle_first = false #ensures can't be called twice in the same round
 
+
 func handle_second_state(): 
 	#effectively sets wait time to 0 so _on_state_timer_timeout() can be executed
-	$StateTimer.set_wait_time(0.0001)
-	actively_handle_state = false #no longer registeirng inputs
-	if lp_state == 0 and rp_state == 0:
-		pass
+	$StateTimer.set_wait_time(0.0001) #Note the wait time must be rest to its intial value later
 
 #handles lp state once they have been passed up
 func _on_left_player_pass_up_l(data):
@@ -122,9 +115,13 @@ func _on_right_player_pass_up_r(data):
 	rp_state = data
 	state_transfer("rp", data)
 
-#loads damage to be donoe for each player from state dict to current_state_arr
+#loads damage to be done for each player from state dict to current_state_arr
 func _on_state_timer_timeout():
+	actively_handle_state =  false
 	current_state_arr = STATE_DICT.get([lp_state, rp_state], [0, 0])
+	$StateTimer.set_wait_time(0.5) #resets wait time appropriatly
+
+
 
 #only executes once a bullet has entered area2d in left player
 func _on_left_player_lp_bullet_collided():
@@ -207,3 +204,9 @@ func _on_retry_pressed():
 #When "DUEL" Goes away
 func _on_timer_timeout():
 	$PlayerGUI/DrawPopup.visible = false
+
+#used for finishing actions and animations before next round
+func _on_action_finish_timeout():
+	$Rest_Timer.start()
+	$LeftPlayer._action_timeout()
+	$RightPlayer._action_timeout()
