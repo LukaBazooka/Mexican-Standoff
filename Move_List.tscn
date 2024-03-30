@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://dd3hhgykf7tbn"]
+[gd_scene load_steps=19 format=3 uid="uid://crjsreso4adp8"]
 
-[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_p7yrk"]
-[ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="2_brsrn"]
-[ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_l5o5t"]
-[ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_n4jn5"]
-[ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="5_s7ap7"]
-[ext_resource type="Texture2D" uid="uid://s3v74u3e4h5c" path="res://assets/heartGUI_anim/hearthalf2.png" id="6_15meb"]
-[ext_resource type="Texture2D" uid="uid://cqku8ruvc3wfn" path="res://assets/temp_icons/SIcon.png" id="7_qocmj"]
-[ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="8_f3iga"]
-[ext_resource type="Texture2D" uid="uid://b323ehmlinbf1" path="res://assets/temp_icons/Ricon.png" id="9_dff82"]
+[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_3i4ag"]
+[ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_2yhm2"]
+[ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_c2mtj"]
+[ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="4_j34p2"]
+[ext_resource type="Texture2D" uid="uid://blf7l8dvtprjp" path="res://assets/heartGUI_anim/hearfull2.png" id="5_esli0"]
+[ext_resource type="Texture2D" uid="uid://s3v74u3e4h5c" path="res://assets/heartGUI_anim/hearthalf2.png" id="6_6jsui"]
+[ext_resource type="Texture2D" uid="uid://cqku8ruvc3wfn" path="res://assets/temp_icons/SIcon.png" id="7_64nka"]
+[ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="8_7ma0u"]
+[ext_resource type="Texture2D" uid="uid://b323ehmlinbf1" path="res://assets/temp_icons/Ricon.png" id="9_knex5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ollqj"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)
@@ -89,7 +89,7 @@ offset_left = 451.0
 offset_top = 16.0
 offset_right = 669.0
 offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 70
 text = "Move List
 "
@@ -110,7 +110,7 @@ offset_left = 32.0
 offset_top = 8.0
 offset_right = 190.0
 offset_bottom = 75.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Headshot"
 vertical_alignment = 2
@@ -128,17 +128,17 @@ vertical_alignment = 2
 [node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
 position = Vector2(256, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_l5o5t")
+texture = ExtResource("2_2yhm2")
 
 [node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("3_n4jn5")
+texture = ExtResource("3_c2mtj")
 
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_brsrn")
+texture = ExtResource("4_j34p2")
 
 [node name="Control" type="Control" parent="Panel/Shoot/Headshot"]
 anchors_preset = 0
@@ -150,17 +150,17 @@ offset_bottom = 72.0
 [node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_s7ap7")
+texture = ExtResource("5_esli0")
 
 [node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(70, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_s7ap7")
+texture = ExtResource("5_esli0")
 
 [node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
 position = Vector2(116, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_s7ap7")
+texture = ExtResource("5_esli0")
 
 [node name="Label" type="Label" parent="Panel/Shoot/Headshot/Control"]
 layout_mode = 0
@@ -186,7 +186,7 @@ offset_left = 32.0
 offset_top = 98.0
 offset_right = 190.0
 offset_bottom = 165.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Bodyshot"
 vertical_alignment = 2
@@ -204,12 +204,12 @@ vertical_alignment = 2
 [node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_l5o5t")
+texture = ExtResource("2_2yhm2")
 
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_brsrn")
+texture = ExtResource("4_j34p2")
 
 [node name="Control" type="Control" parent="Panel/Shoot/Bodyshot"]
 anchors_preset = 0
@@ -221,12 +221,12 @@ offset_bottom = 72.0
 [node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_s7ap7")
+texture = ExtResource("5_esli0")
 
 [node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
 position = Vector2(70, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_15meb")
+texture = ExtResource("6_6jsui")
 
 [node name="Label" type="Label" parent="Panel/Shoot/Bodyshot/Control"]
 layout_mode = 0
@@ -252,7 +252,7 @@ offset_left = 32.0
 offset_top = 188.0
 offset_right = 190.0
 offset_bottom = 255.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Legshot"
 vertical_alignment = 2
@@ -270,17 +270,17 @@ vertical_alignment = 2
 [node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
 position = Vector2(256, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_l5o5t")
+texture = ExtResource("2_2yhm2")
 
 [node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("7_qocmj")
+texture = ExtResource("7_64nka")
 
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_brsrn")
+texture = ExtResource("4_j34p2")
 
 [node name="Control" type="Control" parent="Panel/Shoot/Legshot"]
 anchors_preset = 0
@@ -292,7 +292,7 @@ offset_bottom = 72.0
 [node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Legshot/Control"]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_s7ap7")
+texture = ExtResource("5_esli0")
 
 [node name="Label" type="Label" parent="Panel/Shoot/Legshot/Control"]
 layout_mode = 0
@@ -326,7 +326,7 @@ offset_left = 32.0
 offset_top = 8.0
 offset_right = 190.0
 offset_bottom = 75.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Bodyblock"
 vertical_alignment = 2
@@ -344,7 +344,7 @@ vertical_alignment = 2
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Block/Bodyblock/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("8_f3iga")
+texture = ExtResource("8_7ma0u")
 
 [node name="Seperator" type="Panel" parent="Panel/Block/Bodyblock"]
 layout_mode = 0
@@ -360,7 +360,7 @@ offset_left = 32.0
 offset_top = 98.0
 offset_right = 190.0
 offset_bottom = 165.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Bodyshot"
 vertical_alignment = 2
@@ -378,12 +378,12 @@ vertical_alignment = 2
 [node name="Wicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("8_f3iga")
+texture = ExtResource("8_7ma0u")
 
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("7_qocmj")
+texture = ExtResource("7_64nka")
 
 [node name="Seperator" type="Panel" parent="Panel/Block/LegBlock"]
 layout_mode = 0
@@ -407,7 +407,7 @@ offset_left = 32.0
 offset_top = 8.0
 offset_right = 190.0
 offset_bottom = 75.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 50
 text = "Reload
 "
@@ -426,7 +426,7 @@ vertical_alignment = 2
 [node name="Capslockicon" type="Sprite2D" parent="Panel/Reload/Bodyblock/Buttons"]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
-texture = ExtResource("9_dff82")
+texture = ExtResource("9_knex5")
 
 [node name="Seperator" type="Panel" parent="Panel/Reload/Bodyblock"]
 layout_mode = 0
@@ -442,7 +442,7 @@ offset_left = 468.0
 offset_top = 798.0
 offset_right = 651.0
 offset_bottom = 861.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
@@ -455,7 +455,7 @@ offset_left = 468.0
 offset_top = 728.0
 offset_right = 651.0
 offset_bottom = 791.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
@@ -469,7 +469,7 @@ offset_left = 511.0
 offset_top = 869.0
 offset_right = 610.0
 offset_bottom = 918.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
+theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")

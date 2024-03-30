@@ -1,0 +1,198 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnxeausb8s2wo"]
+
+[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_iaxpt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hrcr"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.960784)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_x3rua"]
+Panel/styles/panel = SubResource("StyleBoxFlat_1hrcr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku1mk"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_gb72x"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ku1mk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmawy"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u03kx"]
+bg_color = Color(0.337255, 0.337255, 0.337255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Game Rules" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 44.0
+offset_right = 1560.0
+offset_bottom = 936.0
+theme = SubResource("Theme_x3rua")
+
+[node name="Goal" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 28.0
+offset_right = 104.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 60
+text = "Goal"
+
+[node name="Panel" type="Panel" parent="Panel/Goal"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 60.0
+offset_right = 1096.0
+offset_bottom = 116.0
+theme = SubResource("Theme_gb72x")
+
+[node name="Label" type="Label" parent="Panel/Goal/Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 221.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+text = "KILL your opponet in a mexican Standoff"
+vertical_alignment = 1
+
+[node name="Game Structure" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 174.0
+offset_right = 344.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 60
+text = "Game structure"
+
+[node name="Panel" type="Panel" parent="Panel/Game Structure"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 60.0
+offset_right = 1096.0
+offset_bottom = 114.0
+theme = SubResource("Theme_gb72x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmawy")
+
+[node name="Label" type="Label" parent="Panel/Game Structure/Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 688.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+text = "The Game has 2 phases the rest phase and the duel phase
+"
+vertical_alignment = 1
+
+[node name="Rest Phase" type="Label" parent="Panel/Game Structure"]
+layout_mode = 0
+offset_top = 127.0
+offset_right = 318.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 45
+text = "Rest Phase
+"
+vertical_alignment = 1
+
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Rest Phase"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 58.0
+offset_right = 1096.0
+offset_bottom = 113.0
+theme = SubResource("Theme_gb72x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
+
+[node name="Label" type="Label" parent="Panel/Game Structure/Rest Phase/Rest Phase"]
+layout_mode = 0
+offset_right = 874.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+text = " Gives players the oppertunity to prepare for the next duel round"
+vertical_alignment = 1
+
+[node name="Duel Phase" type="Label" parent="Panel/Game Structure"]
+layout_mode = 0
+offset_top = 256.0
+offset_right = 318.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 45
+text = "Duel Phase
+"
+vertical_alignment = 1
+
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 58.0
+offset_right = 1096.0
+offset_bottom = 113.0
+theme = SubResource("Theme_gb72x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
+
+[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase/Rest Phase"]
+layout_mode = 0
+offset_right = 874.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+text = " players can perform actions"
+vertical_alignment = 1
+
+[node name="Duel Phase2" type="Label" parent="Panel/Game Structure"]
+layout_mode = 0
+offset_top = 372.0
+offset_right = 318.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 45
+text = "Fast Hands
+"
+vertical_alignment = 1
+
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase2"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 58.0
+offset_right = 1096.0
+offset_bottom = 113.0
+theme = SubResource("Theme_gb72x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
+
+[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase2/Rest Phase"]
+layout_mode = 0
+offset_right = 874.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+text = " "
+vertical_alignment = 1

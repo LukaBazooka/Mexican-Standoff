@@ -79,11 +79,8 @@ func new_round():
 	if left_health == 0 and right_health == 0:
 		left_health = 1
 		right_health = 1
-	if left_health <= 0:
-		$DeathScreen.visible = true
 		
-	if right_health <= 0:
-		$DeathScreen.visible = true
+
 
 
 func _on_rest_timer_timeout():
@@ -134,12 +131,21 @@ func _on_left_player_lp_bullet_collided():
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
 		left_health -= 100
+		
+	if left_health <= 0:
+		$DeathScreen.visible = true
+		$LeftPlayer/charactersprite.play("death")
 
 #only executes once a bullet has entered area2d in right player
 func _on_right_player_rp_bullet_collided():
 	right_health -= current_state_arr[1]
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow
 		right_health -= 100
+		
+	if right_health <= 0:
+		$DeathScreen.visible = true
+		if left_health <= 0:
+			$LeftPlayer/charactersprite.play("death")
 
 #passes to player their state for execution 
 func pass_down_state(user, data):

@@ -52,8 +52,7 @@ func _duel_timeout():
 	
 	$charactersprite.play("idle")
 	
-	if(duel_scene.left_health == 0):
-		$charactersprite.play("death")
+
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true) 
