@@ -334,7 +334,7 @@ func clear_selection_UI():
 
 func banana_draw():
 	randomize()
-	banana_chance = randi_range(1, 2)
+	banana_chance = randi_range(1, 30)
 	if banana_chance == 1:
 		$charactersprite.play("banana_draw")
 		duel = false
