@@ -11,6 +11,7 @@ var left_health = HEALTH
 var right_health = HEALTH
 var actively_handle_state = false
 var handle_first = false
+var handled_death = false
 var current_state_arr = [0, 0]
 var duel_time
 var rest_time
@@ -130,8 +131,10 @@ func _on_left_player_lp_bullet_collided():
 		left_health -= 100
 		
 	if left_health <= 0:
-		$DeathScreen.visible = true
 		$LeftPlayer/charactersprite.play("death")
+		$DeathScreen.visible = true
+		if not handled_death:
+			handle_death()
 
 #only executes once a bullet has entered area2d in right player
 func _on_right_player_rp_bullet_collided():
@@ -140,9 +143,35 @@ func _on_right_player_rp_bullet_collided():
 		right_health -= 100
 		
 	if right_health <= 0:
+		$RightPlayer/charactersprite.play("death")
 		$DeathScreen.visible = true
-		if left_health <= 0:
-			$LeftPlayer/charactersprite.play("death")
+		if not handled_death:
+			handle_death()
+
+func handle_death():
+	handled_death = true
+	$DeathScreen.visible = true
+	$Rest_Timer.stop()
+	$Action_finish.stop()
+	$DuelTimer.stop()
+	
+	await get_tree().create_timer(0.6).timeout
+	if left_health <= 0 and right_health <= 0:
+		$DeathScreen.visible = false
+		$LeftPlayer/charactersprite.play("reverse_death")
+		$RightPlayer/charactersprite.play("reverse_death")
+		
+		left_health = 1
+		right_health = 1
+		$Rest_Timer.start()
+		
+		await get_tree().create_timer(0.6).timeout
+		$LeftPlayer/charactersprite.play("idle")
+		$RightPlayer/charactersprite.play("idle")
+		
+	handled_death = false
+
+
 
 #passes to player their state for execution 
 func pass_down_state(user, data):
@@ -210,3 +239,4 @@ func _on_action_finish_timeout():
 	$Rest_Timer.start()
 	$LeftPlayer._action_timeout()
 	$RightPlayer._action_timeout()
+

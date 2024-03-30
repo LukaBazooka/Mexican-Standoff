@@ -526,6 +526,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("25_3op88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_e7u73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_j82ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rkrsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_bybk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8klqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gwfhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xoowk")
+}],
+"loop": true,
+"name": &"reverse_death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("39_5jfq6")
 }, {
 "duration": 1.0,
@@ -771,9 +800,9 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"duck_up"
+animation = &"reverse_death"
 autoplay = "idle"
-frame = 2
+frame = 7
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
 
@@ -803,9 +832,8 @@ modulate = Color(81.47, 1, 1, 1)
 position = Vector2(757, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"duck_down"
+animation = &"reverse_death"
 autoplay = "idle"
-frame = 2
 flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
