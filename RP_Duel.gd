@@ -39,6 +39,9 @@ var ammo = 5
 var random_y
 var random_spin
 
+#banana chance
+var banana_chance 
+
 
 #executes when scene is loaded
 func _ready(): #not used however may be of use later
@@ -78,6 +81,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("right_player_draw"):
 			handle_input(KEY_0)
 			$charactersprite.play("draw")
+			banana_draw()
 		elif Input.is_action_just_pressed("right_player_up"):
 			handle_input(KEY_1)
 		elif Input.is_action_just_pressed("right_player_down"):
@@ -89,7 +93,10 @@ func _process(delta):
 		elif Input.is_action_just_pressed("right_player_reload"):
 			emit_signal("pass_up_r", 1) #no damage done
 			duel = false # stop from executing different states
-			ammo += 1
+			if ammo + 1 > 6:
+				ammo = 6
+			else:
+				ammo += 1
 			$charactersprite.play("reload")
 
 
@@ -205,6 +212,18 @@ func _on_leg_collision_bullet_entered(area):
 func _on_head_collison_bullet_entered(area):
 	emit_signal("rp_bullet_collided")
 	area.get_parent().queue_free()
+
+func banana_draw():
+	randomize()
+	banana_chance = randi_range(1, 30)
+	if banana_chance == 1:
+		$charactersprite.play("banana_draw")
+		duel = false
+		if ammo + 2 > 6:
+			ammo = 6
+		else:
+			ammo += 2
+		#_update_selection_gui()
 
 signal pass_up_r(data)
 signal rp_bullet_collided()

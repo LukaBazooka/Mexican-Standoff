@@ -460,6 +460,11 @@ animations = [{
 "name": &"idle_drawn",
 "speed": 12.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("30_ywjos")
@@ -800,7 +805,7 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"rest_anim"
+animation = &"banana_draw"
 autoplay = "rest_anim"
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]

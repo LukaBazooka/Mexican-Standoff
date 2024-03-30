@@ -37,6 +37,9 @@ var ammo = 5
 var random_y
 var random_spin
 
+#banana chance
+var banana_chance 
+
 #executes when scene is loaded
 func _ready(): #not used however may be of use later
 	pass
@@ -75,6 +78,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_player_draw"):
 			handle_input(KEY_0)
 			$charactersprite.play("draw")
+			banana_draw()
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
 		elif Input.is_action_just_pressed("left_player_down"):
@@ -86,7 +90,11 @@ func _process(delta):
 		elif Input.is_action_just_pressed("left_player_reload"):
 			emit_signal("pass_up_l", 1) #no damage done
 			duel = false # stop from executing different states
-			ammo += 1
+			
+			if ammo + 1 > 6:
+				ammo = 6
+			else:
+				ammo += 1
 			$charactersprite.play("reload")
 			
 	_update_selection_gui()
@@ -131,7 +139,6 @@ func handle_input(key):
 
 #excuted on pass down from duel scene
 func shoot(state):
-	
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		get_child(3).get_child(1).set_disabled(false)
@@ -207,8 +214,6 @@ func _on_leg_collision_area_entered(area):
 		area.get_parent().queue_free() #delete bullet instance
 		#notify duel scnee that body has collided so health can be handled
 		emit_signal("lp_bullet_collided")
-		
-
 
 #executed once bullet entered head area2d
 func _on_head_collison_bullet_entered(area):
@@ -326,6 +331,20 @@ func clear_selection_UI():
 		input_box2.visible = false
 	if input_box3 != null:
 		input_box3.visible = false
+
+func banana_draw():
+	randomize()
+	banana_chance = randi_range(1, 2)
+	if banana_chance == 1:
+		$charactersprite.play("banana_draw")
+		duel = false
+		if ammo + 2 > 6:
+			ammo = 6
+		else:
+			ammo += 2
+		_update_selection_gui()
+	
+
 
 signal pass_up_l(data)
 signal lp_bullet_collided()
