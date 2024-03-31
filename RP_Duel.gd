@@ -60,7 +60,7 @@ func _duel_timeout():
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true)
-	$gunpoint.position.y = 256
+
 	
 	#rests block possibilties
 	leg_blocked = false
@@ -183,15 +183,19 @@ func _on_node_2d_rp_block_state(data):
 
 #excuted on pass down from duel scene
 func shoot(state):
-	$charactersprite.play("shoot")
+	
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		#allows  bullets to collide if both players go for headshots
 		get_child(3).get_child(1).set_disabled(false) 
+		$charactersprite.play("shoot_up")
 	elif state == 5: #bodyshot
 		spawn_bullet(BULLET_STRAIGHT)
+		$charactersprite.play("shoot")
 	elif state == 6: #legshot
 		spawn_bullet(BULLET_DOWN)
+		$charactersprite.play("shoot_down")
+	$gunpoint.position.y = 256
 
 #executed once bullet enters body area2d 
 func _on_body_collisoion_area_entered(area):

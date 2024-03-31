@@ -205,27 +205,27 @@ func _update_health_gui():
 		$left_heart1/HeartSprite.animation = "heartempty"
 		$left_heart2/HeartSprite.animation = "heartempty"
 		$left_heart3/HeartSprite.animation = "heartempty"
-	if left_health <= 17 and left_health > 0:
+	elif left_health <= 17 and left_health > 0:
 		$left_heart1/HeartSprite.animation = "halfheart"
 		$left_heart2/HeartSprite.animation = "heartempty"
 		$left_heart3/HeartSprite.animation = "heartempty"
-	if left_health <= 34 and left_health >= 17:
+	elif left_health <= 34 and left_health >= 17:
 		$left_heart1/HeartSprite.animation = "heartfull"
 		$left_heart2/HeartSprite.animation = "heartempty"
 		$left_heart3/HeartSprite.animation = "heartempty"
-	if left_health <= 49 and left_health >= 34:
+	elif left_health <= 49 and left_health >= 34:
 		$left_heart1/HeartSprite.animation = "heartfull"
 		$left_heart2/HeartSprite.animation = "halfheart"
 		$left_heart3/HeartSprite.animation = "heartempty"
-	if left_health <= 67 and left_health >= 49:
+	elif left_health <= 67 and left_health >= 49:
 		$left_heart1/HeartSprite.animation = "heartfull"
 		$left_heart2/HeartSprite.animation = "heartfull"
 		$left_heart3/HeartSprite.animation = "heartempty"
-	if left_health <= 83 and left_health >= 67:
+	elif left_health <= 83 and left_health >= 67:
 		$left_heart1/HeartSprite.animation = "heartfull"
 		$left_heart2/HeartSprite.animation = "heartfull"
 		$left_heart3/HeartSprite.animation = "halfheart"
-	if left_health <= 100 and left_health >= 83:
+	elif left_health <= 100 and left_health >= 83:
 		$left_heart1/HeartSprite.animation = "heartfull"
 		$left_heart2/HeartSprite.animation = "heartfull"
 		$left_heart3/HeartSprite.animation = "heartfull"

@@ -57,7 +57,6 @@ func _duel_timeout():
 	
 	#resets head area2D so that bullets can be detected
 	get_child(2).get_child(2).set_monitoring(true) 
-	$gunpoint.position.y = 256
 	#rests block possibilties
 	leg_blocked = false
 	body_blocked = false
@@ -149,6 +148,7 @@ func shoot(state):
 	else: #legshot
 		spawn_bullet(BULLET_DOWN)
 		$charactersprite.play("shoot_down")
+	$gunpoint.position.y = 256
 
 
 func spawn_bullet(direction):

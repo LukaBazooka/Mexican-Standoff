@@ -8,7 +8,7 @@
 [node name="right_practice" type="Node2D"]
 
 [node name="BoxingRing" type="Sprite2D" parent="."]
-position = Vector2(954, 459)
+position = Vector2(960, 466)
 texture = ExtResource("1_fb0xk")
 
 [node name="MikeTyson" type="Sprite2D" parent="."]
