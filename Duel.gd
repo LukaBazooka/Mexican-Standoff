@@ -49,6 +49,9 @@ func _ready():
 	rest_timer.start()
 	left_health = HEALTH
 	right_health = HEALTH
+	
+	#Hide Mouse Cursor
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 
 func time_left_rest():
 	var second = int(rest_timer.time_left) % 60
