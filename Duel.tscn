@@ -1,10 +1,11 @@
-[gd_scene load_steps=175 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=176 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
 [ext_resource type="PackedScene" uid="uid://l57e687gwuyg" path="res://right_player.tscn" id="2_ow1s3"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="2_yswuy"]
 [ext_resource type="Texture2D" uid="uid://bxtcabi2cc32u" path="res://assets/aim_down_anim/frame000001.png" id="3_cjkfw"]
+[ext_resource type="Texture2D" uid="uid://b6de5vwntphny" path="res://assets/heartGUI_anim/Untitled drawing.png" id="4_1chk6"]
 [ext_resource type="Texture2D" uid="uid://h6gut3mcb1tv" path="res://assets/aim_down_anim/frame000002.png" id="4_3bx07"]
 [ext_resource type="Texture2D" uid="uid://hmkwlv4x7iuc" path="res://assets/draw_anim/frame000001.png" id="4_g2s67"]
 [ext_resource type="Texture2D" uid="uid://dxqtdju2ywnhq" path="res://assets/aim_down_anim/frame000003.png" id="5_m8dgx"]
@@ -878,6 +879,7 @@ position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
 
 [node name="BG" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(-85, -47)
 texture = ExtResource("2_yswuy")
 centered = false
@@ -903,9 +905,6 @@ position = Vector2(2, 402)
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
 position = Vector2(440, 256)
 
-[node name="bloodpoint" type="Marker2D" parent="LeftPlayer"]
-position = Vector2(184, 366)
-
 [node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
@@ -914,6 +913,17 @@ animation = &"win_anim"
 autoplay = "rest_anim"
 frame = 1
 frame_progress = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite"]
+modulate = Color(1, 1, 1, 0.247059)
+z_index = -1
+position = Vector2(-65.7143, 382.5)
+scale = Vector2(1.14137, 0.516865)
+texture = ExtResource("4_1chk6")
+
+[node name="bloodpoint" type="Marker2D" parent="LeftPlayer/charactersprite"]
+position = Vector2(-91.4286, 94.2858)
+scale = Vector2(1.42857, 1.42857)
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
 
@@ -947,11 +957,12 @@ animation = &"rest_anim"
 autoplay = "rest_anim"
 flip_h = true
 
+[node name="bloodpoint" type="Marker2D" parent="RightPlayer/charactersprite"]
+position = Vector2(100, 42.8572)
+scale = Vector2(1.42857, 1.42857)
+
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
 position = Vector2(568, 254)
-
-[node name="bloodpoint" type="Marker2D" parent="RightPlayer"]
-position = Vector2(827, 330)
 
 [node name="collisions" type="Node2D" parent="RightPlayer"]
 position = Vector2(600, 2.08165e-12)
@@ -987,11 +998,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 641.0
+offset_left = 575.0
 offset_top = -27.0
-offset_right = 1041.0
+offset_right = 975.0
 offset_bottom = -7.0
 grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
 
 [node name="LeftPlayerGUI" type="Control" parent="PlayerGUI"]
 layout_mode = 1
@@ -1517,10 +1529,11 @@ one_shot = true
 
 [node name="resttimer" parent="PlayerGUI" instance=ExtResource("62_c2yrs")]
 layout_mode = 0
-offset_left = 641.0
+offset_left = 575.0
 offset_top = -27.0
-offset_right = 1041.0
+offset_right = 975.0
 offset_bottom = -7.0
+scale = Vector2(1.5, 1.5)
 
 [node name="DeathScreen" type="Control" parent="."]
 visible = false
