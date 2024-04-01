@@ -27,6 +27,9 @@ const BLOCK_LEGS_SEQUENCE = [KEY_3, KEY_5]
 
 var input_buffer = [] #handles user input
 var duel = false #if true player inputs can be registered
+var input_box1 
+var input_box2 
+var input_box3
 
 #determines if block is successful
 var body_blocked = false
@@ -75,7 +78,9 @@ func _action_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$"../PlayerGUI/RightPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
-
+	clear_selection_UI() #note this doesnt exist yet
+	_update_ammo_gui()
+	
 	#handle player input
 	if duel:
 		if Input.is_action_just_pressed("right_player_draw"):
@@ -152,10 +157,10 @@ func spawn_bullet(direction):
 		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
 		if direction ==  BULLET_UP:
-			get_child(3).get_child(0).set_rotation_degrees(280)
+			get_child(3).get_child(1).set_rotation_degrees(280)
 			
 		elif direction == BULLET_DOWN:
-			get_child(3).get_child(0).set_rotation_degrees(260)
+			get_child(3).get_child(1).set_rotation_degrees(260)
 		
 
 #upon blocked collison
@@ -187,7 +192,7 @@ func shoot(state):
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		#allows  bullets to collide if both players go for headshots
-		get_child(3).get_child(1).set_disabled(false) 
+		get_child(3).get_child(2).set_disabled(false) 
 		$charactersprite.play("shoot_up")
 	elif state == 5: #bodyshot
 		spawn_bullet(BULLET_STRAIGHT)
@@ -228,7 +233,120 @@ func banana_draw():
 			ammo = 6
 		else:
 			ammo += 2
-		#_update_selection_gui()
+		_update_ammo_gui()
+
+
+func _update_ammo_gui():
+	if ammo == 0:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 1:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 2:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 3:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 4:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 5:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
+	elif ammo == 6:
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "bullet"
+
+
+func _update_selection_gui():
+	if len(input_buffer) == 1:
+		if input_buffer[0] == KEY_0:
+			input_box1 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/CAPS"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
+		elif input_buffer[0] == KEY_1:
+			input_box1 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/W"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/W".visible = true
+		elif input_buffer[0] == KEY_3:
+			input_box1 =  $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/S"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/S".visible = true
+		elif input_buffer[0] == KEY_4:
+			input_box1 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/E"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/E".visible = true
+		elif input_buffer[0] == KEY_5:
+			input_box1 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/D"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox1/D".visible = true
+	elif len(input_buffer) == 2:
+		if input_buffer[1] == KEY_0:
+			input_box2 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/CAPS"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/CAPS".visible = true
+		elif input_buffer[1] == KEY_1:
+			input_box2 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/W"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/W".visible = true
+		elif input_buffer[1] == KEY_3:
+			input_box2 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/S"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/S".visible = true
+		elif input_buffer[1] == KEY_4:
+			input_box2 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/E"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/E".visible = true
+		elif input_buffer[1] == KEY_5:
+			input_box2 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/D"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox2/D".visible = true
+	elif len(input_buffer) == 3:
+		if input_buffer[2] == KEY_0:
+			input_box3 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/CAPS"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/CAPS".visible = true
+		elif input_buffer[2] == KEY_1:
+			input_box3 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/W"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/W".visible = true
+		elif input_buffer[2] == KEY_3:
+			input_box3 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/S"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/S".visible = true
+		elif input_buffer[2] == KEY_4:
+			input_box3 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/E"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/E".visible = true
+		elif input_buffer[2] == KEY_5:
+			input_box3 = $"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/D"
+			$"../PlayerGUI/RightPlayerGUI/HBoxContainer/emptybox3/D".visible = true
+	
+	
+func clear_selection_UI():
+	if input_box1 != null:
+		input_box1.visible = false
+	if input_box2 != null:
+		input_box2.visible = false
+	if input_box3 != null:
+		input_box3.visible = false
+
 
 signal pass_up_r(data)
 signal rp_bullet_collided()

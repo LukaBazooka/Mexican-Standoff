@@ -698,74 +698,6 @@ font_size = 50
 font = ExtResource("50_dq8qp")
 font_size = 50
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6jjxg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("142_7oo75")
-}, {
-"duration": 1.0,
-"texture": ExtResource("142_7oo75")
-}, {
-"duration": 1.0,
-"texture": ExtResource("143_qbt64")
-}, {
-"duration": 1.0,
-"texture": ExtResource("143_qbt64")
-}, {
-"duration": 1.0,
-"texture": ExtResource("144_5abdj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("144_5abdj")
-}],
-"loop": true,
-"name": &"bullet",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("145_y7fqi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("145_y7fqi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("146_j5v8m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("146_j5v8m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("147_lhrta")
-}, {
-"duration": 1.0,
-"texture": ExtResource("147_lhrta")
-}],
-"loop": true,
-"name": &"emptybullet",
-"speed": 12.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_duprc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("148_rgsnu")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4d2es"]
-font = ExtResource("50_dq8qp")
-font_size = 180
-
-[sub_resource type="LabelSettings" id="LabelSettings_lcawl"]
-font = ExtResource("50_dq8qp")
-font_size = 50
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ctphf"]
 animations = [{
 "frames": [{
@@ -873,6 +805,74 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jjxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("142_7oo75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_7oo75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_qbt64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_5abdj")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("145_y7fqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_y7fqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_j5v8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_lhrta")
+}],
+"loop": true,
+"name": &"emptybullet",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duprc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("148_rgsnu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4d2es"]
+font = ExtResource("50_dq8qp")
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_lcawl"]
+font = ExtResource("50_dq8qp")
+font_size = 50
+
 [node name="Node2D" type="Node2D" groups=["duel"]]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
@@ -896,23 +896,6 @@ one_shot = true
 [node name="StateTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="Duel_Display" type="Label" parent="."]
-offset_left = 635.0
-offset_top = 1.0
-offset_right = 803.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 50
-text = "Duel: 0"
-
-[node name="Rest_Display" type="Label" parent="."]
-offset_left = 875.0
-offset_top = 1.0
-offset_right = 1036.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 50
-text = "Rest: 0
-"
 
 [node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
 position = Vector2(2, 402)
@@ -1054,10 +1037,11 @@ label_settings = SubResource("LabelSettings_8hu5n")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
 layout_mode = 0
-offset_left = -318.0
-offset_top = 130.0
-offset_right = 497.0
-offset_bottom = 438.0
+offset_left = -295.0
+offset_top = 106.0
+offset_right = 520.0
+offset_bottom = 414.0
+scale = Vector2(0.5, 0.5)
 
 [node name="emptybox1" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
 position = Vector2(84, 141)
@@ -1146,6 +1130,156 @@ texture = ExtResource("57_cxrpk")
 visible = false
 texture = ExtResource("51_fldnp")
 
+[node name="Hearts" type="Control" parent="PlayerGUI/LeftPlayerGUI"]
+anchors_preset = 0
+offset_left = -46.0
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 41.0
+scale = Vector2(0.8, 0.8)
+
+[node name="left_heart1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -278.0
+offset_top = -3.0
+offset_right = -250.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart1"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="left_heart2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -133.0
+offset_top = -3.0
+offset_right = -105.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart2"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="left_heart3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = -3.0
+offset_right = 42.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart3"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="Bullets" type="Control" parent="PlayerGUI/LeftPlayerGUI"]
+anchors_preset = 0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -70.0
+offset_bottom = 50.0
+scale = Vector2(0.6, 0.6)
+
+[node name="left_Bullet1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -284.0
+offset_top = 117.0
+offset_right = -244.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+
+[node name="left_Bullet2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -221.0
+offset_top = 117.0
+offset_right = -181.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+frame_progress = 0.999232
+
+[node name="left_Bullet3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -156.0
+offset_top = 117.0
+offset_right = -116.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+frame_progress = 0.999232
+
+[node name="left_Bullet4" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -94.0
+offset_top = 117.0
+offset_right = -54.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+frame_progress = 0.999232
+
+[node name="left_Bullet5" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -32.0
+offset_top = 117.0
+offset_right = 8.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+frame_progress = 0.999232
+
+[node name="left_Bullet6" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 117.0
+offset_right = 76.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6"]
+position = Vector2(16, 2)
+scale = Vector2(0.721875, 0.721875)
+sprite_frames = SubResource("SpriteFrames_6jjxg")
+animation = &"emptybullet"
+autoplay = "emptybullet"
+frame_progress = 0.999232
+
 [node name="RightPlayerGUI" type="Control" parent="PlayerGUI"]
 layout_mode = 1
 anchors_preset = 0
@@ -1155,11 +1289,13 @@ offset_right = 1569.0
 offset_bottom = -34.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/RightPlayerGUI"]
+visible = false
 layout_mode = 0
 offset_right = 166.0
 offset_bottom = 132.0
 
 [node name="HealthLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Health:"
 label_settings = SubResource("LabelSettings_skm0t")
@@ -1191,28 +1327,91 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="left_Bullet1" type="Control" parent="PlayerGUI"]
+[node name="Hearts" type="Control" parent="PlayerGUI/RightPlayerGUI"]
+layout_mode = 3
 anchors_preset = 0
-offset_left = -39.0
-offset_top = 155.0
-offset_right = 1.0
-offset_bottom = 195.0
+offset_left = -17.0
+offset_top = 64.0
+offset_right = 81.0
+offset_bottom = 78.0
+scale = Vector2(-0.8, 0.8)
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet1"]
+[node name="left_heart1" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -278.0
+offset_top = -3.0
+offset_right = -250.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart1"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="left_heart2" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -133.0
+offset_top = -3.0
+offset_right = -105.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart2"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="left_heart3" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = -3.0
+offset_right = 42.0
+offset_bottom = 23.0
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart3"]
+position = Vector2(20, -6)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ctphf")
+animation = &"heartfull"
+autoplay = "heartfull"
+
+[node name="Bullets" type="Control" parent="PlayerGUI/RightPlayerGUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 49.0
+offset_top = 76.0
+offset_right = 89.0
+offset_bottom = 116.0
+scale = Vector2(-0.6, 0.6)
+
+[node name="left_Bullet1" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+anchors_preset = 0
+offset_left = -284.0
+offset_top = 117.0
+offset_right = -244.0
+offset_bottom = 157.0
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
 
-[node name="left_Bullet2" type="Control" parent="PlayerGUI"]
+[node name="left_Bullet2" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
 anchors_preset = 0
-offset_left = 24.0
-offset_top = 155.0
-offset_right = 64.0
-offset_bottom = 195.0
+offset_left = -221.0
+offset_top = 117.0
+offset_right = -181.0
+offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet2"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1220,14 +1419,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet3" type="Control" parent="PlayerGUI"]
+[node name="left_Bullet3" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
 anchors_preset = 0
-offset_left = 89.0
-offset_top = 155.0
-offset_right = 129.0
-offset_bottom = 195.0
+offset_left = -156.0
+offset_top = 117.0
+offset_right = -116.0
+offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet3"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1235,14 +1434,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet4" type="Control" parent="PlayerGUI"]
+[node name="left_Bullet4" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
 anchors_preset = 0
-offset_left = 151.0
-offset_top = 155.0
-offset_right = 191.0
-offset_bottom = 195.0
+offset_left = -94.0
+offset_top = 117.0
+offset_right = -54.0
+offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet4"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1250,14 +1449,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet5" type="Control" parent="PlayerGUI"]
+[node name="left_Bullet5" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
 anchors_preset = 0
-offset_left = 213.0
-offset_top = 155.0
-offset_right = 253.0
-offset_bottom = 195.0
+offset_left = -32.0
+offset_top = 117.0
+offset_right = 8.0
+offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet5"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1265,14 +1464,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet6" type="Control" parent="PlayerGUI"]
+[node name="left_Bullet6" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
 anchors_preset = 0
-offset_left = 281.0
-offset_top = 155.0
-offset_right = 321.0
-offset_bottom = 195.0
+offset_left = 36.0
+offset_top = 117.0
+offset_right = 76.0
+offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/left_Bullet6"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6"]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1361,51 +1560,6 @@ label_settings = SubResource("LabelSettings_lcawl")
 [node name="Retry" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play Again?"
-
-[node name="left_heart1" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -33.0
-offset_top = 35.0
-offset_right = -5.0
-offset_bottom = 61.0
-
-[node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart1"]
-position = Vector2(20, -6)
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_ctphf")
-animation = &"heartfull"
-autoplay = "heartfull"
-
-[node name="left_heart2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 112.0
-offset_top = 35.0
-offset_right = 140.0
-offset_bottom = 61.0
-
-[node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart2"]
-position = Vector2(20, -6)
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_ctphf")
-animation = &"heartfull"
-autoplay = "heartfull"
-
-[node name="left_heart3" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 259.0
-offset_top = 35.0
-offset_right = 287.0
-offset_bottom = 61.0
-
-[node name="HeartSprite" type="AnimatedSprite2D" parent="left_heart3"]
-position = Vector2(20, -6)
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_ctphf")
-animation = &"heartfull"
-autoplay = "heartfull"
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]

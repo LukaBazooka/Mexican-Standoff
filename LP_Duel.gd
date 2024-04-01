@@ -203,7 +203,7 @@ func _on_node_2d_lp_block_state(data):
 		$charactersprite.play("duck_down")
 	#regardless of block state headshot cannot occur
 	#set head area2d so bullets cannot be detected
-	get_child(2).get_child(4).set_monitoring(false)
+	get_child(2).get_child(2).set_monitoring(false)
 
 #executed once bullet enters leg area2d 
 func _on_leg_collision_area_entered(area):
@@ -221,56 +221,58 @@ func _on_head_collison_bullet_entered(area):
 	emit_signal("lp_bullet_collided")
 	area.get_parent().queue_free() #delete bullet instance
 
+
+
 func _update_ammo_gui():
 	if ammo == 0:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 1:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 2:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 3:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 4:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "emptybullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 5:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "emptybullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "emptybullet"
 	elif ammo == 6:
-		$"../PlayerGUI/left_Bullet1/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet2/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet3/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet4/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet5/BulletSprite".animation = "bullet"
-		$"../PlayerGUI/left_Bullet6/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "bullet"
+		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "bullet"
 
 #Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
 func _update_selection_gui():
@@ -342,7 +344,7 @@ func banana_draw():
 			ammo = 6
 		else:
 			ammo += 2
-		_update_selection_gui()
+		_update_ammo_gui()
 	
 
 

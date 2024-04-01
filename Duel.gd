@@ -40,9 +40,8 @@ action states
 var lp_state = 0
 var rp_state = 0
 
-@onready var rest_label = $Rest_Display
+
 @onready var rest_timer = $Rest_Timer
-@onready var duel_label = $Duel_Display
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,29 +49,17 @@ func _ready():
 	left_health = HEALTH
 	right_health = HEALTH
 
-func time_left_rest():
-	var second = int(rest_timer.time_left) % 60
-	return [second]
-	
-	
-func time_left_duel():
-	var second = int($DuelTimer.time_left) % 60
-	return [second]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(left_health)
 	$PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel/HealthValue.text = str(right_health)
-	_update_health_gui()
+	_update_lp_health_gui()
+	_update_rp_health_gui()
 	
 	duel_time = $DuelTimer.time_left
 	rest_time = $Rest_Timer.time_left
-	
-	if not $Rest_Timer.is_stopped():
-		rest_label.text = "Rest: %01d" % time_left_rest()
-	
-	if not $DuelTimer.is_stopped():
-		$Duel_Display.text = "Duel: %01d" % time_left_duel()
+
 
 
 func new_round():
@@ -200,35 +187,60 @@ func state_transfer(user, data):
 			handle_second_state()
 			
 
-func _update_health_gui():
+func _update_lp_health_gui():
 	if left_health <= 0:
-		$left_heart1/HeartSprite.animation = "heartempty"
-		$left_heart2/HeartSprite.animation = "heartempty"
-		$left_heart3/HeartSprite.animation = "heartempty"
-	elif left_health <= 17 and left_health > 0:
-		$left_heart1/HeartSprite.animation = "halfheart"
-		$left_heart2/HeartSprite.animation = "heartempty"
-		$left_heart3/HeartSprite.animation = "heartempty"
-	elif left_health <= 34 and left_health >= 17:
-		$left_heart1/HeartSprite.animation = "heartfull"
-		$left_heart2/HeartSprite.animation = "heartempty"
-		$left_heart3/HeartSprite.animation = "heartempty"
-	elif left_health <= 49 and left_health >= 34:
-		$left_heart1/HeartSprite.animation = "heartfull"
-		$left_heart2/HeartSprite.animation = "halfheart"
-		$left_heart3/HeartSprite.animation = "heartempty"
-	elif left_health <= 67 and left_health >= 49:
-		$left_heart1/HeartSprite.animation = "heartfull"
-		$left_heart2/HeartSprite.animation = "heartfull"
-		$left_heart3/HeartSprite.animation = "heartempty"
-	elif left_health <= 83 and left_health >= 67:
-		$left_heart1/HeartSprite.animation = "heartfull"
-		$left_heart2/HeartSprite.animation = "heartfull"
-		$left_heart3/HeartSprite.animation = "halfheart"
-	elif left_health <= 100 and left_health >= 83:
-		$left_heart1/HeartSprite.animation = "heartfull"
-		$left_heart2/HeartSprite.animation = "heartfull"
-		$left_heart3/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartempty"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif left_health == 16:
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "halfheart"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif left_health == 32:
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif left_health == 50:# one body shot
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "halfheart"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif left_health == 66: # 2 hearts, 1 leg shot
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+
+	else: #full health
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartfull"
+		$PlayerGUI/LeftPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartfull"
+
+func _update_rp_health_gui():
+	if right_health <= 0:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartempty"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif right_health == 16:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "halfheart"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif right_health == 32:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartempty"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif right_health == 50:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "halfheart"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	elif right_health == 66:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartempty"
+	else:
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart1/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart2/HeartSprite.animation = "heartfull"
+		$PlayerGUI/RightPlayerGUI/Hearts/left_heart3/HeartSprite.animation = "heartfull"
+
+
 
 signal lp_block_state
 signal lp_shoot
