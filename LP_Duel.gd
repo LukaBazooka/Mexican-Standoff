@@ -140,7 +140,7 @@ func handle_input(key):
 func shoot(state):
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
-		get_child(3).get_child(1).set_disabled(false)
+		get_child(3).get_child(2).set_disabled(false)
 		$charactersprite.play("shoot_up")
 	elif state == 5: #body shot
 		spawn_bullet(BULLET_STRAIGHT)
@@ -164,10 +164,10 @@ func spawn_bullet(direction):
 		ammo -= 1
 		
 		if direction ==  BULLET_UP:
-			get_child(3).get_child(0).set_rotation_degrees(80)
+			get_child(3).get_child(1).set_rotation_degrees(80)
 			
 		elif direction == BULLET_DOWN:
-			get_child(3).get_child(0).set_rotation_degrees(100)
+			get_child(3).get_child(1).set_rotation_degrees(100)
 		
 
 
@@ -203,7 +203,7 @@ func _on_node_2d_lp_block_state(data):
 		$charactersprite.play("duck_down")
 	#regardless of block state headshot cannot occur
 	#set head area2d so bullets cannot be detected
-	get_child(2).get_child(2).set_monitoring(false)
+	get_child(2).get_child(4).set_monitoring(false)
 
 #executed once bullet enters leg area2d 
 func _on_leg_collision_area_entered(area):
