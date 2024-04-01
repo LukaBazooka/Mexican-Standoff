@@ -16,6 +16,8 @@ var current_state_arr = [0, 0]
 var duel_time
 var rest_time
 
+@onready var blood_splatter = load("res://blood_splatter.tscn")
+
 const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
 [0, 1]: [NO_DMG, NO_DMG], [1, 1]: [NO_DMG, NO_DMG], [2, 1]: [NO_DMG, NO_DMG], [3, 1]: [NO_DMG, NO_DMG], [4, 1]: [NO_DMG, HEAD_SHOT], [5, 1]: [NO_DMG, BODY_SHOT], [6, 1]: [NO_DMG, LEG_SHOT], #Reload
@@ -48,6 +50,9 @@ func _ready():
 	rest_timer.start()
 	left_health = HEALTH
 	right_health = HEALTH
+	
+	#Hide Mouse Cursor
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -113,6 +118,11 @@ func _on_state_timer_timeout():
 
 #only executes once a bullet has entered area2d in left player
 func _on_left_player_lp_bullet_collided():
+	#var blood_instance = blood_splatter.instantiate() 
+	#blood_instance.position = $LeftPlayer/bloodpoint.position
+	#blood_instance.z_index += 5
+	#add_child(blood_instance) #add to scene
+	
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
 		left_health -= 100
@@ -125,6 +135,11 @@ func _on_left_player_lp_bullet_collided():
 
 #only executes once a bullet has entered area2d in right player
 func _on_right_player_rp_bullet_collided():
+	#var blood_instance = blood_splatter.instantiate() 
+	#blood_instance.position = $RightPlayer/bloodpoint.position
+	#blood_instance.z_index += 5
+	#add_child(blood_instance) #add to scene
+	
 	right_health -= current_state_arr[1]
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow
 		right_health -= 100

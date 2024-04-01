@@ -903,6 +903,9 @@ position = Vector2(2, 402)
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
 position = Vector2(440, 256)
 
+[node name="bloodpoint" type="Marker2D" parent="LeftPlayer"]
+position = Vector2(184, 366)
+
 [node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
@@ -946,6 +949,9 @@ flip_h = true
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
 position = Vector2(568, 254)
+
+[node name="bloodpoint" type="Marker2D" parent="RightPlayer"]
+position = Vector2(827, 330)
 
 [node name="collisions" type="Node2D" parent="RightPlayer"]
 position = Vector2(600, 2.08165e-12)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://crjsreso4adp8"]
+[gd_scene load_steps=20 format=3 uid="uid://crjsreso4adp8"]
 
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_3i4ag"]
+[ext_resource type="Script" path="res://Move_List.gd" id="1_h8nd5"]
 [ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_2yhm2"]
 [ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_c2mtj"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="4_j34p2"]
@@ -73,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h8nd5")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -463,7 +465,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
 text = "Controls
 "
 
-[node name="Close" type="Button" parent="Panel"]
+[node name="Back" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 511.0
 offset_top = 869.0
@@ -474,5 +476,8 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
-text = "Close
+text = "Back
 "
+
+[connection signal="pressed" from="Panel/Game Rules" to="." method="_on_game_rules_pressed"]
+[connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]
