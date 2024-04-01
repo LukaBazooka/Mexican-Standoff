@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://brql81mesamdx"]
+
+[ext_resource type="Texture2D" uid="uid://derdwon5v4nxt" path="res://assets/particles/BloodParticle.png" id="1_w3gmu"]
+[ext_resource type="Script" path="res://BloodSplatter.gd" id="2_sabfa"]
+
+[node name="BloodSplatter" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("1_w3gmu")
+spread = 40.0
+initial_velocity_min = 200.0
+initial_velocity_max = 700.0
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+script = ExtResource("2_sabfa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
