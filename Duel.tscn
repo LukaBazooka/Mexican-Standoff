@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=177 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -164,6 +164,7 @@
 [ext_resource type="Texture2D" uid="uid://cbgfpxngltf2i" path="res://assets/testheartanim/hearfullanim3.png" id="158_yein8"]
 [ext_resource type="Texture2D" uid="uid://cx81nmdcejo8k" path="res://assets/testheartanim/heart_anim4.png" id="159_2nsvq"]
 [ext_resource type="Texture2D" uid="uid://c7a8g58jopyso" path="res://assets/testheartanim/hearfullanim5.png" id="160_r354w"]
+[ext_resource type="Theme" uid="uid://cxk3ifxbflvvt" path="res://themes/menutheme.tres" id="165_ilkio"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -909,10 +910,8 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"win_anim"
+animation = &"death"
 autoplay = "rest_anim"
-frame = 1
-frame_progress = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite"]
 modulate = Color(1, 1, 1, 0.247059)
@@ -953,7 +952,7 @@ modulate = Color(81.47, 1, 1, 1)
 position = Vector2(757, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"rest_anim"
+animation = &"death"
 autoplay = "rest_anim"
 flip_h = true
 
@@ -1543,6 +1542,7 @@ offset_left = -87.0
 offset_top = -49.0
 offset_right = 1839.0
 offset_bottom = 1037.0
+theme = ExtResource("165_ilkio")
 
 [node name="ColorRect" type="ColorRect" parent="DeathScreen"]
 layout_mode = 1
@@ -1551,33 +1551,103 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.435294, 0.435294, 0.435294, 0.65098)
+color = Color(0.435294, 0.435294, 0.435294, 0.286275)
 
-[node name="MarginContainer" type="MarginContainer" parent="DeathScreen"]
+[node name="backgroundtext" type="ColorRect" parent="DeathScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -254.0
+offset_top = -65.0
+offset_right = 254.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen/MarginContainer"]
-layout_mode = 2
-
-[node name="Gameoverlabel" type="Label" parent="DeathScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="LeftPlayerWins" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.5
+offset_top = -65.5
+offset_right = 245.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Game Over!
-Player x won!"
+The Blue Rascal Won!"
 label_settings = SubResource("LabelSettings_lcawl")
+horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="DeathScreen/MarginContainer/VBoxContainer"]
+[node name="Blue" type="Label" parent="DeathScreen/LeftPlayerWins"]
+self_modulate = Color(0.4, 0.705882, 0.819608, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 1.0
+offset_right = -52.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Blue"
+label_settings = SubResource("LabelSettings_lcawl")
+horizontal_alignment = 1
+
+[node name="RightPlayerWins" type="Label" parent="DeathScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.5
+offset_top = -65.5
+offset_right = 245.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over!
+The Pink Rascal Won!"
+label_settings = SubResource("LabelSettings_lcawl")
+horizontal_alignment = 1
+
+[node name="Pink" type="Label" parent="DeathScreen/RightPlayerWins"]
+self_modulate = Color(0.839216, 0.705882, 0.819608, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 1.0
+offset_right = -54.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pink"
+label_settings = SubResource("LabelSettings_lcawl")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="DeathScreen"]
 layout_mode = 2
+offset_left = 800.0
+offset_top = 660.0
+offset_right = 1127.0
+offset_bottom = 791.0
 text = "Play Again?"
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
@@ -1599,4 +1669,4 @@ text = "Play Again?"
 [connection signal="area_entered" from="RightPlayer/collisions/leg_collision" to="RightPlayer" method="_on_leg_collision_bullet_entered"]
 [connection signal="area_entered" from="RightPlayer/collisions/head_collison" to="RightPlayer" method="_on_head_collison_bullet_entered"]
 [connection signal="timeout" from="PlayerGUI/DrawPopup/Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="DeathScreen/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="DeathScreen/Retry" to="." method="_on_retry_pressed"]

@@ -128,8 +128,10 @@ func _on_left_player_lp_bullet_collided():
 		left_health -= 100
 		
 	if left_health <= 0:
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$LeftPlayer/charactersprite.play("death")
 		$DeathScreen.visible = true
+		$DeathScreen/RightPlayerWins.visible = true
 		if not handled_death:
 			handle_death()
 
@@ -145,8 +147,10 @@ func _on_right_player_rp_bullet_collided():
 		right_health -= 100
 		
 	if right_health <= 0:
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$RightPlayer/charactersprite.play("death")
 		$DeathScreen.visible = true
+		$DeathScreen/LeftPlayerWins.visible = true
 		if not handled_death:
 			handle_death()
 
