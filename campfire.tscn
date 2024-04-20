@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://ph3ve6e2jpv0"]
+
+[ext_resource type="Texture2D" uid="uid://1d5qgnsqk2ew" path="res://assets/fire_anims/fire1.png" id="1_aie4w"]
+[ext_resource type="Texture2D" uid="uid://dh1jysjlqwcpa" path="res://assets/fire_anims/fire2.png" id="2_vi0ko"]
+[ext_resource type="Texture2D" uid="uid://ck3twjugtelvg" path="res://assets/fire_anims/fire3.png" id="3_bncuh"]
+[ext_resource type="Texture2D" uid="uid://d2gqwjwqdxruv" path="res://assets/fire_anims/fire4.png" id="4_6wt4j"]
+[ext_resource type="Texture2D" uid="uid://cjnsuagv4on8x" path="res://assets/fire_anims/wood1.png" id="5_pasmi"]
+[ext_resource type="Texture2D" uid="uid://dvsb5loep78t7" path="res://assets/fire_anims/wood2.png" id="6_3gc31"]
+[ext_resource type="Texture2D" uid="uid://dwy48brpu3x46" path="res://assets/fire_anims/wood3.png" id="7_i76en"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txnin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aie4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_aie4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vi0ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vi0ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bncuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bncuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6wt4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6wt4j")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8il6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pasmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pasmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3gc31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3gc31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i76en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i76en")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Campfire" type="Node2D"]
+
+[node name="fire" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_txnin")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.969739
+
+[node name="wood" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_u8il6")
+autoplay = "default"
+frame_progress = 0.556032

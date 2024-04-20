@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://i6sry3nl3wni"]
+
+[ext_resource type="Texture2D" uid="uid://cex0ggnkmau57" path="res://assets/fire_anims/smoke.png" id="1_agxay"]
+
+[sub_resource type="Gradient" id="Gradient_bf4vh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c7g85"]
+gradient = SubResource("Gradient_bf4vh")
+
+[sub_resource type="Curve" id="Curve_h0v36"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rrtq0"]
+curve = SubResource("Curve_h0v36")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b2geq"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+damping_min = 30.504
+damping_max = 33.875
+scale_curve = SubResource("CurveTexture_rrtq0")
+color_ramp = SubResource("GradientTexture1D_c7g85")
+turbulence_enabled = true
+
+[node name="ClickShoot" type="Node2D"]
+
+[node name="SmokeCloud" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_b2geq")
+texture = ExtResource("1_agxay")
+one_shot = true
+explosiveness = 1.0

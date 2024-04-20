@@ -118,10 +118,11 @@ func _on_state_timer_timeout():
 
 #only executes once a bullet has entered area2d in left player
 func _on_left_player_lp_bullet_collided():
-	#var blood_instance = blood_splatter.instantiate() 
-	#blood_instance.position = $LeftPlayer/bloodpoint.position
-	#blood_instance.z_index += 5
-	#add_child(blood_instance) #add to scene
+	var blood_instance = blood_splatter.instantiate() 
+	blood_instance.position = $LeftPlayer/bloodpoint.position
+	#blood_instance.scale = -1
+	blood_instance.z_index += 5
+	add_child(blood_instance) #add to scene
 	
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
@@ -137,10 +138,10 @@ func _on_left_player_lp_bullet_collided():
 
 #only executes once a bullet has entered area2d in right player
 func _on_right_player_rp_bullet_collided():
-	#var blood_instance = blood_splatter.instantiate() 
-	#blood_instance.position = $RightPlayer/bloodpoint.position
-	#blood_instance.z_index += 5
-	#add_child(blood_instance) #add to scene
+	var blood_instance = blood_splatter.instantiate() 
+	blood_instance.position = $RightPlayer/bloodpoint.position
+	blood_instance.z_index += 5
+	add_child(blood_instance) #add to scene
 	
 	right_health -= current_state_arr[1]
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow

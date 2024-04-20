@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=178 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -165,6 +165,7 @@
 [ext_resource type="Texture2D" uid="uid://cx81nmdcejo8k" path="res://assets/testheartanim/heart_anim4.png" id="159_2nsvq"]
 [ext_resource type="Texture2D" uid="uid://c7a8g58jopyso" path="res://assets/testheartanim/hearfullanim5.png" id="160_r354w"]
 [ext_resource type="Theme" uid="uid://cxk3ifxbflvvt" path="res://themes/menutheme.tres" id="165_ilkio"]
+[ext_resource type="PackedScene" uid="uid://ph3ve6e2jpv0" path="res://campfire.tscn" id="166_6od7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -903,6 +904,10 @@ one_shot = true
 [node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
 position = Vector2(2, 402)
 
+[node name="bloodpoint" type="Marker2D" parent="LeftPlayer"]
+position = Vector2(184, 366)
+scale = Vector2(0.999999, 0.999999)
+
 [node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
 position = Vector2(440, 256)
 
@@ -919,10 +924,6 @@ z_index = -1
 position = Vector2(-65.7143, 382.5)
 scale = Vector2(1.14137, 0.516865)
 texture = ExtResource("4_1chk6")
-
-[node name="bloodpoint" type="Marker2D" parent="LeftPlayer/charactersprite"]
-position = Vector2(-91.4286, 94.2858)
-scale = Vector2(1.42857, 1.42857)
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
 
@@ -947,6 +948,10 @@ shape = SubResource("RectangleShape2D_fnm46")
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
 position = Vector2(746, 417)
 
+[node name="bloodpoint" type="Marker2D" parent="RightPlayer"]
+position = Vector2(832, 530)
+scale = Vector2(0.999999, 0.999999)
+
 [node name="charactersprite" type="AnimatedSprite2D" parent="RightPlayer"]
 modulate = Color(81.47, 1, 1, 1)
 position = Vector2(757, 300)
@@ -955,10 +960,6 @@ sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"death"
 autoplay = "rest_anim"
 flip_h = true
-
-[node name="bloodpoint" type="Marker2D" parent="RightPlayer/charactersprite"]
-position = Vector2(100, 42.8572)
-scale = Vector2(1.42857, 1.42857)
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
 position = Vector2(568, 254)
@@ -1523,7 +1524,7 @@ text = "DRAW!"
 label_settings = SubResource("LabelSettings_4d2es")
 
 [node name="Timer" type="Timer" parent="PlayerGUI/DrawPopup"]
-wait_time = 1.5
+wait_time = 0.5
 one_shot = true
 
 [node name="resttimer" parent="PlayerGUI" instance=ExtResource("62_c2yrs")]
@@ -1649,6 +1650,12 @@ offset_top = 660.0
 offset_right = 1127.0
 offset_bottom = 791.0
 text = "Play Again?"
+
+[node name="BlueCampfire" parent="." instance=ExtResource("166_6od7a")]
+position = Vector2(546, 886)
+
+[node name="PinkCampfire" parent="." instance=ExtResource("166_6od7a")]
+position = Vector2(1214, 886)
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]

@@ -13,8 +13,8 @@ texture = ExtResource("1_w3gmu")
 spread = 40.0
 initial_velocity_min = 200.0
 initial_velocity_max = 700.0
-scale_amount_min = 0.4
-scale_amount_max = 0.7
+scale_amount_min = 0.2
+scale_amount_max = 0.5
 script = ExtResource("2_sabfa")
 
 [node name="Timer" type="Timer" parent="."]
