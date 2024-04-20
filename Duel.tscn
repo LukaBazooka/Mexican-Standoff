@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=179 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -143,6 +143,7 @@
 [ext_resource type="Texture2D" uid="uid://x6r88j3ewjbm" path="res://assets/shoot_up_anim/frame000009.png" id="126_btxcy"]
 [ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
 [ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
+[ext_resource type="Script" path="res://lp_shadow.gd" id="133_n11vs"]
 [ext_resource type="Texture2D" uid="uid://d0wxsseas27dx" path="res://assets/newbullet_anims/fullbullet01.png" id="142_7oo75"]
 [ext_resource type="Texture2D" uid="uid://bgmiiwkhq0hu3" path="res://assets/newbullet_anims/fullbullet02.png" id="143_qbt64"]
 [ext_resource type="Texture2D" uid="uid://cy14aiyrndlg4" path="res://assets/newbullet_anims/fullbullet03.png" id="144_5abdj"]
@@ -165,7 +166,7 @@
 [ext_resource type="Texture2D" uid="uid://cx81nmdcejo8k" path="res://assets/testheartanim/heart_anim4.png" id="159_2nsvq"]
 [ext_resource type="Texture2D" uid="uid://c7a8g58jopyso" path="res://assets/testheartanim/hearfullanim5.png" id="160_r354w"]
 [ext_resource type="Theme" uid="uid://cxfl8lfo8vw4m" path="res://themes/menutheme.tres" id="165_ilkio"]
-[ext_resource type="PackedScene" path="res://campfire.tscn" id="166_6od7a"]
+[ext_resource type="PackedScene" uid="uid://divolb8utfjoo" path="res://campfire.tscn" id="166_6od7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -915,11 +916,21 @@ animation = &"death"
 autoplay = "rest_anim"
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite"]
+visible = false
 modulate = Color(1, 1, 1, 0.247059)
 z_index = -1
 position = Vector2(-65.7143, 382.5)
 scale = Vector2(1.14137, 0.516865)
 texture = ExtResource("4_1chk6")
+
+[node name="shadow" type="AnimatedSprite2D" parent="LeftPlayer/charactersprite"]
+modulate = Color(0, 0, 0, 0.207843)
+z_index = -1
+position = Vector2(-15, 10)
+sprite_frames = SubResource("SpriteFrames_eehnx")
+animation = &"death"
+autoplay = "rest_anim"
+script = ExtResource("133_n11vs")
 
 [node name="collisions" type="Node2D" parent="LeftPlayer"]
 
@@ -956,6 +967,16 @@ sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"death"
 autoplay = "rest_anim"
 flip_h = true
+
+[node name="shadow" type="AnimatedSprite2D" parent="RightPlayer/charactersprite"]
+modulate = Color(0, 0, 0, 0.207843)
+z_index = -1
+position = Vector2(15, 10)
+sprite_frames = SubResource("SpriteFrames_eehnx")
+animation = &"death"
+autoplay = "rest_anim"
+flip_h = true
+script = ExtResource("133_n11vs")
 
 [node name="gunpoint" type="Marker2D" parent="RightPlayer"]
 position = Vector2(568, 254)
@@ -1500,8 +1521,11 @@ frame_progress = 0.999232
 [node name="DrawPopup" type="Control" parent="PlayerGUI"]
 visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 150.0
+offset_top = 100.0
+offset_right = 190.0
+offset_bottom = 140.0
+scale = Vector2(0.8, 0.8)
 
 [node name="DRAW!" type="AnimatedSprite2D" parent="PlayerGUI/DrawPopup"]
 position = Vector2(893, 407)

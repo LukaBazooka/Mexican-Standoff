@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ph3ve6e2jpv0"]
+[gd_scene load_steps=10 format=3 uid="uid://divolb8utfjoo"]
 
 [ext_resource type="Texture2D" uid="uid://1d5qgnsqk2ew" path="res://assets/fire_anims/fire1.png" id="1_aie4w"]
 [ext_resource type="Texture2D" uid="uid://dh1jysjlqwcpa" path="res://assets/fire_anims/fire2.png" id="2_vi0ko"]
@@ -75,6 +75,23 @@ autoplay = "fire"
 frame_progress = 0.969739
 
 [node name="wood" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_u8il6")
+autoplay = "default"
+frame_progress = 0.556032
+
+[node name="shadow" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0.145098)
+z_index = -1
+position = Vector2(-5, 5)
+
+[node name="fire" type="AnimatedSprite2D" parent="shadow"]
+sprite_frames = SubResource("SpriteFrames_txnin")
+animation = &"fire"
+autoplay = "fire"
+frame_progress = 0.969739
+
+[node name="wood" type="AnimatedSprite2D" parent="shadow"]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_u8il6")
 autoplay = "default"
