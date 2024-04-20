@@ -140,7 +140,7 @@ func handle_input(key):
 func shoot(state):
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
-		get_child(3).get_child(2).set_disabled(false)
+		get_child(get_child_count()-1).get_child(2).set_disabled(false)
 		$charactersprite.play("shoot_up")
 	elif state == 5: #body shot
 		spawn_bullet(BULLET_STRAIGHT)

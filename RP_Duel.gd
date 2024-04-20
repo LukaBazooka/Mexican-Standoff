@@ -194,7 +194,7 @@ func shoot(state):
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		#allows  bullets to collide if both players go for headshots
-		get_child(3).get_child(2).set_disabled(false) 
+		get_child(get_child_count()-1).get_child(2).set_disabled(false) 
 		$charactersprite.play("shoot_up")
 	elif state == 5: #bodyshot
 		spawn_bullet(BULLET_STRAIGHT)
