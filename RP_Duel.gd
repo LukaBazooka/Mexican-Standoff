@@ -157,10 +157,12 @@ func spawn_bullet(direction):
 		bullet_instance.linear_velocity.y = SPEED_Y * direction
 		ammo -= 1
 		if direction ==  BULLET_UP:
-			get_child(3).get_child(1).set_rotation_degrees(280)
+			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(280)
 			
 		elif direction == BULLET_DOWN:
-			get_child(3).get_child(1).set_rotation_degrees(260)
+			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(260)
+		else:
+			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(270)
 		
 
 #upon blocked collison

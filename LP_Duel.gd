@@ -164,10 +164,10 @@ func spawn_bullet(direction):
 		ammo -= 1
 		
 		if direction ==  BULLET_UP:
-			get_child(3).get_child(1).set_rotation_degrees(80)
+			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(80)
 			
 		elif direction == BULLET_DOWN:
-			get_child(3).get_child(1).set_rotation_degrees(100)
+			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(100)
 		
 
 

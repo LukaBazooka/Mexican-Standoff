@@ -1,15 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3oyayjcuetox"]
+[gd_scene load_steps=7 format=3 uid="uid://b3oyayjcuetox"]
 
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="1_umyy5"]
+[ext_resource type="PackedScene" uid="uid://b6fqnmf4mwo4x" path="res://trail.tscn" id="2_huqg2"]
 [ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="2_kapym"]
 [ext_resource type="Script" path="res://ObjectTrail.gd" id="3_lplmu"]
-
-[sub_resource type="Curve" id="Curve_bwhvi"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_h8n3q"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0.443137, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y12ho"]
 size = Vector2(57, 57)
@@ -22,14 +16,9 @@ mass = 100.0
 inertia = 70.0
 script = ExtResource("1_umyy5")
 
-[node name="Trail" type="Line2D" parent="."]
-top_level = true
-position = Vector2(40, 450)
-width = 15.0
-width_curve = SubResource("Curve_bwhvi")
-gradient = SubResource("Gradient_h8n3q")
+[node name="Trail" parent="." instance=ExtResource("2_huqg2")]
+z_index = 1
 script = ExtResource("3_lplmu")
-MAX_LENGTH = 20
 
 [node name="bulletSprite" type="Sprite2D" parent="."]
 rotation = 1.5708
