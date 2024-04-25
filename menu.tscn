@@ -31,12 +31,20 @@ offset_right = 1080.0
 offset_bottom = 675.0
 text = "Instructions"
 
+[node name="Practice" type="Button" parent="."]
+layout_mode = 2
+offset_left = 783.0
+offset_top = 707.0
+offset_right = 1080.0
+offset_bottom = 782.0
+text = "Practice"
+
 [node name="Quit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 839.0
-offset_top = 710.0
+offset_top = 815.0
 offset_right = 1032.0
-offset_bottom = 785.0
+offset_bottom = 890.0
 text = "Quit"
 
 [node name="Title" type="Control" parent="."]
@@ -70,4 +78,5 @@ texture = ExtResource("5_wpcy6")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
+[connection signal="pressed" from="Practice" to="." method="_on_practice_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

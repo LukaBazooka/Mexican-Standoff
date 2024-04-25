@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene load_steps=180 format=3 uid="uid://cu7y1y78b6e1o"]
 
 [ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
@@ -121,6 +121,7 @@
 [ext_resource type="Texture2D" uid="uid://6lfaqg4j4um2" path="res://assets/duck_up_anim/frame000017.png" id="68_0sjcg"]
 [ext_resource type="Texture2D" uid="uid://d3ukxylk3y6sq" path="res://assets/duck_up_anim/frame000018.png" id="69_28hmo"]
 [ext_resource type="Texture2D" uid="uid://b4pyulhytokqf" path="res://assets/duck_up_anim/frame000019.png" id="70_hdk56"]
+[ext_resource type="Texture2D" uid="uid://cxf71svaxjkuo" path="res://assets/hit_anim/hitred.png" id="72_7ux70"]
 [ext_resource type="Texture2D" uid="uid://da4jmcsvu04nh" path="res://assets/rest_anim/frame000001.png" id="99_f38cv"]
 [ext_resource type="Texture2D" uid="uid://dwhuok8cuampw" path="res://assets/rest_anim/frame000002.png" id="100_a4nue"]
 [ext_resource type="Texture2D" uid="uid://cvqufb7pbas7e" path="res://assets/shoot_down_anim/frame000001.png" id="109_g13wf"]
@@ -407,6 +408,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"duck_up",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("72_7ux70")
+}],
+"loop": true,
+"name": &"hit",
 "speed": 12.0
 }, {
 "frames": [{
@@ -928,7 +937,7 @@ modulate = Color(0, 0, 0, 0.207843)
 z_index = -1
 position = Vector2(-15, 10)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"death"
+animation = &"new_animation"
 autoplay = "rest_anim"
 script = ExtResource("133_n11vs")
 

@@ -79,6 +79,10 @@ func _on_rest_timer_timeout():
 	handle_first = true
 	$PlayerGUI/DrawPopup.visible = true
 	$PlayerGUI/DrawPopup/Timer.start()
+	
+	#hide campfire
+	$BlueCampfire.hide()
+	$PinkCampfire.hide()
 
 
 func _on_duel_timer_timeout():
@@ -87,6 +91,9 @@ func _on_duel_timer_timeout():
 	$RightPlayer._duel_timeout()
 	actively_handle_state = false
 	
+	#show campfire
+	$BlueCampfire.show()
+	$PinkCampfire.show()
 
 #staers timer for time alowed between user inputs
 func handle_first_state():
@@ -120,9 +127,10 @@ func _on_state_timer_timeout():
 func _on_left_player_lp_bullet_collided():
 	var blood_instance = blood_splatter.instantiate() 
 	blood_instance.position = $LeftPlayer/bloodpoint.position
-	#blood_instance.scale = -1
 	blood_instance.z_index += 5
 	add_child(blood_instance) #add to scene
+	
+	#$LeftPlayer/charactersprite.play("hit")
 	
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
