@@ -1519,7 +1519,6 @@ autoplay = "emptybullet"
 frame_progress = 0.999232
 
 [node name="DrawPopup" type="Control" parent="PlayerGUI"]
-visible = false
 anchors_preset = 0
 offset_left = 150.0
 offset_top = 100.0

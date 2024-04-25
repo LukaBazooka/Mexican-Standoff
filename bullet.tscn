@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3oyayjcuetox"]
+[gd_scene load_steps=5 format=3 uid="uid://b3oyayjcuetox"]
 
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="1_umyy5"]
-[ext_resource type="PackedScene" uid="uid://b6fqnmf4mwo4x" path="res://trail.tscn" id="2_huqg2"]
 [ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="2_kapym"]
-[ext_resource type="Script" path="res://ObjectTrail.gd" id="3_lplmu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y12ho"]
 size = Vector2(57, 57)
@@ -12,13 +10,12 @@ size = Vector2(57, 57)
 size = Vector2(68, 60)
 
 [node name="bullet" type="RigidBody2D"]
+z_index = 1
 mass = 100.0
 inertia = 70.0
 script = ExtResource("1_umyy5")
 
-[node name="Trail" parent="." instance=ExtResource("2_huqg2")]
-z_index = 1
-script = ExtResource("3_lplmu")
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="bulletSprite" type="Sprite2D" parent="."]
 rotation = 1.5708

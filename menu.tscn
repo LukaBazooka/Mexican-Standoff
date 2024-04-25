@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7jocei8gyq5l"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_lppgq"]
-[ext_resource type="Theme" uid="uid://cxk3ifxbflvvt" path="res://themes/menutheme.tres" id="1_q6s3c"]
+[ext_resource type="Theme" uid="uid://cxfl8lfo8vw4m" path="res://themes/menutheme.tres" id="1_q6s3c"]
 [ext_resource type="Texture2D" uid="uid://joifcgjlgnws" path="res://assets/images/OutlawOutdrawTitle.png" id="4_afbv8"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="5_wpcy6"]
 
