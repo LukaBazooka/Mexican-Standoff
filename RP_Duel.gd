@@ -36,7 +36,7 @@ var body_blocked = false
 var leg_blocked = false
 
 #Player counters
-var ammo = 5
+var ammo = 0
 
 #bullet physics
 var random_y

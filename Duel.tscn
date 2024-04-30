@@ -962,7 +962,7 @@ position = Vector2(198.25, 147.25)
 shape = SubResource("RectangleShape2D_fnm46")
 
 [node name="bloodpoint" type="Marker2D" parent="LeftPlayer"]
-position = Vector2(184, 366)
+position = Vector2(188, 575)
 scale = Vector2(0.999999, 0.999999)
 
 [node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
@@ -1012,7 +1012,7 @@ position = Vector2(201, 144)
 shape = SubResource("RectangleShape2D_fnm46")
 
 [node name="bloodpoint" type="Marker2D" parent="RightPlayer"]
-position = Vector2(832, 530)
+position = Vector2(1571, 566)
 scale = Vector2(0.999999, 0.999999)
 
 [node name="PlayerGUI" type="Control" parent="."]
