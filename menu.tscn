@@ -1,9 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://7jocei8gyq5l"]
+[gd_scene load_steps=8 format=3 uid="uid://7jocei8gyq5l"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_lppgq"]
-[ext_resource type="Theme" uid="uid://cxfl8lfo8vw4m" path="res://themes/menutheme.tres" id="1_q6s3c"]
+[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="2_yk0b8"]
 [ext_resource type="Texture2D" uid="uid://joifcgjlgnws" path="res://assets/images/OutlawOutdrawTitle.png" id="4_afbv8"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="5_wpcy6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjcmh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.698039, 0.698039, 0.698039, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5f2d7"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcjsk"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -12,40 +38,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_q6s3c")
 script = ExtResource("1_lppgq")
 
 [node name="Play" type="Button" parent="."]
-layout_mode = 2
-offset_left = 839.0
-offset_top = 489.0
-offset_right = 1032.0
-offset_bottom = 564.0
-text = "Play"
+offset_left = 779.0
+offset_top = 537.0
+offset_right = 1090.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+text = "Play
+"
 
 [node name="Instructions" type="Button" parent="."]
-layout_mode = 2
-offset_left = 783.0
-offset_top = 600.0
-offset_right = 1080.0
-offset_bottom = 675.0
+offset_left = 780.0
+offset_top = 647.0
+offset_right = 1090.0
+offset_bottom = 743.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
 text = "Instructions"
 
 [node name="Practice" type="Button" parent="."]
-layout_mode = 2
-offset_left = 783.0
-offset_top = 707.0
-offset_right = 1080.0
-offset_bottom = 782.0
-text = "Practice"
+offset_left = 780.0
+offset_top = 757.0
+offset_right = 1090.0
+offset_bottom = 853.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+text = "Practice
+"
 
 [node name="Quit" type="Button" parent="."]
-layout_mode = 2
-offset_left = 839.0
-offset_top = 815.0
-offset_right = 1032.0
-offset_bottom = 890.0
-text = "Quit"
+offset_left = 780.0
+offset_top = 870.0
+offset_right = 1089.0
+offset_bottom = 966.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+text = "Quit
+"
 
 [node name="Title" type="Control" parent="."]
 z_index = 1

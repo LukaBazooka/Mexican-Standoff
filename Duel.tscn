@@ -921,7 +921,7 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"death"
+animation = &"aim_down"
 autoplay = "rest_anim"
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite"]
@@ -980,9 +980,9 @@ flip_h = true
 [node name="shadow" type="AnimatedSprite2D" parent="RightPlayer/charactersprite"]
 modulate = Color(0, 0, 0, 0.207843)
 z_index = -1
-position = Vector2(15, 10)
+position = Vector2(15, 12.8572)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"death"
+animation = &"win_anim"
 autoplay = "rest_anim"
 flip_h = true
 script = ExtResource("133_n11vs")
@@ -1528,6 +1528,7 @@ autoplay = "emptybullet"
 frame_progress = 0.999232
 
 [node name="DrawPopup" type="Control" parent="PlayerGUI"]
+visible = false
 anchors_preset = 0
 offset_left = 150.0
 offset_top = 100.0

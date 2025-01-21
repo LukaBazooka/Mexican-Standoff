@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnxeausb8s2wo"]
+[gd_scene load_steps=13 format=3 uid="uid://dnxeausb8s2wo"]
 
+[ext_resource type="Script" path="res://game_rules.gd" id="1_03tcu"]
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_iaxpt"]
+[ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="3_fxvm6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hrcr"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 0.960784)
@@ -11,6 +13,32 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_x3rua"]
 Panel/styles/panel = SubResource("StyleBoxFlat_1hrcr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7igx5"]
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.698039, 0.698039, 0.698039, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgymh"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j12jw"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku1mk"]
 bg_color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -43,14 +71,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_03tcu")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 406.0
-offset_top = 44.0
-offset_right = 1560.0
-offset_bottom = 936.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -446.0
+offset_right = 577.0
+offset_bottom = 446.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_x3rua")
+
+[node name="Back" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -124.0
+offset_right = 111.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_7igx5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgymh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j12jw")
+text = "Back
+"
 
 [node name="Goal" type="Label" parent="Panel"]
 layout_mode = 0
@@ -165,7 +222,7 @@ offset_right = 874.0
 offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 35
-text = " players can perform actions"
+text = " players can perform actions, such as shoot, reload and block"
 vertical_alignment = 1
 
 [node name="Duel Phase2" type="Label" parent="Panel/Game Structure"]
@@ -194,5 +251,32 @@ offset_right = 874.0
 offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 35
-text = " "
+text = " the cowboy with the fastest hands will get the kill"
 vertical_alignment = 1
+
+[node name="Duel Phase3" type="Label" parent="Panel/Game Structure"]
+layout_mode = 0
+offset_top = 498.0
+offset_right = 318.0
+offset_bottom = 558.0
+theme_override_fonts/font = ExtResource("1_iaxpt")
+theme_override_font_sizes/font_size = 45
+text = "GOOD LUCK COWBOYS!
+"
+vertical_alignment = 1
+
+[node name="Background" type="Control" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_fxvm6")
+
+[connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]
