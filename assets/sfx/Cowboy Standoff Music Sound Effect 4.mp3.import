@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btl48butd4yel"
+path="res://.godot/imported/Cowboy Standoff Music Sound Effect 4.mp3-afe680cd3b6fb4a9a0e7d1dfee453ea2.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Cowboy Standoff Music Sound Effect 4.mp3"
+dest_files=["res://.godot/imported/Cowboy Standoff Music Sound Effect 4.mp3-afe680cd3b6fb4a9a0e7d1dfee453ea2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

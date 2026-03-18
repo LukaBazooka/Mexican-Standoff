@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnxeausb8s2wo"]
+[gd_scene format=3 uid="uid://dnxeausb8s2wo"]
 
-[ext_resource type="Script" path="res://game_rules.gd" id="1_03tcu"]
+[ext_resource type="Script" uid="uid://bbx23if3rn37y" path="res://game_rules.gd" id="1_03tcu"]
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_iaxpt"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="3_fxvm6"]
 
@@ -27,14 +27,14 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgymh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j12jw"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j12jw"]
-bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgymh"]
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -64,7 +64,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Game Rules" type="Control"]
+[node name="Game Rules" type="Control" unique_id=1151152281]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_03tcu")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1015123632]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_x3rua")
 
-[node name="Back" type="Button" parent="Panel"]
+[node name="Back" type="Button" parent="Panel" unique_id=1167156685]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -102,14 +102,14 @@ offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_iaxpt")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 63
 theme_override_styles/normal = SubResource("StyleBoxFlat_7igx5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hgymh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_j12jw")
-text = "Back
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgymh")
+text = "NEXT
 "
 
-[node name="Goal" type="Label" parent="Panel"]
+[node name="Goal" type="Label" parent="Panel" unique_id=1373540778]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 28.0
@@ -119,7 +119,7 @@ theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 60
 text = "Goal"
 
-[node name="Panel" type="Panel" parent="Panel/Goal"]
+[node name="Panel" type="Panel" parent="Panel/Goal" unique_id=1049485094]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 60.0
@@ -127,17 +127,17 @@ offset_right = 1096.0
 offset_bottom = 116.0
 theme = SubResource("Theme_gb72x")
 
-[node name="Label" type="Label" parent="Panel/Goal/Panel"]
+[node name="Label" type="Label" parent="Panel/Goal/Panel" unique_id=1640643305]
 layout_mode = 0
 offset_left = 10.0
 offset_right = 221.0
 offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 35
-text = "KILL your opponet in a mexican Standoff"
+text = "KILL your opponent in a mexican Standoff"
 vertical_alignment = 1
 
-[node name="Game Structure" type="Label" parent="Panel"]
+[node name="Game Structure" type="Label" parent="Panel" unique_id=271043004]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 174.0
@@ -147,7 +147,7 @@ theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 60
 text = "Game structure"
 
-[node name="Panel" type="Panel" parent="Panel/Game Structure"]
+[node name="Panel" type="Panel" parent="Panel/Game Structure" unique_id=367675484]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 60.0
@@ -156,29 +156,30 @@ offset_bottom = 114.0
 theme = SubResource("Theme_gb72x")
 theme_override_styles/panel = SubResource("StyleBoxFlat_gmawy")
 
-[node name="Label" type="Label" parent="Panel/Game Structure/Panel"]
+[node name="Label" type="Label" parent="Panel/Game Structure/Panel" unique_id=742452144]
 layout_mode = 0
 offset_left = 10.0
-offset_right = 688.0
-offset_bottom = 55.0
+offset_top = -20.0
+offset_right = 687.0
+offset_bottom = 79.0
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 35
-text = "The Game has 2 phases the rest phase and the duel phase
-"
+text = "The Game has 2 phases: REST AND DUEL"
 vertical_alignment = 1
 
-[node name="Rest Phase" type="Label" parent="Panel/Game Structure"]
+[node name="Rest Phase" type="Label" parent="Panel/Game Structure" unique_id=813183700]
 layout_mode = 0
 offset_top = 127.0
-offset_right = 318.0
-offset_bottom = 187.0
+offset_right = 173.0
+offset_bottom = 228.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 45
 text = "Rest Phase
 "
 vertical_alignment = 1
 
-[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Rest Phase"]
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Rest Phase" unique_id=2053538801]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 58.0
@@ -187,27 +188,28 @@ offset_bottom = 113.0
 theme = SubResource("Theme_gb72x")
 theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
 
-[node name="Label" type="Label" parent="Panel/Game Structure/Rest Phase/Rest Phase"]
+[node name="Label" type="Label" parent="Panel/Game Structure/Rest Phase/Rest Phase" unique_id=1096860535]
 layout_mode = 0
 offset_right = 874.0
 offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 35
-text = " Gives players the oppertunity to prepare for the next duel round"
+text = " Gives players the opportunity to prepare their next move to perform"
 vertical_alignment = 1
 
-[node name="Duel Phase" type="Label" parent="Panel/Game Structure"]
+[node name="Duel Phase" type="Label" parent="Panel/Game Structure" unique_id=1300380031]
 layout_mode = 0
 offset_top = 256.0
 offset_right = 318.0
 offset_bottom = 316.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_iaxpt")
 theme_override_font_sizes/font_size = 45
 text = "Duel Phase
 "
 vertical_alignment = 1
 
-[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase"]
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase" unique_id=1343929499]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 58.0
@@ -216,7 +218,7 @@ offset_bottom = 113.0
 theme = SubResource("Theme_gb72x")
 theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
 
-[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase/Rest Phase"]
+[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase/Rest Phase" unique_id=1291123996]
 layout_mode = 0
 offset_right = 874.0
 offset_bottom = 55.0
@@ -225,7 +227,7 @@ theme_override_font_sizes/font_size = 35
 text = " players can perform actions, such as shoot, reload and block"
 vertical_alignment = 1
 
-[node name="Duel Phase2" type="Label" parent="Panel/Game Structure"]
+[node name="Duel Phase2" type="Label" parent="Panel/Game Structure" unique_id=1942446610]
 layout_mode = 0
 offset_top = 372.0
 offset_right = 318.0
@@ -236,7 +238,7 @@ text = "Fast Hands
 "
 vertical_alignment = 1
 
-[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase2"]
+[node name="Rest Phase" type="Panel" parent="Panel/Game Structure/Duel Phase2" unique_id=875770893]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 58.0
@@ -245,7 +247,7 @@ offset_bottom = 113.0
 theme = SubResource("Theme_gb72x")
 theme_override_styles/panel = SubResource("StyleBoxFlat_u03kx")
 
-[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase2/Rest Phase"]
+[node name="Label" type="Label" parent="Panel/Game Structure/Duel Phase2/Rest Phase" unique_id=1657489812]
 layout_mode = 0
 offset_right = 874.0
 offset_bottom = 55.0
@@ -254,7 +256,7 @@ theme_override_font_sizes/font_size = 35
 text = " the cowboy with the fastest hands will get the kill"
 vertical_alignment = 1
 
-[node name="Duel Phase3" type="Label" parent="Panel/Game Structure"]
+[node name="Duel Phase3" type="Label" parent="Panel/Game Structure" unique_id=1612220726]
 layout_mode = 0
 offset_top = 498.0
 offset_right = 318.0
@@ -265,7 +267,7 @@ text = "GOOD LUCK COWBOYS!
 "
 vertical_alignment = 1
 
-[node name="Background" type="Control" parent="."]
+[node name="Background" type="Control" parent="." unique_id=217708561]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -276,7 +278,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="Sprite2D" parent="Background"]
+[node name="BG" type="Sprite2D" parent="Background" unique_id=159522135]
 texture = ExtResource("3_fxvm6")
 
 [connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

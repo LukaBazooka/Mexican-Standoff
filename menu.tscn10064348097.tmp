@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://joifcgjlgnws" path="res://assets/images/OutlawOutdrawTitle.png" id="4_afbv8"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="5_wpcy6"]
 [ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="7_ecwwl"]
-[ext_resource type="AudioStream" uid="uid://dqffwotfhcyeg" path="res://assets/sfx/La Raspa.mp3" id="8_kk3ma"]
+[ext_resource type="AudioStream" uid="uid://btl48butd4yel" path="res://assets/sfx/Cowboy Standoff Music Sound Effect 4.mp3" id="8_kk3ma"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjcmh"]
 bg_color = Color(0, 0, 0, 1)
@@ -46,15 +46,14 @@ script = ExtResource("1_lppgq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=412412594]
 stream = ExtResource("2_ecwwl")
-volume_db = 6.19
 script = ExtResource("3_l48gv")
 
 [node name="Play" type="Button" parent="." unique_id=746556946]
 layout_mode = 0
 offset_left = 779.0
-offset_top = 617.0
+offset_top = 537.0
 offset_right = 1090.0
-offset_bottom = 712.0
+offset_bottom = 632.0
 theme_override_fonts/font = ExtResource("2_yk0b8")
 theme_override_font_sizes/font_size = 68
 theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
@@ -63,22 +62,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
 text = "Play
 "
 
-[node name="YouTube" type="Button" parent="." unique_id=1673469540]
-layout_mode = 0
-offset_left = 779.0
-offset_top = 729.0
-offset_right = 1090.0
-offset_bottom = 824.0
-theme_override_fonts/font = ExtResource("2_yk0b8")
-theme_override_font_sizes/font_size = 68
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
-text = "Youtube
-"
-
 [node name="Instructions" type="Button" parent="." unique_id=2059365975]
-visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 647.0
@@ -92,7 +76,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
 text = "Instructions"
 
 [node name="Practice" type="Button" parent="." unique_id=1176069257]
-visible = false
 layout_mode = 0
 offset_left = 780.0
 offset_top = 757.0
@@ -109,9 +92,9 @@ text = "Practice
 [node name="Quit" type="Button" parent="." unique_id=1495455746]
 layout_mode = 0
 offset_left = 780.0
-offset_top = 838.0
+offset_top = 870.0
 offset_right = 1089.0
-offset_bottom = 934.0
+offset_bottom = 966.0
 theme_override_fonts/font = ExtResource("2_yk0b8")
 theme_override_font_sizes/font_size = 68
 theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
@@ -156,12 +139,10 @@ texture = ExtResource("7_ecwwl")
 [node name="CowboyStandoffMusicSoundEffect4" type="AudioStreamPlayer2D" parent="." unique_id=492199150]
 position = Vector2(488, 436)
 stream = ExtResource("8_kk3ma")
-volume_db = -6.19
 autoplay = true
 parameters/looping = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="YouTube" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="Practice" to="." method="_on_practice_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

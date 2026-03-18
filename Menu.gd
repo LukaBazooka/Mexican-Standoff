@@ -1,10 +1,11 @@
 extends Control
 
-const MUZZLE_FLASH_DURATION: float = 0.5
+const MUZZLE_FLASH_DURATION: float = 0.1
 
 @onready var sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var muzzle_flash: Sprite2D = $MuzzleFlash
 var muzzle_flash_time_left: float = 0.0
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	set_process(true)
@@ -21,13 +22,14 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MouseButton.LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			sound.play()
 			muzzle_flash.visible = true
 			muzzle_flash_time_left = MUZZLE_FLASH_DURATION
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Duel.tscn")
+	get_tree().change_scene_to_file("res://game_rules.tscn")
+	#get_tree().change_scene_to_file("res://Duel.tscn")
 
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://options_menu.tscn")
