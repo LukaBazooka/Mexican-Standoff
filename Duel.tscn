@@ -1,6 +1,6 @@
-[gd_scene load_steps=180 format=3 uid="uid://cu7y1y78b6e1o"]
+[gd_scene format=3 uid="uid://cu7y1y78b6e1o"]
 
-[ext_resource type="Script" path="res://Duel.gd" id="1_fkpxe"]
+[ext_resource type="Script" uid="uid://p5oqnfd725mh" path="res://Duel.gd" id="1_fkpxe"]
 [ext_resource type="PackedScene" uid="uid://cq7ijqwtmu4xm" path="res://LeftPlayer.tscn" id="2_5t8go"]
 [ext_resource type="PackedScene" uid="uid://l57e687gwuyg" path="res://right_player.tscn" id="2_ow1s3"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="2_yswuy"]
@@ -144,7 +144,7 @@
 [ext_resource type="Texture2D" uid="uid://x6r88j3ewjbm" path="res://assets/shoot_up_anim/frame000009.png" id="126_btxcy"]
 [ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
 [ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
-[ext_resource type="Script" path="res://lp_shadow.gd" id="133_n11vs"]
+[ext_resource type="Script" uid="uid://clyga86tuo2uh" path="res://lp_shadow.gd" id="133_n11vs"]
 [ext_resource type="Texture2D" uid="uid://d0wxsseas27dx" path="res://assets/newbullet_anims/fullbullet01.png" id="142_7oo75"]
 [ext_resource type="Texture2D" uid="uid://bgmiiwkhq0hu3" path="res://assets/newbullet_anims/fullbullet02.png" id="143_qbt64"]
 [ext_resource type="Texture2D" uid="uid://cy14aiyrndlg4" path="res://assets/newbullet_anims/fullbullet03.png" id="144_5abdj"]
@@ -413,6 +413,87 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("72_7ux70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7pcbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s4dtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jin2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_142eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o8vn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b2wlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gysgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_l8ly0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2h3vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7pcbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s4dtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jin2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_142eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o8vn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b2wlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gysgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_l8ly0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2h3vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7pcbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s4dtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jin2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_142eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o8vn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b2wlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gysgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_l8ly0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2h3vs")
 }],
 "loop": true,
 "name": &"hit",
@@ -886,45 +967,45 @@ font_size = 180
 font = ExtResource("50_dq8qp")
 font_size = 50
 
-[node name="Node2D" type="Node2D" groups=["duel"]]
+[node name="Node2D" type="Node2D" unique_id=530145505 groups=["duel"]]
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="." unique_id=1592717960]
 z_index = -2
 position = Vector2(-85, -47)
 texture = ExtResource("2_yswuy")
 centered = false
 
-[node name="Action_finish" type="Timer" parent="."]
+[node name="Action_finish" type="Timer" parent="." unique_id=1015512592]
 one_shot = true
 
-[node name="Rest_Timer" type="Timer" parent="."]
+[node name="Rest_Timer" type="Timer" parent="." unique_id=2017811639]
 wait_time = 3.0
 one_shot = true
 
-[node name="DuelTimer" type="Timer" parent="."]
+[node name="DuelTimer" type="Timer" parent="." unique_id=2054010705]
 wait_time = 2.0
 one_shot = true
 
-[node name="StateTimer" type="Timer" parent="."]
+[node name="StateTimer" type="Timer" parent="." unique_id=1038870285]
 wait_time = 0.5
 one_shot = true
 
-[node name="LeftPlayer" parent="." instance=ExtResource("2_5t8go")]
+[node name="LeftPlayer" parent="." unique_id=1386013690 instance=ExtResource("2_5t8go")]
 position = Vector2(2, 402)
 
-[node name="gunpoint" type="Marker2D" parent="LeftPlayer"]
+[node name="gunpoint" type="Marker2D" parent="LeftPlayer" unique_id=1797358176]
 position = Vector2(440, 256)
 
-[node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer"]
+[node name="charactersprite" type="AnimatedSprite2D" parent="LeftPlayer" unique_id=1509674551]
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
 animation = &"aim_down"
 autoplay = "rest_anim"
 
-[node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite"]
+[node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite" unique_id=762636559]
 visible = false
 modulate = Color(1, 1, 1, 0.247059)
 z_index = -1
@@ -932,7 +1013,7 @@ position = Vector2(-65.7143, 382.5)
 scale = Vector2(1.14137, 0.516865)
 texture = ExtResource("4_1chk6")
 
-[node name="shadow" type="AnimatedSprite2D" parent="LeftPlayer/charactersprite"]
+[node name="shadow" type="AnimatedSprite2D" parent="LeftPlayer/charactersprite" unique_id=593542189]
 modulate = Color(0, 0, 0, 0.207843)
 z_index = -1
 position = Vector2(-15, 10)
@@ -941,81 +1022,83 @@ animation = &"new_animation"
 autoplay = "rest_anim"
 script = ExtResource("133_n11vs")
 
-[node name="collisions" type="Node2D" parent="LeftPlayer"]
+[node name="collisions" type="Node2D" parent="LeftPlayer" unique_id=2451533]
 
-[node name="body_collisoion" type="Area2D" parent="LeftPlayer/collisions"]
+[node name="body_collisoion" type="Area2D" parent="LeftPlayer/collisions" unique_id=920128976]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/body_collisoion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/body_collisoion" unique_id=2050786980]
 position = Vector2(274, 285)
 shape = SubResource("RectangleShape2D_11blt")
 
-[node name="leg_collision" type="Area2D" parent="LeftPlayer/collisions"]
+[node name="leg_collision" type="Area2D" parent="LeftPlayer/collisions" unique_id=1833732312]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/leg_collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/leg_collision" unique_id=1495676110]
 position = Vector2(187, 489)
 shape = SubResource("RectangleShape2D_yy2ei")
 
-[node name="head_collison" type="Area2D" parent="LeftPlayer/collisions"]
+[node name="head_collison" type="Area2D" parent="LeftPlayer/collisions" unique_id=1202685104]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/head_collison"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPlayer/collisions/head_collison" unique_id=1995347140]
 position = Vector2(198.25, 147.25)
 shape = SubResource("RectangleShape2D_fnm46")
 
-[node name="bloodpoint" type="Marker2D" parent="LeftPlayer"]
+[node name="bloodpoint" type="Marker2D" parent="LeftPlayer" unique_id=1395832711]
 position = Vector2(188, 575)
 scale = Vector2(0.999999, 0.999999)
 
-[node name="RightPlayer" parent="." instance=ExtResource("2_ow1s3")]
+[node name="RightPlayer" parent="." unique_id=1627249691 instance=ExtResource("2_ow1s3")]
 position = Vector2(746, 417)
 
-[node name="charactersprite" type="AnimatedSprite2D" parent="RightPlayer"]
+[node name="charactersprite" type="AnimatedSprite2D" parent="RightPlayer" unique_id=1621004814]
 modulate = Color(81.47, 1, 1, 1)
 position = Vector2(757, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"death"
+animation = &"hit"
 autoplay = "rest_anim"
 flip_h = true
 
-[node name="shadow" type="AnimatedSprite2D" parent="RightPlayer/charactersprite"]
+[node name="shadow" type="AnimatedSprite2D" parent="RightPlayer/charactersprite" unique_id=2021136043]
 modulate = Color(0, 0, 0, 0.207843)
 z_index = -1
 position = Vector2(15, 12.8572)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"win_anim"
+animation = &"banana_draw"
 autoplay = "rest_anim"
+frame = 6
+frame_progress = 1.0
 flip_h = true
 script = ExtResource("133_n11vs")
 
-[node name="gunpoint" type="Marker2D" parent="RightPlayer"]
+[node name="gunpoint" type="Marker2D" parent="RightPlayer" unique_id=1032982700]
 position = Vector2(568, 254)
 
-[node name="collisions" type="Node2D" parent="RightPlayer"]
+[node name="collisions" type="Node2D" parent="RightPlayer" unique_id=1167857247]
 position = Vector2(600, 2.08165e-12)
 
-[node name="body_collisoion" type="Area2D" parent="RightPlayer/collisions"]
+[node name="body_collisoion" type="Area2D" parent="RightPlayer/collisions" unique_id=1201829442]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/body_collisoion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/body_collisoion" unique_id=1229328838]
 position = Vector2(136, 291)
 shape = SubResource("RectangleShape2D_11blt")
 
-[node name="leg_collision" type="Area2D" parent="RightPlayer/collisions"]
+[node name="leg_collision" type="Area2D" parent="RightPlayer/collisions" unique_id=829766608]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/leg_collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/leg_collision" unique_id=952478755]
 position = Vector2(225, 477)
 shape = SubResource("RectangleShape2D_yy2ei")
 
-[node name="head_collison" type="Area2D" parent="RightPlayer/collisions"]
+[node name="head_collison" type="Area2D" parent="RightPlayer/collisions" unique_id=1514798516]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/head_collison"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPlayer/collisions/head_collison" unique_id=840350710]
 position = Vector2(201, 144)
 shape = SubResource("RectangleShape2D_fnm46")
 
-[node name="bloodpoint" type="Marker2D" parent="RightPlayer"]
+[node name="bloodpoint" type="Marker2D" parent="RightPlayer" unique_id=1974857692]
 position = Vector2(1571, 566)
 scale = Vector2(0.999999, 0.999999)
 
-[node name="PlayerGUI" type="Control" parent="."]
+[node name="PlayerGUI" type="Control" parent="." unique_id=2101527631]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1023,7 +1106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="dueltimer" parent="PlayerGUI" instance=ExtResource("59_xn7il")]
+[node name="dueltimer" parent="PlayerGUI" unique_id=134648481 instance=ExtResource("59_xn7il")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1035,7 +1118,7 @@ offset_bottom = -7.0
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
 
-[node name="LeftPlayerGUI" type="Control" parent="PlayerGUI"]
+[node name="LeftPlayerGUI" type="Control" parent="PlayerGUI" unique_id=514027302]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 245.0
@@ -1043,19 +1126,19 @@ offset_top = 38.0
 offset_right = 245.0
 offset_bottom = 38.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/LeftPlayerGUI" unique_id=1675788918]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HealthLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+[node name="HealthLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer" unique_id=1627774440]
 visible = false
 layout_mode = 2
 text = "Health:"
 label_settings = SubResource("LabelSettings_skm0t")
 
-[node name="HealthValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel"]
+[node name="HealthValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/HealthLabel" unique_id=649891899]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1066,13 +1149,13 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_skm0t")
 
-[node name="AmmoLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer"]
+[node name="AmmoLabel" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer" unique_id=556061771]
 visible = false
 layout_mode = 2
 text = "Ammo:"
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="AmmoValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel"]
+[node name="AmmoValue" type="Label" parent="PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel" unique_id=883739381]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1083,7 +1166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI" unique_id=1186178216]
 layout_mode = 0
 offset_left = -295.0
 offset_top = 106.0
@@ -1091,94 +1174,94 @@ offset_right = 520.0
 offset_bottom = 414.0
 scale = Vector2(0.5, 0.5)
 
-[node name="emptybox1" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
+[node name="emptybox1" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=425905932]
 position = Vector2(84, 141)
 scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=1087882655]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=155574683]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=498227236]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=2037780483]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=924668786]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1"]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=1155514230]
 visible = false
 texture = ExtResource("51_fldnp")
 
-[node name="emptybox2" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
+[node name="emptybox2" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=2033725723]
 position = Vector2(251, 141)
 scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=2103405029]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=1473744581]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=2103194039]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=1743646863]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=956738336]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2"]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=5128449]
 visible = false
 texture = ExtResource("51_fldnp")
 
-[node name="emptybox3" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer"]
+[node name="emptybox3" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=881605069]
 position = Vector2(419, 141)
 scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=493946850]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1017447538]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1507410028]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1034436259]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=2066480622]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3"]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=922023924]
 visible = false
 texture = ExtResource("51_fldnp")
 
-[node name="Hearts" type="Control" parent="PlayerGUI/LeftPlayerGUI"]
+[node name="Hearts" type="Control" parent="PlayerGUI/LeftPlayerGUI" unique_id=1538075055]
 anchors_preset = 0
 offset_left = -46.0
 offset_top = -5.0
@@ -1186,52 +1269,49 @@ offset_right = 52.0
 offset_bottom = 41.0
 scale = Vector2(0.8, 0.8)
 
-[node name="left_heart1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts" unique_id=314432796]
 anchors_preset = 0
 offset_left = -278.0
 offset_top = -3.0
 offset_right = -250.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart1"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart1" unique_id=1720033688]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="left_heart2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts" unique_id=1206683790]
 anchors_preset = 0
 offset_left = -133.0
 offset_top = -3.0
 offset_right = -105.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart2"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart2" unique_id=1002044741]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="left_heart3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Hearts" unique_id=1019478257]
 anchors_preset = 0
 offset_left = 14.0
 offset_top = -3.0
 offset_right = 42.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart3"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Hearts/left_heart3" unique_id=1501202038]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="Bullets" type="Control" parent="PlayerGUI/LeftPlayerGUI"]
+[node name="Bullets" type="Control" parent="PlayerGUI/LeftPlayerGUI" unique_id=1520687482]
 anchors_preset = 0
 offset_left = -110.0
 offset_top = 10.0
@@ -1239,28 +1319,28 @@ offset_right = -70.0
 offset_bottom = 50.0
 scale = Vector2(0.6, 0.6)
 
-[node name="left_Bullet1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet1" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=498196694]
 anchors_preset = 0
 offset_left = -284.0
 offset_top = 117.0
 offset_right = -244.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet1" unique_id=485310724]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
 
-[node name="left_Bullet2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet2" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=409353501]
 anchors_preset = 0
 offset_left = -221.0
 offset_top = 117.0
 offset_right = -181.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet2" unique_id=452339678]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1268,14 +1348,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet3" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=1236527456]
 anchors_preset = 0
 offset_left = -156.0
 offset_top = 117.0
 offset_right = -116.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet3" unique_id=2135354487]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1283,14 +1363,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet4" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet4" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=1529823618]
 anchors_preset = 0
 offset_left = -94.0
 offset_top = 117.0
 offset_right = -54.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet4" unique_id=145595014]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1298,14 +1378,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet5" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet5" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=673299266]
 anchors_preset = 0
 offset_left = -32.0
 offset_top = 117.0
 offset_right = 8.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5" unique_id=1573049786]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1313,14 +1393,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet6" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets"]
+[node name="left_Bullet6" type="Control" parent="PlayerGUI/LeftPlayerGUI/Bullets" unique_id=914954717]
 anchors_preset = 0
 offset_left = 36.0
 offset_top = 117.0
 offset_right = 76.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6" unique_id=8251951]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1328,7 +1408,7 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="RightPlayerGUI" type="Control" parent="PlayerGUI"]
+[node name="RightPlayerGUI" type="Control" parent="PlayerGUI" unique_id=701317456]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 1569.0
@@ -1336,19 +1416,19 @@ offset_top = -34.0
 offset_right = 1569.0
 offset_bottom = -34.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/RightPlayerGUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGUI/RightPlayerGUI" unique_id=522052379]
 visible = false
 layout_mode = 0
 offset_right = 166.0
 offset_bottom = 132.0
 
-[node name="HealthLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer"]
+[node name="HealthLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer" unique_id=1580425183]
 visible = false
 layout_mode = 2
 text = "Health:"
 label_settings = SubResource("LabelSettings_skm0t")
 
-[node name="HealthValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel"]
+[node name="HealthValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/HealthLabel" unique_id=964031203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1359,12 +1439,12 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_skm0t")
 
-[node name="AmmoLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer"]
+[node name="AmmoLabel" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer" unique_id=193573700]
 layout_mode = 2
 text = "Ammo:"
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="AmmoValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/AmmoLabel"]
+[node name="AmmoValue" type="Label" parent="PlayerGUI/RightPlayerGUI/VBoxContainer/AmmoLabel" unique_id=1993923996]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1375,8 +1455,7 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="Hearts" type="Control" parent="PlayerGUI/RightPlayerGUI"]
-layout_mode = 3
+[node name="Hearts" type="Control" parent="PlayerGUI/RightPlayerGUI" unique_id=1572608206]
 anchors_preset = 0
 offset_left = -17.0
 offset_top = 64.0
@@ -1384,53 +1463,49 @@ offset_right = 81.0
 offset_bottom = 78.0
 scale = Vector2(-0.8, 0.8)
 
-[node name="left_heart1" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart1" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts" unique_id=1514763555]
 anchors_preset = 0
 offset_left = -278.0
 offset_top = -3.0
 offset_right = -250.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart1"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart1" unique_id=1721994304]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="left_heart2" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart2" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts" unique_id=1235408526]
 anchors_preset = 0
 offset_left = -133.0
 offset_top = -3.0
 offset_right = -105.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart2"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart2" unique_id=1995798615]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="left_heart3" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts"]
-layout_mode = 3
+[node name="left_heart3" type="Control" parent="PlayerGUI/RightPlayerGUI/Hearts" unique_id=2067759175]
 anchors_preset = 0
 offset_left = 14.0
 offset_top = -3.0
 offset_right = 42.0
 offset_bottom = 23.0
 
-[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart3"]
+[node name="HeartSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Hearts/left_heart3" unique_id=1750843561]
 position = Vector2(20, -6)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ctphf")
 animation = &"heartfull"
 autoplay = "heartfull"
 
-[node name="Bullets" type="Control" parent="PlayerGUI/RightPlayerGUI"]
-layout_mode = 3
+[node name="Bullets" type="Control" parent="PlayerGUI/RightPlayerGUI" unique_id=947457205]
 anchors_preset = 0
 offset_left = 49.0
 offset_top = 76.0
@@ -1438,28 +1513,28 @@ offset_right = 89.0
 offset_bottom = 116.0
 scale = Vector2(-0.6, 0.6)
 
-[node name="left_Bullet1" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet1" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=1553962597]
 anchors_preset = 0
 offset_left = -284.0
 offset_top = 117.0
 offset_right = -244.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet1" unique_id=1451603699]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
 animation = &"emptybullet"
 autoplay = "emptybullet"
 
-[node name="left_Bullet2" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet2" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=222695980]
 anchors_preset = 0
 offset_left = -221.0
 offset_top = 117.0
 offset_right = -181.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet2" unique_id=1932147764]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1467,14 +1542,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet3" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet3" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=829538824]
 anchors_preset = 0
 offset_left = -156.0
 offset_top = 117.0
 offset_right = -116.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet3" unique_id=337603909]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1482,14 +1557,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet4" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet4" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=618943195]
 anchors_preset = 0
 offset_left = -94.0
 offset_top = 117.0
 offset_right = -54.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet4" unique_id=345563480]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1497,14 +1572,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet5" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet5" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=1885073647]
 anchors_preset = 0
 offset_left = -32.0
 offset_top = 117.0
 offset_right = 8.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet5" unique_id=1889907181]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1512,14 +1587,14 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="left_Bullet6" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets"]
+[node name="left_Bullet6" type="Control" parent="PlayerGUI/RightPlayerGUI/Bullets" unique_id=295142746]
 anchors_preset = 0
 offset_left = 36.0
 offset_top = 117.0
 offset_right = 76.0
 offset_bottom = 157.0
 
-[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6"]
+[node name="BulletSprite" type="AnimatedSprite2D" parent="PlayerGUI/RightPlayerGUI/Bullets/left_Bullet6" unique_id=563087297]
 position = Vector2(16, 2)
 scale = Vector2(0.721875, 0.721875)
 sprite_frames = SubResource("SpriteFrames_6jjxg")
@@ -1527,7 +1602,7 @@ animation = &"emptybullet"
 autoplay = "emptybullet"
 frame_progress = 0.999232
 
-[node name="DrawPopup" type="Control" parent="PlayerGUI"]
+[node name="DrawPopup" type="Control" parent="PlayerGUI" unique_id=466775375]
 visible = false
 anchors_preset = 0
 offset_left = 150.0
@@ -1536,11 +1611,11 @@ offset_right = 190.0
 offset_bottom = 140.0
 scale = Vector2(0.8, 0.8)
 
-[node name="DRAW!" type="AnimatedSprite2D" parent="PlayerGUI/DrawPopup"]
+[node name="DRAW!" type="AnimatedSprite2D" parent="PlayerGUI/DrawPopup" unique_id=493565255]
 position = Vector2(893, 407)
 sprite_frames = SubResource("SpriteFrames_duprc")
 
-[node name="DrawLabel" type="Label" parent="PlayerGUI/DrawPopup"]
+[node name="DrawLabel" type="Label" parent="PlayerGUI/DrawPopup" unique_id=355621741]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1556,11 +1631,11 @@ grow_vertical = 2
 text = "DRAW!"
 label_settings = SubResource("LabelSettings_4d2es")
 
-[node name="Timer" type="Timer" parent="PlayerGUI/DrawPopup"]
+[node name="Timer" type="Timer" parent="PlayerGUI/DrawPopup" unique_id=1360653081]
 wait_time = 0.5
 one_shot = true
 
-[node name="resttimer" parent="PlayerGUI" instance=ExtResource("62_c2yrs")]
+[node name="resttimer" parent="PlayerGUI" unique_id=1874362222 instance=ExtResource("62_c2yrs")]
 layout_mode = 0
 offset_left = 575.0
 offset_top = -27.0
@@ -1568,7 +1643,7 @@ offset_right = 975.0
 offset_bottom = -7.0
 scale = Vector2(1.5, 1.5)
 
-[node name="DeathScreen" type="Control" parent="."]
+[node name="DeathScreen" type="Control" parent="." unique_id=715901322]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -1578,7 +1653,7 @@ offset_right = 1839.0
 offset_bottom = 1037.0
 theme = ExtResource("165_ilkio")
 
-[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+[node name="ColorRect" type="ColorRect" parent="DeathScreen" unique_id=1794051466]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1587,7 +1662,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.435294, 0.435294, 0.435294, 0.286275)
 
-[node name="backgroundtext" type="ColorRect" parent="DeathScreen"]
+[node name="backgroundtext" type="ColorRect" parent="DeathScreen" unique_id=1866003547]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1602,7 +1677,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="LeftPlayerWins" type="Label" parent="DeathScreen"]
+[node name="LeftPlayerWins" type="Label" parent="DeathScreen" unique_id=163930336]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -1621,7 +1696,7 @@ The Blue Rascal Won!"
 label_settings = SubResource("LabelSettings_lcawl")
 horizontal_alignment = 1
 
-[node name="Blue" type="Label" parent="DeathScreen/LeftPlayerWins"]
+[node name="Blue" type="Label" parent="DeathScreen/LeftPlayerWins" unique_id=1620645557]
 self_modulate = Color(0.4, 0.705882, 0.819608, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -1639,7 +1714,7 @@ text = "Blue"
 label_settings = SubResource("LabelSettings_lcawl")
 horizontal_alignment = 1
 
-[node name="RightPlayerWins" type="Label" parent="DeathScreen"]
+[node name="RightPlayerWins" type="Label" parent="DeathScreen" unique_id=1252814035]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -1658,7 +1733,7 @@ The Pink Rascal Won!"
 label_settings = SubResource("LabelSettings_lcawl")
 horizontal_alignment = 1
 
-[node name="Pink" type="Label" parent="DeathScreen/RightPlayerWins"]
+[node name="Pink" type="Label" parent="DeathScreen/RightPlayerWins" unique_id=1760793497]
 self_modulate = Color(0.839216, 0.705882, 0.819608, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -1676,18 +1751,18 @@ text = "Pink"
 label_settings = SubResource("LabelSettings_lcawl")
 horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="DeathScreen"]
-layout_mode = 2
+[node name="Retry" type="Button" parent="DeathScreen" unique_id=1907253266]
+layout_mode = 0
 offset_left = 800.0
 offset_top = 660.0
 offset_right = 1127.0
 offset_bottom = 791.0
 text = "Play Again?"
 
-[node name="BlueCampfire" parent="." instance=ExtResource("166_6od7a")]
+[node name="BlueCampfire" parent="." unique_id=1619168058 instance=ExtResource("166_6od7a")]
 position = Vector2(546, 886)
 
-[node name="PinkCampfire" parent="." instance=ExtResource("166_6od7a")]
+[node name="PinkCampfire" parent="." unique_id=1331747059 instance=ExtResource("166_6od7a")]
 position = Vector2(1214, 886)
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]

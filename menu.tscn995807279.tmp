@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://b84i5om8x5qd3"]
+
+[ext_resource type="Script" uid="uid://bw4qq8dwlsklp" path="res://Menu.gd" id="1_lppgq"]
+[ext_resource type="AudioStream" uid="uid://oaybvk5mklqa" path="res://GunShot.mp3" id="2_dolsu"]
+[ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="2_yk0b8"]
+[ext_resource type="Script" uid="uid://piwjv0rf2jq1" path="res://gun_shot_sound.gd" id="3_l48gv"]
+[ext_resource type="Texture2D" uid="uid://joifcgjlgnws" path="res://assets/images/OutlawOutdrawTitle.png" id="4_afbv8"]
+[ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="5_wpcy6"]
+[ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="7_ecwwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjcmh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.698039, 0.698039, 0.698039, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcjsk"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5f2d7"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Menu" type="Control" unique_id=904905683]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lppgq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=412412594]
+stream = ExtResource("2_dolsu")
+script = ExtResource("3_l48gv")
+
+[node name="Play" type="Button" parent="." unique_id=746556946]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 537.0
+offset_right = 1090.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+text = "Play
+"
+
+[node name="Instructions" type="Button" parent="." unique_id=2059365975]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 647.0
+offset_right = 1090.0
+offset_bottom = 743.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+text = "Instructions"
+
+[node name="Practice" type="Button" parent="." unique_id=1176069257]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 757.0
+offset_right = 1090.0
+offset_bottom = 853.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+text = "Practice
+"
+
+[node name="Quit" type="Button" parent="." unique_id=1495455746]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 870.0
+offset_right = 1089.0
+offset_bottom = 966.0
+theme_override_fonts/font = ExtResource("2_yk0b8")
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjcmh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tcjsk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5f2d7")
+text = "Quit
+"
+
+[node name="Title" type="Control" parent="." unique_id=1959030677]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 232.0
+offset_right = 20.0
+offset_bottom = 272.0
+grow_horizontal = 2
+
+[node name="OutlawOutdraw" type="Sprite2D" parent="Title" unique_id=171173989]
+texture = ExtResource("4_afbv8")
+
+[node name="Background" type="Control" parent="." unique_id=1250409131]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Sprite2D" parent="Background" unique_id=536472440]
+texture = ExtResource("5_wpcy6")
+
+[node name="MuzzleFlash" type="Sprite2D" parent="." unique_id=1538204700]
+scale = Vector2(0.15886825, 0.15886833)
+texture = ExtResource("7_ecwwl")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
+[connection signal="pressed" from="Practice" to="." method="_on_practice_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

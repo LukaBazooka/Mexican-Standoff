@@ -130,7 +130,7 @@ func _on_left_player_lp_bullet_collided():
 	blood_instance.z_index += 5
 	add_child(blood_instance) #add to scene
 	
-	#$LeftPlayer/charactersprite.play("hit")
+	$LeftPlayer/charactersprite.play("hit")
 	
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
@@ -150,6 +150,8 @@ func _on_right_player_rp_bullet_collided():
 	blood_instance.position = $RightPlayer/bloodpoint.position
 	blood_instance.z_index += 5
 	add_child(blood_instance) #add to scene
+	
+	$RightPlayer/charactersprite.play("hit")
 	
 	right_health -= current_state_arr[1]
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow

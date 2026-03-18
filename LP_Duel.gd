@@ -350,6 +350,3 @@ func banana_draw():
 
 signal pass_up_l(data)
 signal lp_bullet_collided()
-
-
-
