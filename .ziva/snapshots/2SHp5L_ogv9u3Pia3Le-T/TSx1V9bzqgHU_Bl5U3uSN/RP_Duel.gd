@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var bullet_scene = load("res://bullet.tscn")
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
-@onready var right_player_sound: AudioStreamPlayer2D = duel_scene.get_node("RightPlayerSound")
+#@onready var rightPlayerSound: AudioStreamPlayer2D = $RightPlayerSound
 
 
 #USE TO ESTABLISH HEALTH
@@ -190,8 +190,7 @@ func _on_node_2d_rp_block_state(data):
 
 #excuted on pass down from duel scene
 func shoot(state):
-	if state in [4, 5, 6]:
-		right_player_sound.play()
+	
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		#allows  bullets to collide if both players go for headshots

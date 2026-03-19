@@ -6,14 +6,6 @@ const BODY_SHOT = 50
 const LEG_SHOT = 34
 const NO_DMG = 0
 
-const LEFT_PLAYER_MOAN_STREAMS: Array[AudioStream] = [
-	preload("res://assets/sfx/hit_sound_1.wav"),
-	preload("res://assets/sfx/hit_sound_2.wav"),
-	preload("res://assets/sfx/hit_sound_3.wav"),
-	preload("res://assets/sfx/hit_sound_4.wav"),
-	preload("res://assets/sfx/hit_sound_5.wav"),
-	preload("res://assets/sfx/hit_sound_6.wav"),
-]
 
 var left_health = HEALTH
 var right_health = HEALTH
@@ -23,10 +15,8 @@ var handled_death = false
 var current_state_arr = [0, 0]
 var duel_time
 var rest_time
-var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var blood_splatter = load("res://blood_splatter.tscn")
-@onready var _left_player_moan_sound: AudioStreamPlayer2D = $LeftPlayerMoanSound
 
 const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
@@ -58,7 +48,6 @@ var rp_state = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_rng.randomize()
 	rest_timer.start()
 	left_health = HEALTH
 	right_health = HEALTH
@@ -147,8 +136,7 @@ func _on_left_player_lp_bullet_collided():
 	left_health -= current_state_arr[0]
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
 		left_health -= 100
-	
-	_left_player_moan_sound.play()
+		
 	if left_health <= 0:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$LeftPlayer/charactersprite.play("death")

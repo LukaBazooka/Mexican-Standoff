@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://l57e687gwuyg" path="res://right_player.tscn" id="2_ow1s3"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="2_yswuy"]
 [ext_resource type="Texture2D" uid="uid://bxtcabi2cc32u" path="res://assets/aim_down_anim/frame000001.png" id="3_cjkfw"]
+[ext_resource type="AudioStream" uid="uid://cey711krp2aii" path="res://assets/sfx/hit_sound_1.wav" id="3_p5rav"]
 [ext_resource type="Texture2D" uid="uid://b6de5vwntphny" path="res://assets/heartGUI_anim/Untitled drawing.png" id="4_1chk6"]
 [ext_resource type="Texture2D" uid="uid://h6gut3mcb1tv" path="res://assets/aim_down_anim/frame000002.png" id="4_3bx07"]
 [ext_resource type="Texture2D" uid="uid://hmkwlv4x7iuc" path="res://assets/draw_anim/frame000001.png" id="4_g2s67"]
@@ -976,12 +977,22 @@ script = ExtResource("1_fkpxe")
 [node name="LeftPlayerSound" type="AudioStreamPlayer2D" parent="." unique_id=837216147]
 position = Vector2(1952, 1744)
 stream = ExtResource("170_xc24w")
-volume_db = -6.19
+volume_db = 9.905
+
+[node name="LeftPlayerMoanSound" type="AudioStreamPlayer2D" parent="." unique_id=1499876718]
+position = Vector2(1952, 1744)
+stream = ExtResource("3_p5rav")
+volume_db = 9.905
 
 [node name="RightPlayerSound" type="AudioStreamPlayer2D" parent="." unique_id=771059511]
 position = Vector2(976, 872)
 stream = ExtResource("170_xc24w")
-volume_db = -6.19
+volume_db = 9.905
+
+[node name="RightPlayerMoanSound" type="AudioStreamPlayer2D" parent="." unique_id=1364428347]
+position = Vector2(1952, 1744)
+stream = ExtResource("170_xc24w")
+volume_db = 9.905
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1592717960]
 z_index = -2
@@ -1781,7 +1792,7 @@ position = Vector2(1214, 886)
 [node name="CowboyStandoffMusicSoundEffect4" type="AudioStreamPlayer2D" parent="." unique_id=1393041258]
 position = Vector2(488, 436)
 stream = ExtResource("169_p6xpl")
-volume_db = -6.19
+volume_db = -9.905
 autoplay = true
 parameters/looping = true
 

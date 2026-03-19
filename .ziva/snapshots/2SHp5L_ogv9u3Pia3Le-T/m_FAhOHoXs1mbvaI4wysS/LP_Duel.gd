@@ -3,7 +3,7 @@ extends Node2D
 #Instantiate bullet scene
 @onready var bullet_scene = load("res://bullet.tscn")
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
-@onready var left_player_sound: AudioStreamPlayer2D = duel_scene.get_node("LeftPlayerSound")
+#@onready var leftPlayerSound: AudioStreamPlayer2D = $LeftPlayerSound
 
 #bullet constants
 const BULLET_UP = -1
@@ -139,8 +139,7 @@ func handle_input(key):
 
 #excuted on pass down from duel scene
 func shoot(state):
-	if state in [4, 5, 6]:
-		left_player_sound.play()
+	#leftPlayerSound.play()
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		get_child(get_child_count()-1).get_child(2).set_disabled(false)
