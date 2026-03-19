@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://btc0cjfgqygm8"]
+[gd_scene format=3 uid="uid://b84i5om8x5qd3"]
 
-[ext_resource type="Script" uid="uid://bw4qq8dwlsklp" path="res://Menu.gd" id="1_lppgq"]
+[ext_resource type="Script" uid="uid://ddolafumftlla" path="res://ControlsMenu.gd" id="1_kk3ma"]
 [ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="2_ecwwl"]
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="2_yk0b8"]
 [ext_resource type="Script" uid="uid://piwjv0rf2jq1" path="res://gun_shot_sound.gd" id="3_l48gv"]
@@ -42,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lppgq")
+script = ExtResource("1_kk3ma")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=412412594]
 stream = ExtResource("2_ecwwl")

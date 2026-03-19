@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dd3hhgykf7tbn"]
 
+[ext_resource type="Script" uid="uid://y5i7jyev45qu" path="res://controls.gd" id="1_cf7nr"]
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_p7yrk"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="2_brsrn"]
 [ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_l5o5t"]
@@ -73,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cf7nr")
 
 [node name="Panel" type="Panel" parent="." unique_id=1330463198]
 layout_mode = 0
@@ -436,20 +438,7 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Game Rules" type="Button" parent="Panel" unique_id=901344847]
-layout_mode = 0
-offset_left = 468.0
-offset_top = 798.0
-offset_right = 651.0
-offset_bottom = 861.0
-theme_override_fonts/font = ExtResource("1_p7yrk")
-theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
-text = "Game Rules"
-
-[node name="Controls" type="Button" parent="Panel" unique_id=405678345]
+[node name="Play" type="Button" parent="Panel" unique_id=405678345]
 layout_mode = 0
 offset_left = 468.0
 offset_top = 728.0
@@ -460,20 +449,18 @@ theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
-text = "back
+text = "Play
 "
 
-[node name="Close" type="Button" parent="Panel" unique_id=1848497429]
-visible = false
+[node name="BackButton" type="Button" parent="Panel" unique_id=901344847]
 layout_mode = 0
-offset_left = 511.0
-offset_top = 869.0
-offset_right = 610.0
-offset_bottom = 918.0
+offset_left = 468.0
+offset_top = 798.0
+offset_right = 651.0
+offset_bottom = 861.0
 theme_override_fonts/font = ExtResource("1_p7yrk")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
-text = "Close
-"
+text = "Back"

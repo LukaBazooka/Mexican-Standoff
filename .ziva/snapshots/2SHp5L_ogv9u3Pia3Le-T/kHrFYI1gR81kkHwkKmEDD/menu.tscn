@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://btc0cjfgqygm8"]
+[gd_scene format=3 uid="uid://b84i5om8x5qd3"]
 
 [ext_resource type="Script" uid="uid://bw4qq8dwlsklp" path="res://Menu.gd" id="1_lppgq"]
 [ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="2_ecwwl"]
