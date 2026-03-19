@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://crjsreso4adp8"]
+[gd_scene format=3 uid="uid://crjsreso4adp8"]
 
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_3i4ag"]
-[ext_resource type="Script" path="res://Move_List.gd" id="1_h8nd5"]
+[ext_resource type="Script" uid="uid://duaavy83d78jx" path="res://Move_List.gd" id="1_h8nd5"]
 [ext_resource type="Texture2D" uid="uid://cm02yn1xa5qwk" path="res://assets/temp_icons/Eicon.png" id="2_2yhm2"]
 [ext_resource type="Texture2D" uid="uid://bb4mo5oermvo5" path="res://assets/temp_icons/Wicon.png" id="3_c2mtj"]
 [ext_resource type="Texture2D" uid="uid://b3bt5k825ms3h" path="res://assets/temp_icons/capslockicon.png" id="4_j34p2"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://swqm81expa3m" path="res://assets/temp_icons/Dicon.png" id="8_7ma0u"]
 [ext_resource type="Texture2D" uid="uid://b323ehmlinbf1" path="res://assets/temp_icons/Ricon.png" id="9_knex5"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="11_fmn2g"]
+[ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="12_bfccj"]
+[ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="13_pwnwq"]
+[ext_resource type="Script" uid="uid://piwjv0rf2jq1" path="res://gun_shot_sound.gd" id="14_3xjsg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ollqj"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 0.901961)
@@ -55,12 +58,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehofq"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t11pp"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 corner_radius_top_left = 10
@@ -68,7 +65,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Move List" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehofq"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Move List" type="Control" unique_id=103560833]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,15 +80,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h8nd5")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=442511159]
 layout_mode = 0
-offset_left = 400.0
-offset_top = 74.0
-offset_right = 1521.0
-offset_bottom = 1006.0
+offset_left = 72.0
+offset_top = 61.0
+offset_right = 943.0
+offset_bottom = 1022.0
 theme = SubResource("Theme_ss38t")
 
-[node name="Title" type="Label" parent="Panel"]
+[node name="Title" type="Label" parent="Panel" unique_id=1473307314]
 visible = false
 layout_mode = 0
 offset_left = 451.0
@@ -99,15 +102,16 @@ text = "Move List
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shoot" type="Panel" parent="Panel"]
+[node name="Shoot" type="Panel" parent="Panel" unique_id=1387991852]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 34.0
-offset_right = 1100.0
+offset_right = 846.0
 offset_bottom = 322.0
 theme = SubResource("Theme_rehcc")
 
-[node name="Headshot" type="Label" parent="Panel/Shoot"]
+[node name="Headshot" type="Label" parent="Panel/Shoot" unique_id=367768010]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 8.0
@@ -118,7 +122,7 @@ theme_override_font_sizes/font_size = 50
 text = "Headshot"
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Shoot/Headshot"]
+[node name="Buttons" type="Label" parent="Panel/Shoot/Headshot" unique_id=434096110]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -18.0
@@ -128,44 +132,44 @@ theme_override_font_sizes/font_size = 50
 text = "       ,       ,"
 vertical_alignment = 2
 
-[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons" unique_id=182141755]
 position = Vector2(256, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_2yhm2")
 
-[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons" unique_id=953026991]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("3_c2mtj")
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Headshot/Buttons" unique_id=1174711395]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_j34p2")
 
-[node name="Control" type="Control" parent="Panel/Shoot/Headshot"]
+[node name="Control" type="Control" parent="Panel/Shoot/Headshot" unique_id=1757211448]
 anchors_preset = 0
 offset_left = 208.0
 offset_top = 16.0
 offset_right = 352.0
 offset_bottom = 72.0
 
-[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Headshot/Control" unique_id=649516521]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_esli0")
 
-[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
+[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Headshot/Control" unique_id=366632571]
 position = Vector2(70, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_esli0")
 
-[node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Headshot/Control"]
+[node name="Hearfull4" type="Sprite2D" parent="Panel/Shoot/Headshot/Control" unique_id=542888172]
 position = Vector2(116, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_esli0")
 
-[node name="Label" type="Label" parent="Panel/Shoot/Headshot/Control"]
+[node name="Label" type="Label" parent="Panel/Shoot/Headshot/Control" unique_id=1244918903]
 layout_mode = 0
 offset_left = -14.0
 offset_top = -17.0
@@ -175,7 +179,7 @@ theme_override_font_sizes/font_size = 50
 text = "-"
 vertical_alignment = 1
 
-[node name="Seperator" type="Panel" parent="Panel/Shoot/Headshot"]
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Headshot" unique_id=1896058441]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -183,7 +187,7 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Bodyshot" type="Label" parent="Panel/Shoot"]
+[node name="Bodyshot" type="Label" parent="Panel/Shoot" unique_id=117174101]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 98.0
@@ -194,7 +198,7 @@ theme_override_font_sizes/font_size = 50
 text = "Bodyshot"
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Shoot/Bodyshot"]
+[node name="Buttons" type="Label" parent="Panel/Shoot/Bodyshot" unique_id=2009535206]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -20.0
@@ -204,34 +208,34 @@ theme_override_font_sizes/font_size = 50
 text = "       ,    "
 vertical_alignment = 2
 
-[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons" unique_id=1621906602]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_2yhm2")
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Buttons" unique_id=914118764]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_j34p2")
 
-[node name="Control" type="Control" parent="Panel/Shoot/Bodyshot"]
+[node name="Control" type="Control" parent="Panel/Shoot/Bodyshot" unique_id=844490086]
 anchors_preset = 0
 offset_left = 208.0
 offset_top = 16.0
 offset_right = 352.0
 offset_bottom = 72.0
 
-[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control" unique_id=1271482389]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_esli0")
 
-[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control"]
+[node name="Hearfull3" type="Sprite2D" parent="Panel/Shoot/Bodyshot/Control" unique_id=1846720185]
 position = Vector2(70, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("6_6jsui")
 
-[node name="Label" type="Label" parent="Panel/Shoot/Bodyshot/Control"]
+[node name="Label" type="Label" parent="Panel/Shoot/Bodyshot/Control" unique_id=622625334]
 layout_mode = 0
 offset_left = -14.0
 offset_top = -17.0
@@ -241,7 +245,7 @@ theme_override_font_sizes/font_size = 50
 text = "-"
 vertical_alignment = 1
 
-[node name="Seperator" type="Panel" parent="Panel/Shoot/Bodyshot"]
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Bodyshot" unique_id=531906516]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -249,7 +253,7 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Legshot" type="Label" parent="Panel/Shoot"]
+[node name="Legshot" type="Label" parent="Panel/Shoot" unique_id=1771395607]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 188.0
@@ -260,7 +264,7 @@ theme_override_font_sizes/font_size = 50
 text = "Legshot"
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Shoot/Legshot"]
+[node name="Buttons" type="Label" parent="Panel/Shoot/Legshot" unique_id=1854574632]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -22.0
@@ -270,34 +274,34 @@ theme_override_font_sizes/font_size = 50
 text = "       ,       ,"
 vertical_alignment = 2
 
-[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+[node name="Eicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons" unique_id=935071708]
 position = Vector2(256, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_2yhm2")
 
-[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+[node name="Wicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons" unique_id=1114400519]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("7_64nka")
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Shoot/Legshot/Buttons" unique_id=1240754455]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("4_j34p2")
 
-[node name="Control" type="Control" parent="Panel/Shoot/Legshot"]
+[node name="Control" type="Control" parent="Panel/Shoot/Legshot" unique_id=1688426296]
 anchors_preset = 0
 offset_left = 208.0
 offset_top = 16.0
 offset_right = 352.0
 offset_bottom = 72.0
 
-[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Legshot/Control"]
+[node name="Hearfull2" type="Sprite2D" parent="Panel/Shoot/Legshot/Control" unique_id=1228081760]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_esli0")
 
-[node name="Label" type="Label" parent="Panel/Shoot/Legshot/Control"]
+[node name="Label" type="Label" parent="Panel/Shoot/Legshot/Control" unique_id=1844500795]
 layout_mode = 0
 offset_left = -14.0
 offset_top = -17.0
@@ -307,7 +311,7 @@ theme_override_font_sizes/font_size = 50
 text = "-"
 vertical_alignment = 1
 
-[node name="Seperator" type="Panel" parent="Panel/Shoot/Legshot"]
+[node name="Seperator" type="Panel" parent="Panel/Shoot/Legshot" unique_id=1184115530]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -315,15 +319,16 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Block" type="Panel" parent="Panel"]
+[node name="Block" type="Panel" parent="Panel" unique_id=608921791]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 360.0
-offset_right = 1100.0
+offset_right = 848.0
 offset_bottom = 556.0
 theme = SubResource("Theme_rehcc")
 
-[node name="Bodyblock" type="Label" parent="Panel/Block"]
+[node name="Bodyblock" type="Label" parent="Panel/Block" unique_id=1417775146]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 8.0
@@ -334,7 +339,7 @@ theme_override_font_sizes/font_size = 50
 text = "Bodyblock"
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Block/Bodyblock"]
+[node name="Buttons" type="Label" parent="Panel/Block/Bodyblock" unique_id=1165469156]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -16.0
@@ -344,12 +349,12 @@ theme_override_font_sizes/font_size = 50
 text = "       "
 vertical_alignment = 2
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/Bodyblock/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/Bodyblock/Buttons" unique_id=2024900655]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("8_7ma0u")
 
-[node name="Seperator" type="Panel" parent="Panel/Block/Bodyblock"]
+[node name="Seperator" type="Panel" parent="Panel/Block/Bodyblock" unique_id=1178790813]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -357,7 +362,7 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="LegBlock" type="Label" parent="Panel/Block"]
+[node name="LegBlock" type="Label" parent="Panel/Block" unique_id=460782990]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 98.0
@@ -368,7 +373,7 @@ theme_override_font_sizes/font_size = 50
 text = "Bodyshot"
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Block/LegBlock"]
+[node name="Buttons" type="Label" parent="Panel/Block/LegBlock" unique_id=1091729442]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -18.0
@@ -378,17 +383,17 @@ theme_override_font_sizes/font_size = 50
 text = "       ,       "
 vertical_alignment = 2
 
-[node name="Wicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
+[node name="Wicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons" unique_id=1755871559]
 position = Vector2(152, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("8_7ma0u")
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Block/LegBlock/Buttons" unique_id=64128599]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("7_64nka")
 
-[node name="Seperator" type="Panel" parent="Panel/Block/LegBlock"]
+[node name="Seperator" type="Panel" parent="Panel/Block/LegBlock" unique_id=395723687]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -396,15 +401,16 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Reload" type="Panel" parent="Panel"]
+[node name="Reload" type="Panel" parent="Panel" unique_id=1988264258]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 594.0
-offset_right = 1100.0
+offset_right = 851.0
 offset_bottom = 699.0
 theme = SubResource("Theme_rehcc")
 
-[node name="Bodyblock" type="Label" parent="Panel/Reload"]
+[node name="Bodyblock" type="Label" parent="Panel/Reload" unique_id=770932709]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 8.0
@@ -416,7 +422,7 @@ text = "Reload
 "
 vertical_alignment = 2
 
-[node name="Buttons" type="Label" parent="Panel/Reload/Bodyblock"]
+[node name="Buttons" type="Label" parent="Panel/Reload/Bodyblock" unique_id=1060759582]
 layout_mode = 0
 offset_left = 700.0
 offset_top = -16.0
@@ -426,12 +432,12 @@ theme_override_font_sizes/font_size = 50
 text = "       "
 vertical_alignment = 2
 
-[node name="Capslockicon" type="Sprite2D" parent="Panel/Reload/Bodyblock/Buttons"]
+[node name="Capslockicon" type="Sprite2D" parent="Panel/Reload/Bodyblock/Buttons" unique_id=964846040]
 position = Vector2(56, 56)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("9_knex5")
 
-[node name="Seperator" type="Panel" parent="Panel/Reload/Bodyblock"]
+[node name="Seperator" type="Panel" parent="Panel/Reload/Bodyblock" unique_id=706528972]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 76.0
@@ -439,7 +445,7 @@ offset_right = 1012.0
 offset_bottom = 78.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_js0h1")
 
-[node name="Game Rules" type="Button" parent="Panel"]
+[node name="Game Rules" type="Button" parent="Panel" unique_id=559361394]
 layout_mode = 0
 offset_left = 468.0
 offset_top = 798.0
@@ -448,11 +454,11 @@ offset_bottom = 861.0
 theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
-text = "Game Rules"
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
+text = "play"
 
-[node name="Controls" type="Button" parent="Panel"]
+[node name="Controls" type="Button" parent="Panel" unique_id=165902204]
 visible = false
 layout_mode = 0
 offset_left = 468.0
@@ -462,12 +468,12 @@ offset_bottom = 791.0
 theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 text = "Controls
 "
 
-[node name="Back" type="Button" parent="Panel"]
+[node name="Back" type="Button" parent="Panel" unique_id=949161627]
 layout_mode = 0
 offset_left = 511.0
 offset_top = 869.0
@@ -476,12 +482,12 @@ offset_bottom = 918.0
 theme_override_fonts/font = ExtResource("1_3i4ag")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_lht3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t11pp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehofq")
 text = "Back
 "
 
-[node name="Background" type="Control" parent="."]
+[node name="Background" type="Control" parent="." unique_id=759870859]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -492,8 +498,17 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="Sprite2D" parent="Background"]
+[node name="BG" type="Sprite2D" parent="Background" unique_id=1490711052]
 texture = ExtResource("11_fmn2g")
+
+[node name="MuzzleFlash" type="Sprite2D" parent="." unique_id=1130228526]
+scale = Vector2(0.15886825, 0.15886833)
+texture = ExtResource("12_bfccj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=345994582]
+stream = ExtResource("13_pwnwq")
+volume_db = 6.19
+script = ExtResource("14_3xjsg")
 
 [connection signal="pressed" from="Panel/Game Rules" to="." method="_on_game_rules_pressed"]
 [connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

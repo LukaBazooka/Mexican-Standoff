@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bbx23if3rn37y" path="res://game_rules.gd" id="1_03tcu"]
 [ext_resource type="FontFile" uid="uid://pamw54imvad5" path="res://assets/fonts/BroncoPersonalUse.ttf" id="1_iaxpt"]
 [ext_resource type="Texture2D" uid="uid://dy61s40ygstxy" path="res://assets/images/background.jpg" id="3_fxvm6"]
+[ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="4_japo2"]
+[ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="5_2eoyu"]
+[ext_resource type="Script" uid="uid://piwjv0rf2jq1" path="res://gun_shot_sound.gd" id="6_hd3e6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hrcr"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 0.960784)
@@ -280,5 +283,14 @@ grow_vertical = 2
 
 [node name="BG" type="Sprite2D" parent="Background" unique_id=159522135]
 texture = ExtResource("3_fxvm6")
+
+[node name="MuzzleFlash" type="Sprite2D" parent="." unique_id=388647404]
+scale = Vector2(0.15886825, 0.15886833)
+texture = ExtResource("4_japo2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=302288967]
+stream = ExtResource("5_2eoyu")
+volume_db = 6.19
+script = ExtResource("6_hd3e6")
 
 [connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

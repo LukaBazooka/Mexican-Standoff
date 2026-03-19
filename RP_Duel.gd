@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var bullet_scene = load("res://bullet.tscn")
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
-
+#@onready var rightPlayerSound: AudioStreamPlayer2D = $RightPlayerSound
 
 
 #USE TO ESTABLISH HEALTH
@@ -203,6 +203,7 @@ func shoot(state):
 		spawn_bullet(BULLET_DOWN)
 		$charactersprite.play("shoot_down")
 	$gunpoint.position.y = 256
+	#rightPlayerSound.play()
 
 #executed once bullet enters body area2d 
 func _on_body_collisoion_area_entered(area):

@@ -168,6 +168,8 @@
 [ext_resource type="Texture2D" uid="uid://c7a8g58jopyso" path="res://assets/testheartanim/hearfullanim5.png" id="160_r354w"]
 [ext_resource type="Theme" uid="uid://cxfl8lfo8vw4m" path="res://themes/menutheme.tres" id="165_ilkio"]
 [ext_resource type="PackedScene" uid="uid://divolb8utfjoo" path="res://campfire.tscn" id="166_6od7a"]
+[ext_resource type="AudioStream" uid="uid://btl48butd4yel" path="res://assets/sfx/Cowboy Standoff Music Sound Effect 4.mp3" id="169_p6xpl"]
+[ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="170_xc24w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -971,6 +973,16 @@ font_size = 50
 position = Vector2(85, 47)
 script = ExtResource("1_fkpxe")
 
+[node name="LeftPlayerSound" type="AudioStreamPlayer2D" parent="." unique_id=837216147]
+position = Vector2(1952, 1744)
+stream = ExtResource("170_xc24w")
+volume_db = -6.19
+
+[node name="RightPlayerSound" type="AudioStreamPlayer2D" parent="." unique_id=771059511]
+position = Vector2(976, 872)
+stream = ExtResource("170_xc24w")
+volume_db = -6.19
+
 [node name="BG" type="Sprite2D" parent="." unique_id=1592717960]
 z_index = -2
 position = Vector2(-85, -47)
@@ -1765,6 +1777,13 @@ position = Vector2(546, 886)
 
 [node name="PinkCampfire" parent="." unique_id=1331747059 instance=ExtResource("166_6od7a")]
 position = Vector2(1214, 886)
+
+[node name="CowboyStandoffMusicSoundEffect4" type="AudioStreamPlayer2D" parent="." unique_id=1393041258]
+position = Vector2(488, 436)
+stream = ExtResource("169_p6xpl")
+volume_db = -6.19
+autoplay = true
+parameters/looping = true
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]

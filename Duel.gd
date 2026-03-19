@@ -45,6 +45,7 @@ var rp_state = 0
 
 @onready var rest_timer = $Rest_Timer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rest_timer.start()
