@@ -15,12 +15,6 @@ const LEFT_PLAYER_MOAN_STREAMS: Array[AudioStream] = [
 	preload("res://assets/sfx/hit_sound_6.wav"),
 ]
 
-const LEFT_PLAYER_DEATH_STREAMS: Array[AudioStream] = [
-	preload("res://assets/sfx/death_sound_1.wav"),
-	preload("res://assets/sfx/death_sound_2.wav"),
-	preload("res://assets/sfx/death_sound_3.wav"),
-]
-
 var left_health = HEALTH
 var right_health = HEALTH
 var actively_handle_state = false
@@ -33,10 +27,6 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var blood_splatter = load("res://blood_splatter.tscn")
 @onready var _left_player_moan_sound: AudioStreamPlayer2D = $LeftPlayerMoanSound
-@onready var _right_player_moan_sound: AudioStreamPlayer2D = $RightPlayerMoanSound
-
-@onready var emptySoundRP: AudioStreamPlayer2D = $RightPlayerSound
-@onready var emptySoundLP: AudioStreamPlayer2D = $LeftPlayerSound
 
 const STATE_DICT = {
 [0, 0]: [NO_DMG, NO_DMG],[1, 0]: [NO_DMG, NO_DMG], [2, 0]: [NO_DMG, NO_DMG], [3, 0]: [NO_DMG, NO_DMG], [4, 0]: [NO_DMG, HEAD_SHOT], [5, 0]: [NO_DMG, BODY_SHOT], [6, 0]: [NO_DMG, LEG_SHOT], #No actoin
@@ -158,14 +148,7 @@ func _on_left_player_lp_bullet_collided():
 	if lp_state == 4: #possiblity that bullet collides if too opp too slow
 		left_health -= 100
 	
-	var stream_choice: AudioStream
-	if left_health <= 0:
-		stream_choice = LEFT_PLAYER_DEATH_STREAMS[_rng.randi_range(0, LEFT_PLAYER_DEATH_STREAMS.size() - 1)]
-	else:
-		stream_choice = LEFT_PLAYER_MOAN_STREAMS[_rng.randi_range(0, LEFT_PLAYER_MOAN_STREAMS.size() - 1)]
-	_left_player_moan_sound.stream = stream_choice
 	_left_player_moan_sound.play()
-	
 	if left_health <= 0:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$LeftPlayer/charactersprite.play("death")
@@ -187,14 +170,6 @@ func _on_right_player_rp_bullet_collided():
 	if rp_state == 4: #possiblity that bullet collides if too opp too slow
 		right_health -= 100
 		
-	var stream_choice: AudioStream
-	if right_health <= 0:
-		stream_choice = LEFT_PLAYER_DEATH_STREAMS[_rng.randi_range(0, LEFT_PLAYER_DEATH_STREAMS.size() - 1)]
-	else:
-		stream_choice = LEFT_PLAYER_MOAN_STREAMS[_rng.randi_range(0, LEFT_PLAYER_MOAN_STREAMS.size() - 1)]
-	_right_player_moan_sound.stream = stream_choice
-	_right_player_moan_sound.play()
-	
 	if right_health <= 0:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$RightPlayer/charactersprite.play("death")

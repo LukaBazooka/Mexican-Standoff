@@ -4,7 +4,7 @@ extends Node2D
 @onready var bullet_scene = load("res://bullet.tscn")
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 @onready var left_player_sound: AudioStreamPlayer2D = duel_scene.get_node("LeftPlayerSound")
-@onready var _gun_noise: AudioStreamPlayer2D = duel_scene.get_node("GunNoise")
+@onready var _gun_noise: AudioStreamPlayer2D = $GunNoise
 
 #bullet constants
 const BULLET_UP = -1
@@ -97,7 +97,6 @@ func _process(delta):
 			else:
 				ammo += 1
 			$charactersprite.play("reload")
-			_gun_noise.play()
 			
 	_update_selection_gui()
 
@@ -142,7 +141,6 @@ func handle_input(key):
 #excuted on pass down from duel scene
 func shoot(state):
 	if state in [4, 5, 6]:
-		left_player_sound.stream = load("res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3")
 		left_player_sound.play()
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
@@ -175,9 +173,6 @@ func spawn_bullet(direction):
 			
 		elif direction == BULLET_DOWN:
 			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(100)
-	else:
-		left_player_sound.stream = load("res://assets/sfx/empty.mp3")
-		left_player_sound.play()
 		
 
 

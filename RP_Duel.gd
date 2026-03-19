@@ -4,7 +4,7 @@ extends Node2D
 @onready var bullet_scene = load("res://bullet.tscn")
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 @onready var right_player_sound: AudioStreamPlayer2D = duel_scene.get_node("RightPlayerSound")
-
+@onready var _gunRP_noise: AudioStreamPlayer2D = duel_scene.get_node("GunNoise")
 
 #USE TO ESTABLISH HEALTH
 #healthbar.health = health
@@ -103,6 +103,7 @@ func _process(delta):
 			else:
 				ammo += 1
 			$charactersprite.play("reload")
+			_gunRP_noise.play()
 
 
 
@@ -163,6 +164,9 @@ func spawn_bullet(direction):
 			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(260)
 		else:
 			get_child(get_child_count()-1).get_child(1).set_rotation_degrees(270)
+	else:
+		right_player_sound.stream = load("res://assets/sfx/empty.mp3")
+		right_player_sound.play()
 		
 
 #upon blocked collison
@@ -191,6 +195,7 @@ func _on_node_2d_rp_block_state(data):
 #excuted on pass down from duel scene
 func shoot(state):
 	if state in [4, 5, 6]:
+		right_player_sound.stream = load("res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3")
 		right_player_sound.play()
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)

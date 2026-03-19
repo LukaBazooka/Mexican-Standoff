@@ -8,9 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://cey711krp2aii" path="res://assets/sfx/hit_sound_1.wav" id="3_p5rav"]
 [ext_resource type="Texture2D" uid="uid://b6de5vwntphny" path="res://assets/heartGUI_anim/Untitled drawing.png" id="4_1chk6"]
 [ext_resource type="Texture2D" uid="uid://h6gut3mcb1tv" path="res://assets/aim_down_anim/frame000002.png" id="4_3bx07"]
+[ext_resource type="AudioStream" uid="uid://dl25peco380jy" path="res://assets/sfx/death_sound_1.wav" id="4_d52df"]
 [ext_resource type="Texture2D" uid="uid://hmkwlv4x7iuc" path="res://assets/draw_anim/frame000001.png" id="4_g2s67"]
 [ext_resource type="Texture2D" uid="uid://dxqtdju2ywnhq" path="res://assets/aim_down_anim/frame000003.png" id="5_m8dgx"]
 [ext_resource type="Texture2D" uid="uid://bu81d3by2bal2" path="res://assets/draw_anim/frame000002.png" id="5_uq8eb"]
+[ext_resource type="AudioStream" uid="uid://dh8djoupeqr8r" path="res://assets/sfx/gunReload.mp3" id="5_wjw1t"]
 [ext_resource type="Texture2D" uid="uid://b1o7bhdybao5h" path="res://assets/aim_down_anim/frame000004.png" id="6_5ix74"]
 [ext_resource type="Texture2D" uid="uid://cyju0etgqsssv" path="res://assets/draw_anim/frame000003.png" id="6_o4j3s"]
 [ext_resource type="Texture2D" uid="uid://dwte2d5r6l3ix" path="res://assets/aim_up_anim/frame000001.png" id="7_bhvcc"]
@@ -991,7 +993,12 @@ volume_db = 9.905
 
 [node name="RightPlayerMoanSound" type="AudioStreamPlayer2D" parent="." unique_id=1364428347]
 position = Vector2(1952, 1744)
-stream = ExtResource("170_xc24w")
+stream = ExtResource("4_d52df")
+volume_db = 9.905
+
+[node name="GunNoise" type="AudioStreamPlayer2D" parent="." unique_id=134101329]
+position = Vector2(1952, 1744)
+stream = ExtResource("5_wjw1t")
 volume_db = 9.905
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1592717960]
