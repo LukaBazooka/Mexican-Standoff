@@ -6,6 +6,10 @@ extends Node2D
 @onready var left_player_sound: AudioStreamPlayer2D = duel_scene.get_node("LeftPlayerSound")
 @onready var _gun_noise: AudioStreamPlayer2D = duel_scene.get_node("GunNoise")
 
+const LEFT_MUZZLE_FLASH_DURATION: float = 0.1
+@onready var muzzle_flash_Left: Sprite2D = $LeftMuzzleFlash
+var muzzle_flash_timeleft_left: float = 0.0
+
 #bullet constants
 const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
@@ -289,7 +293,7 @@ func _update_selection_gui():
 	if len(input_buffer) == 1:
 		if input_buffer[0] == KEY_0:
 			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
+E			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
 		elif input_buffer[0] == KEY_1:
 			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W"
 			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W".visible = true

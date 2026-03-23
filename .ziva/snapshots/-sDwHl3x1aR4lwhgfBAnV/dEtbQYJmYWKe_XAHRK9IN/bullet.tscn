@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b3oyayjcuetox"]
+[gd_scene load_steps=5 format=3 uid="uid://b3oyayjcuetox"]
 
-[ext_resource type="Script" uid="uid://c4uvntirnhfpm" path="res://RigidBody2D.gd" id="1_umyy5"]
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_umyy5"]
 [ext_resource type="Texture2D" uid="uid://cglp0lcth1xwh" path="res://assets/bulletGUI_anim/bullet_gui01.png" id="2_kapym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y12ho"]
@@ -9,34 +9,31 @@ size = Vector2(57, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5mb5"]
 size = Vector2(68, 60)
 
-[node name="bullet" type="RigidBody2D" unique_id=1821097968]
+[node name="bullet" type="RigidBody2D"]
 z_index = 1
 mass = 100.0
 inertia = 70.0
 script = ExtResource("1_umyy5")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2080833185]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="bulletSprite" type="Sprite2D" parent="." unique_id=1894000217]
+[node name="bulletSprite" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_kapym")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=594862157]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y12ho")
 disabled = true
 
-[node name="BulletTimer" type="Timer" parent="." unique_id=2005939468]
+[node name="BulletTimer" type="Timer" parent="."]
 wait_time = 1.4
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1501851972]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=725999428]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_o5mb5")
-
-[node name="TrailLine" type="Line2D" parent="." unique_id=2032396868]
-points = PackedVector2Array(2, -1)
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
 [connection signal="area_exited" from="Area2D" to="." method="after_collision_other_bullet"]

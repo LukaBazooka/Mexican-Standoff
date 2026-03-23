@@ -149,7 +149,6 @@
 [ext_resource type="Texture2D" uid="uid://dhok5lffvbwfc" path="res://assets/win_anim/frame000001.png" id="129_8n3dc"]
 [ext_resource type="Texture2D" uid="uid://ce326mxst3dmw" path="res://assets/win_anim/frame000002.png" id="130_vxhmi"]
 [ext_resource type="Script" uid="uid://clyga86tuo2uh" path="res://lp_shadow.gd" id="133_n11vs"]
-[ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="140_3dlpv"]
 [ext_resource type="Texture2D" uid="uid://d0wxsseas27dx" path="res://assets/newbullet_anims/fullbullet01.png" id="142_7oo75"]
 [ext_resource type="Texture2D" uid="uid://bgmiiwkhq0hu3" path="res://assets/newbullet_anims/fullbullet02.png" id="143_qbt64"]
 [ext_resource type="Texture2D" uid="uid://cy14aiyrndlg4" path="res://assets/newbullet_anims/fullbullet03.png" id="144_5abdj"]
@@ -1082,12 +1081,6 @@ shape = SubResource("RectangleShape2D_fnm46")
 position = Vector2(188, 575)
 scale = Vector2(0.999999, 0.999999)
 
-[node name="LeftMuzzleFlash" type="Sprite2D" parent="LeftPlayer" unique_id=403805462]
-visible = false
-position = Vector2(439, 249.99998)
-scale = Vector2(0.17573452, 0.17573452)
-texture = ExtResource("140_3dlpv")
-
 [node name="RightPlayer" parent="." unique_id=1627249691 instance=ExtResource("2_ow1s3")]
 position = Vector2(746, 417)
 
@@ -1206,98 +1199,98 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
 
-[node name="LeftHBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI" unique_id=1186178216]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI" unique_id=1186178216]
 layout_mode = 0
-offset_left = -184.0
-offset_top = 245.0
-offset_right = 324.0
-offset_bottom = 553.0
+offset_left = -295.0
+offset_top = 106.0
+offset_right = 520.0
+offset_bottom = 414.0
 scale = Vector2(0.5, 0.5)
 
-[node name="emptybox1" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer" unique_id=425905932]
-position = Vector2(45.249996, 121.74997)
-scale = Vector2(0.24249999, 0.24249999)
+[node name="emptybox1" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=425905932]
+position = Vector2(84, 141)
+scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=1087882655]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=1087882655]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=155574683]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=155574683]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=498227236]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=498227236]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=2037780483]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=2037780483]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=924668786]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=924668786]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=1155514230]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1" unique_id=1155514230]
 visible = false
 texture = ExtResource("51_fldnp")
 
-[node name="emptybox2" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer" unique_id=2033725723]
-position = Vector2(252, 150.75)
-scale = Vector2(0.184, 0.184)
+[node name="emptybox2" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=2033725723]
+position = Vector2(251, 141)
+scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=2103405029]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=2103405029]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=1473744581]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=1473744581]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=2103194039]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=2103194039]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=1743646863]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=1743646863]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=956738336]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=956738336]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox2" unique_id=5128449]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2" unique_id=5128449]
 visible = false
 texture = ExtResource("51_fldnp")
 
-[node name="emptybox3" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer" unique_id=881605069]
-position = Vector2(428, 150.75)
-scale = Vector2(0.184, 0.184)
+[node name="emptybox3" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer" unique_id=881605069]
+position = Vector2(419, 141)
+scale = Vector2(0.165, 0.165)
 texture = ExtResource("52_6b7hx")
 
-[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=493946850]
+[node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=493946850]
 visible = false
 texture = ExtResource("53_bc3ql")
 
-[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=1017447538]
+[node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1017447538]
 visible = false
 texture = ExtResource("54_1gxty")
 
-[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=1507410028]
+[node name="R" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1507410028]
 visible = false
 texture = ExtResource("55_mbgwu")
 
-[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=1034436259]
+[node name="E" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=1034436259]
 visible = false
 texture = ExtResource("56_bvta1")
 
-[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=2066480622]
+[node name="D" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=2066480622]
 visible = false
 texture = ExtResource("57_cxrpk")
 
-[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox3" unique_id=922023924]
+[node name="CAPS" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3" unique_id=922023924]
 visible = false
 texture = ExtResource("51_fldnp")
 

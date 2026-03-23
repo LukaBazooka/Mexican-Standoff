@@ -87,8 +87,6 @@ func _process(delta):
 	duel_time = $DuelTimer.time_left
 	rest_time = $Rest_Timer.time_left
 
-
-
 func new_round():
 	$Rest_Timer.start()
 

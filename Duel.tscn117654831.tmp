@@ -1220,7 +1220,6 @@ scale = Vector2(0.24249999, 0.24249999)
 texture = ExtResource("52_6b7hx")
 
 [node name="W" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=1087882655]
-visible = false
 texture = ExtResource("53_bc3ql")
 
 [node name="S" type="Sprite2D" parent="PlayerGUI/LeftPlayerGUI/LeftHBoxContainer/emptybox1" unique_id=155574683]

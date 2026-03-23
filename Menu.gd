@@ -1,10 +1,12 @@
 extends Control
 
-const MUZZLE_FLASH_DURATION: float = 0.1
 
 @onready var sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+const MUZZLE_FLASH_DURATION: float = 0.1
 @onready var muzzle_flash: Sprite2D = $MuzzleFlash
 var muzzle_flash_time_left: float = 0.0
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
