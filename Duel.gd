@@ -35,6 +35,9 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var _left_player_moan_sound: AudioStreamPlayer2D = $LeftPlayerMoanSound
 @onready var _right_player_moan_sound: AudioStreamPlayer2D = $RightPlayerMoanSound
 
+@onready var _left_player_impact_sound: AudioStreamPlayer2D = $LeftBulletImpact
+@onready var _right_player_impact_sound: AudioStreamPlayer2D = $RightBulletImpact
+
 @onready var emptySoundRP: AudioStreamPlayer2D = $RightPlayerSound
 @onready var emptySoundLP: AudioStreamPlayer2D = $LeftPlayerSound
 
@@ -86,6 +89,14 @@ func _process(delta):
 	
 	duel_time = $DuelTimer.time_left
 	rest_time = $Rest_Timer.time_left
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey \
+	and event.keycode == KEY_ESCAPE \
+	and event.pressed \
+	and not event.is_echo():
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().change_scene_to_file("res://Menu.tscn")
 
 func new_round():
 	$Rest_Timer.start()
@@ -163,6 +174,7 @@ func _on_left_player_lp_bullet_collided():
 		stream_choice = LEFT_PLAYER_MOAN_STREAMS[_rng.randi_range(0, LEFT_PLAYER_MOAN_STREAMS.size() - 1)]
 	_left_player_moan_sound.stream = stream_choice
 	_left_player_moan_sound.play()
+	_left_player_impact_sound.play()
 	
 	if left_health <= 0:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
@@ -192,6 +204,7 @@ func _on_right_player_rp_bullet_collided():
 		stream_choice = LEFT_PLAYER_MOAN_STREAMS[_rng.randi_range(0, LEFT_PLAYER_MOAN_STREAMS.size() - 1)]
 	_right_player_moan_sound.stream = stream_choice
 	_right_player_moan_sound.play()
+	_right_player_impact_sound.play()
 	
 	if right_health <= 0:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
@@ -316,7 +329,10 @@ signal rp_shoot
 #Retry button clicked on duel end/deathscreen
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
-
+	
+func _on_retry2_pressed():
+	get_tree().change_scene_to_file("res://Menu.tscn")
+	
 #When "DUEL" Goes away
 func _on_timer_timeout():
 	$PlayerGUI/DrawPopup.visible = false

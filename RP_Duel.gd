@@ -5,6 +5,10 @@ extends Node2D
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 @onready var right_player_sound: AudioStreamPlayer2D = duel_scene.get_node("RightPlayerSound")
 @onready var _gunRP_noise: AudioStreamPlayer2D = duel_scene.get_node("GunNoise")
+@onready var ricochet2: AudioStreamPlayer2D = duel_scene.get_node("Ricochet")
+@onready var rightDrawSFX: AudioStreamPlayer2D = duel_scene.get_node("RightDrawSFX")
+@onready var fartBanana: AudioStreamPlayer2D = duel_scene.get_node("Fart")
+
 
 #USE TO ESTABLISH HEALTH
 #healthbar.health = health
@@ -14,6 +18,10 @@ const BULLET_UP = -1
 const BULLET_STRAIGHT = 0
 const BULLET_DOWN = 2
 const SPEED_Y = 150
+
+const RIGHT_MUZZLE_FLASH_DURATION: float = 0.1
+@onready var muzzle_flash_Right: Sprite2D = $RightMuzzleFlash
+var muzzle_flash_timeleft_right: float = 0.0
 
 #action sequences
 #Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
@@ -81,11 +89,18 @@ func _process(delta):
 	clear_selection_UI() #note this doesnt exist yet
 	_update_ammo_gui()
 	
+	if muzzle_flash_timeleft_right > 0.0:
+		muzzle_flash_timeleft_right -= delta
+		if muzzle_flash_timeleft_right <= 0.0:
+			muzzle_flash_timeleft_right = 0.0
+			muzzle_flash_Right.visible = false
+	
 	#handle player input
 	if duel:
 		if Input.is_action_just_pressed("right_player_draw"):
 			handle_input(KEY_0)
 			$charactersprite.play("draw")
+			rightDrawSFX.play()
 			banana_draw()
 		elif Input.is_action_just_pressed("right_player_up"):
 			handle_input(KEY_1)
@@ -172,6 +187,7 @@ func spawn_bullet(direction):
 #upon blocked collison
 func rebound(obj):
 	randomize()
+	ricochet2.play()
 	random_y = randi_range(-700, 700)
 	random_spin = randi_range(-100, 100)
 	obj.linear_velocity.x *= -1
@@ -197,6 +213,9 @@ func shoot(state):
 	if state in [4, 5, 6]:
 		right_player_sound.stream = load("res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3")
 		right_player_sound.play()
+		muzzle_flash_Right.visible = true
+		muzzle_flash_timeleft_right = RIGHT_MUZZLE_FLASH_DURATION
+		
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		#allows  bullets to collide if both players go for headshots
@@ -213,19 +232,20 @@ func shoot(state):
 
 #executed once bullet enters body area2d 
 func _on_body_collisoion_area_entered(area):
-	emit_signal("rp_bullet_collided")
+	#emit_signal("rp_bullet_collided")
 	if body_blocked:
 		rebound(area.get_parent())
 	else:
 		area.get_parent().queue_free()
+		emit_signal("rp_bullet_collided")
 
 #executed once bullet enters leg area2d 
 func _on_leg_collision_bullet_entered(area):
-	emit_signal("rp_bullet_collided")
 	if leg_blocked:
 		rebound(area.get_parent())
 	else:
 		area.get_parent().queue_free()
+		emit_signal("rp_bullet_collided")
 
 #executed once bullet entered head area2d
 func _on_head_collison_bullet_entered(area):
@@ -237,6 +257,7 @@ func banana_draw():
 	banana_chance = randi_range(1, 30)
 	if banana_chance == 1:
 		$charactersprite.play("banana_draw")
+		fartBanana.play()
 		duel = false
 		if ammo + 2 > 6:
 			ammo = 6

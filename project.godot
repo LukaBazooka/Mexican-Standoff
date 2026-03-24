@@ -14,10 +14,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Mexican-standoff"
-run/main_scene="res://Duel.tscn"
+config/name="Outlaw Outdraw"
+config/description="A cartoony 1v1 western dueling game."
+config/version="1.0"
+run/main_scene="uid://btc0cjfgqygm8"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cotabm6ihufoi"
 
 [display]
 

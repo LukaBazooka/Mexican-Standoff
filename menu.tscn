@@ -161,7 +161,7 @@ autoplay = true
 parameters/looping = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="YouTube" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="YouTube" to="." method="_on_you_tube_pressed"]
 [connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="Practice" to="." method="_on_practice_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

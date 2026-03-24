@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://game_rules.tscn")
 	#get_tree().change_scene_to_file("res://Duel.tscn")
-
+	
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://options_menu.tscn")
 
@@ -44,3 +44,6 @@ func _on_practice_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_you_tube_pressed():
+	OS.shell_open("https://youtu.be/9ZHpdZRe1m0")

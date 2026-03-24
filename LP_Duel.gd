@@ -5,6 +5,9 @@ extends Node2D
 @onready var duel_scene : Node2D = get_tree().get_first_node_in_group("duel")
 @onready var left_player_sound: AudioStreamPlayer2D = duel_scene.get_node("LeftPlayerSound")
 @onready var _gun_noise: AudioStreamPlayer2D = duel_scene.get_node("GunNoise")
+@onready var ricochet: AudioStreamPlayer2D = duel_scene.get_node("Ricochet")
+@onready var leftDrawSFX: AudioStreamPlayer2D = duel_scene.get_node("LeftDrawSFX")
+@onready var fart: AudioStreamPlayer2D = duel_scene.get_node("Fart")
 
 const LEFT_MUZZLE_FLASH_DURATION: float = 0.1
 @onready var muzzle_flash_Left: Sprite2D = $LeftMuzzleFlash
@@ -55,7 +58,6 @@ func _rest_timeout():
 	$charactersprite.play("idle")
 	duel = true #player can register inputs
 	input_buffer.clear() #remove and previous inputs loaded into buffer
-	clear_selection_UI() #clear input buffer UI
 
 #when duel timer ends
 func _duel_timeout():
@@ -78,11 +80,18 @@ func _process(delta):
 	$"../PlayerGUI/LeftPlayerGUI/VBoxContainer/AmmoLabel/AmmoValue".text = str(ammo)
 	_update_ammo_gui()
 	
+	if muzzle_flash_timeleft_left > 0.0:
+		muzzle_flash_timeleft_left -= delta
+		if muzzle_flash_timeleft_left <= 0.0:
+			muzzle_flash_timeleft_left = 0.0
+			muzzle_flash_Left.visible = false
+	
 	#handle player input
 	if duel: #if we are taking player input
 		if Input.is_action_just_pressed("left_player_draw"):
 			handle_input(KEY_0)
 			$charactersprite.play("draw")
+			leftDrawSFX.play()
 			banana_draw()
 		elif Input.is_action_just_pressed("left_player_up"):
 			handle_input(KEY_1)
@@ -103,8 +112,6 @@ func _process(delta):
 			$charactersprite.play("reload")
 			_gun_noise.play()
 			
-	_update_selection_gui()
-
 
 func handle_input(key):
 	input_buffer.append(key)
@@ -148,6 +155,9 @@ func shoot(state):
 	if state in [4, 5, 6]:
 		left_player_sound.stream = load("res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3")
 		left_player_sound.play()
+		muzzle_flash_Left.visible = true
+		muzzle_flash_timeleft_left = LEFT_MUZZLE_FLASH_DURATION
+		
 	if state == 4: #headshot
 		spawn_bullet(BULLET_UP)
 		get_child(get_child_count()-1).get_child(2).set_disabled(false)
@@ -187,6 +197,8 @@ func spawn_bullet(direction):
 
 #upon blocked collison
 func rebound(obj):
+	#PLAY NOISE
+	ricochet.play()
 	randomize()
 	random_y = randi_range(-700, 700)
 	random_spin = randi_range(-100, 100)
@@ -288,71 +300,12 @@ func _update_ammo_gui():
 		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet5/BulletSprite".animation = "bullet"
 		$"../PlayerGUI/LeftPlayerGUI/Bullets/left_Bullet6/BulletSprite".animation = "bullet"
 
-#Key0 == draw, Key1 == up, key3== down , key4 == shoot, key5 == block
-func _update_selection_gui():
-	if len(input_buffer) == 1:
-		if input_buffer[0] == KEY_0:
-			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS"
-E			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/CAPS".visible = true
-		elif input_buffer[0] == KEY_1:
-			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/W".visible = true
-		elif input_buffer[0] == KEY_3:
-			input_box1 =  $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/S"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/S".visible = true
-		elif input_buffer[0] == KEY_4:
-			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/E"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/E".visible = true
-		elif input_buffer[0] == KEY_5:
-			input_box1 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/D"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox1/D".visible = true
-	elif len(input_buffer) == 2:
-		if input_buffer[1] == KEY_0:
-			input_box2 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/CAPS"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/CAPS".visible = true
-		elif input_buffer[1] == KEY_1:
-			input_box2 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/W"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/W".visible = true
-		elif input_buffer[1] == KEY_3:
-			input_box2 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/S"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/S".visible = true
-		elif input_buffer[1] == KEY_4:
-			input_box2 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/E"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/E".visible = true
-		elif input_buffer[1] == KEY_5:
-			input_box2 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/D"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox2/D".visible = true
-	elif len(input_buffer) == 3:
-		if input_buffer[2] == KEY_0:
-			input_box3 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/CAPS"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/CAPS".visible = true
-		elif input_buffer[2] == KEY_1:
-			input_box3 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/W"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/W".visible = true
-		elif input_buffer[2] == KEY_3:
-			input_box3 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/S"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/S".visible = true
-		elif input_buffer[2] == KEY_4:
-			input_box3 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/E"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/E".visible = true
-		elif input_buffer[2] == KEY_5:
-			input_box3 = $"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/D"
-			$"../PlayerGUI/LeftPlayerGUI/HBoxContainer/emptybox3/D".visible = true
-	
-	
-func clear_selection_UI():
-	if input_box1 != null:
-		input_box1.visible = false
-	if input_box2 != null:
-		input_box2.visible = false
-	if input_box3 != null:
-		input_box3.visible = false
-
 func banana_draw():
 	randomize()
 	banana_chance = randi_range(1, 30)
 	if banana_chance == 1:
 		$charactersprite.play("banana_draw")
+		fart.play()
 		duel = false
 		if ammo + 2 > 6:
 			ammo = 6

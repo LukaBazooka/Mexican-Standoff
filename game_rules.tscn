@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qkg5r6cjxeot" path="res://assets/MuzzleFlash2.png" id="4_japo2"]
 [ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="5_2eoyu"]
 [ext_resource type="Script" uid="uid://piwjv0rf2jq1" path="res://gun_shot_sound.gd" id="6_hd3e6"]
+[ext_resource type="AudioStream" uid="uid://dqffwotfhcyeg" path="res://assets/sfx/La Raspa.mp3" id="7_hd3e6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hrcr"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 0.960784)
@@ -292,5 +293,12 @@ texture = ExtResource("4_japo2")
 stream = ExtResource("5_2eoyu")
 volume_db = 6.19
 script = ExtResource("6_hd3e6")
+
+[node name="CowboyStandoffMusicSoundEffect4" type="AudioStreamPlayer2D" parent="." unique_id=656934488]
+position = Vector2(488, 436)
+stream = ExtResource("7_hd3e6")
+volume_db = -9.905
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

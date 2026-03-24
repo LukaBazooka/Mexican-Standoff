@@ -14,11 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://bu81d3by2bal2" path="res://assets/draw_anim/frame000002.png" id="5_uq8eb"]
 [ext_resource type="AudioStream" uid="uid://dh8djoupeqr8r" path="res://assets/sfx/gunReload.mp3" id="5_wjw1t"]
 [ext_resource type="Texture2D" uid="uid://b1o7bhdybao5h" path="res://assets/aim_down_anim/frame000004.png" id="6_5ix74"]
+[ext_resource type="AudioStream" uid="uid://dka38xc0ynxct" path="res://assets/sfx/freesound_community-ricochet-2-101553.mp3" id="6_kdkjb"]
 [ext_resource type="Texture2D" uid="uid://cyju0etgqsssv" path="res://assets/draw_anim/frame000003.png" id="6_o4j3s"]
 [ext_resource type="Texture2D" uid="uid://dwte2d5r6l3ix" path="res://assets/aim_up_anim/frame000001.png" id="7_bhvcc"]
+[ext_resource type="AudioStream" uid="uid://d4a86kx5rlgt7" path="res://assets/sfx/drawWeapon.mp3" id="7_ssw2u"]
 [ext_resource type="Texture2D" uid="uid://c7gxjudhgmylj" path="res://assets/draw_anim/frame000004.png" id="7_w548f"]
 [ext_resource type="Texture2D" uid="uid://c2pl47txscd4u" path="res://assets/draw_anim/frame000005.png" id="8_mga0w"]
 [ext_resource type="Texture2D" uid="uid://ca7nvsjsth2hw" path="res://assets/aim_up_anim/frame000002.png" id="8_sf2vv"]
+[ext_resource type="AudioStream" uid="uid://cn3f73mba47md" path="res://assets/sfx/bulletImpact.mp3" id="8_tqt1d"]
+[ext_resource type="AudioStream" uid="uid://137bhwcasbx8" path="res://assets/sfx/Quick Reverb Fart - Sound Effect (HD).mp3" id="9_aqu0k"]
 [ext_resource type="Texture2D" uid="uid://knw2bex27dc6" path="res://assets/draw_anim/frame000006.png" id="9_na6r5"]
 [ext_resource type="Texture2D" uid="uid://cqg85u0ogndrh" path="res://assets/aim_up_anim/frame000003.png" id="9_tnrh3"]
 [ext_resource type="Texture2D" uid="uid://cvhsvirg7nmx3" path="res://assets/draw_anim/frame000007.png" id="10_h563p"]
@@ -175,6 +179,8 @@
 [ext_resource type="PackedScene" uid="uid://divolb8utfjoo" path="res://campfire.tscn" id="166_6od7a"]
 [ext_resource type="AudioStream" uid="uid://btl48butd4yel" path="res://assets/sfx/Cowboy Standoff Music Sound Effect 4.mp3" id="169_p6xpl"]
 [ext_resource type="AudioStream" uid="uid://crapf2ahgsutj" path="res://assets/sfx/58906__rock-savage__western-shot-modern-3.mp3" id="170_xc24w"]
+[ext_resource type="Script" uid="uid://cr8jrl6m5m6ud" path="res://draw_popup.gd" id="172_0k3a7"]
+[ext_resource type="AudioStream" uid="uid://db716lei3vl1p" path="res://assets/sfx/draw.mp3" id="172_coci0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eehnx"]
 animations = [{
@@ -1006,6 +1012,36 @@ position = Vector2(1952, 1744)
 stream = ExtResource("5_wjw1t")
 volume_db = 9.905
 
+[node name="Ricochet" type="AudioStreamPlayer2D" parent="." unique_id=2106476390]
+position = Vector2(1952, 1744)
+stream = ExtResource("6_kdkjb")
+volume_db = 9.905
+
+[node name="LeftDrawSFX" type="AudioStreamPlayer2D" parent="." unique_id=770578707]
+position = Vector2(1952, 1744)
+stream = ExtResource("7_ssw2u")
+volume_db = 9.905
+
+[node name="LeftBulletImpact" type="AudioStreamPlayer2D" parent="." unique_id=1298302493]
+position = Vector2(1952, 1744)
+stream = ExtResource("8_tqt1d")
+volume_db = 2.476
+
+[node name="RightDrawSFX" type="AudioStreamPlayer2D" parent="." unique_id=1273793384]
+position = Vector2(1952, 1744)
+stream = ExtResource("7_ssw2u")
+volume_db = 9.905
+
+[node name="RightBulletImpact" type="AudioStreamPlayer2D" parent="." unique_id=1147119566]
+position = Vector2(1952, 1744)
+stream = ExtResource("8_tqt1d")
+volume_db = 2.476
+
+[node name="Fart" type="AudioStreamPlayer2D" parent="." unique_id=1580956331]
+position = Vector2(1952, 1744)
+stream = ExtResource("9_aqu0k")
+volume_db = 10.381
+
 [node name="BG" type="Sprite2D" parent="." unique_id=1592717960]
 z_index = -2
 position = Vector2(-85, -47)
@@ -1037,9 +1073,8 @@ position = Vector2(440, 256)
 position = Vector2(248, 300)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_eehnx")
-animation = &"rest_anim"
+animation = &"shoot"
 autoplay = "rest_anim"
-frame_progress = 0.027441215
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftPlayer/charactersprite" unique_id=762636559]
 visible = false
@@ -1084,8 +1119,8 @@ scale = Vector2(0.999999, 0.999999)
 
 [node name="LeftMuzzleFlash" type="Sprite2D" parent="LeftPlayer" unique_id=403805462]
 visible = false
-position = Vector2(439, 249.99998)
-scale = Vector2(0.17573452, 0.17573452)
+position = Vector2(567, 227.99998)
+scale = Vector2(0.29573452, 0.2557345)
 texture = ExtResource("140_3dlpv")
 
 [node name="RightPlayer" parent="." unique_id=1627249691 instance=ExtResource("2_ow1s3")]
@@ -1137,6 +1172,12 @@ shape = SubResource("RectangleShape2D_fnm46")
 [node name="bloodpoint" type="Marker2D" parent="RightPlayer" unique_id=1974857692]
 position = Vector2(1571, 566)
 scale = Vector2(0.999999, 0.999999)
+
+[node name="RightMuzzleFlash" type="Sprite2D" parent="RightPlayer" unique_id=1679694051]
+visible = false
+position = Vector2(431, 227.99998)
+scale = Vector2(0.29573452, 0.2557345)
+texture = ExtResource("140_3dlpv")
 
 [node name="PlayerGUI" type="Control" parent="." unique_id=2101527631]
 layout_mode = 3
@@ -1207,6 +1248,7 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_8hu5n")
 
 [node name="LeftHBoxContainer" type="HBoxContainer" parent="PlayerGUI/LeftPlayerGUI" unique_id=1186178216]
+visible = false
 layout_mode = 0
 offset_left = -184.0
 offset_top = 245.0
@@ -1650,6 +1692,13 @@ offset_top = 100.0
 offset_right = 190.0
 offset_bottom = 140.0
 scale = Vector2(0.8, 0.8)
+script = ExtResource("172_0k3a7")
+
+[node name="Draw" type="AudioStreamPlayer2D" parent="PlayerGUI/DrawPopup" unique_id=418602822]
+position = Vector2(1951.9998, 1743.9999)
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("172_coci0")
+volume_db = 9.905
 
 [node name="DRAW!" type="AnimatedSprite2D" parent="PlayerGUI/DrawPopup" unique_id=493565255]
 position = Vector2(893, 407)
@@ -1811,6 +1860,9 @@ stream = ExtResource("169_p6xpl")
 volume_db = -9.905
 autoplay = true
 parameters/looping = true
+
+[node name="LeftFlashPoint" type="Node2D" parent="." unique_id=628400630]
+position = Vector2(457, 644)
 
 [connection signal="lp_block_state" from="." to="LeftPlayer" method="_on_node_2d_lp_block_state"]
 [connection signal="lp_shoot" from="." to="LeftPlayer" method="shoot"]
